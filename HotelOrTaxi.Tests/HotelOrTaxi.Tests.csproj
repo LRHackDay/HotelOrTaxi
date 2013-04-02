@@ -51,6 +51,7 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App1.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
