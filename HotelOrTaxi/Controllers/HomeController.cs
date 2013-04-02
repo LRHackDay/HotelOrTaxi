@@ -4,9 +4,9 @@ namespace HotelOrTaxi.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View();
+            return View("Index");
         }
     }
 }
