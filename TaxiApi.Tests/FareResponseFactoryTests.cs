@@ -8,9 +8,10 @@ using TaxiApi.Response;
 namespace TaxiApi.Tests
 {
     [TestFixture]
-    public class FareResponseFactoryTests : IPerformApiRequest, IConfiguration
+    public class FareResponseFactoryTests : IPerformApiRequest, IConfiguration, ICalculateTheJourneyDistance
     {
         private string _response;
+        private Metres _distance;
 
         [SetUp]
         public void Setup()
@@ -42,9 +43,10 @@ namespace TaxiApi.Tests
             var destination = new Location(null, null);
             var to = new Destination(destination);
 
-            Metres distance = new Metres(5000);
+            _distance = new Metres(5000);
 
-            var journey = new Journey(from, to, distance);
+            var distanceFactory = this;
+            var journey = new Journey(@from, to, distanceFactory);
 
             string request = new FareRequestFactory(this).Create(DateTime.Now, journey);
 
@@ -66,6 +68,11 @@ namespace TaxiApi.Tests
         public string ApiKey()
         {
             return "test";
+        }
+
+        Metres ICalculateTheJourneyDistance.Create(StartingPoint @from, Destination to)
+        {
+            return _distance;
         }
     }
 }

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistanceFactory.cs" />
     <Compile Include="GeographicCoordinate.cs" />
     <Compile Include="Journey.cs" />
     <Compile Include="Latitude.cs" />
