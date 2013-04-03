@@ -34,11 +34,13 @@ namespace TaxiApi.Tests
         {
             var webClientApiRequest = new WebClientApiRequest(this);
 
+            var latitude = new Latitude("52.51211199999999");
+            var longitude = new Longitude("-3.3131060000000616");
             var journey = new Journey
                 {
                     Distance = new Metres(5000),
                     Passengers = new Passengers(2),
-                    StartingPoint = "52.51211199999999,-3.3131060000000616"
+                    StartingPoint = new Location(latitude, longitude)
                 };
             var request = new FareRequestFactory(this).Create(DateTime.Now, journey);
 

@@ -213,11 +213,14 @@ namespace TaxiApi.Tests
         {
             var fareRequestFactory = new FareRequestFactory(this);
 
+            var latitude = new Latitude("10");
+            var longitude = new Longitude("10");
+
             var journey = new Journey
                 {
                     Distance = new Metres(0),
                     Passengers = new Passengers(0),
-                    StartingPoint = "10,10"
+                    StartingPoint = new Location(latitude, longitude)
                 };
             var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 

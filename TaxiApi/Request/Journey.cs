@@ -4,7 +4,58 @@ namespace TaxiApi.Request
     {
         public Metres Distance { get; set; }
         public Passengers Passengers { get; set; }
-        public string StartingPoint { get; set; }
+        public Location StartingPoint { get; set; }
+    }
+
+    public class Latitude : GeographicCoordinate
+    {
+        public Latitude(string geographicCoordinate)
+            : base(geographicCoordinate)
+        {
+        }
+    }
+
+    public class Longitude : GeographicCoordinate
+    {
+        public Longitude(string geographicCoordinate)
+            : base(geographicCoordinate)
+        {
+        }
+    }
+
+    public class GeographicCoordinate
+    {
+        private readonly string _geographicCoordinate;
+
+        protected GeographicCoordinate(string geographicCoordinate)
+        {
+            _geographicCoordinate = geographicCoordinate;
+        }
+
+        public override string ToString()
+        {
+            return _geographicCoordinate;
+        }
+    }
+
+    public class Location
+    {
+        private string LatitudeAndLongitude { get; set; }
+
+        public Location(string latitudeAndLongitude)
+        {
+            LatitudeAndLongitude = latitudeAndLongitude;
+        }
+
+        public Location(Latitude latitude, Longitude longitude)
+        {
+            LatitudeAndLongitude = latitude + "," + longitude;
+        }
+
+        public override string ToString()
+        {
+            return LatitudeAndLongitude;
+        }
     }
 
     public class Passengers
@@ -33,7 +84,7 @@ namespace TaxiApi.Request
 
         public override bool Equals(object obj)
         {
-            return Equals((Passengers)obj);
+            return Equals((Passengers) obj);
         }
     }
 
@@ -63,7 +114,7 @@ namespace TaxiApi.Request
 
         public override bool Equals(object obj)
         {
-            return Equals((Metres)obj);
+            return Equals((Metres) obj);
         }
     }
 }
