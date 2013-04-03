@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMapsApi.Tests", "Goog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResponse", "WebClientWrapper\WebResponse.csproj", "{DC27CAE4-0979-44FF-B297-44D10094C508}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyCalculator", "JourneyCalculator\JourneyCalculator.csproj", "{4A92EB6D-6BA5-41C2-8E21-699DA5223740}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyCalculator.Tests", "JourneyCalculator.Tests\JourneyCalculator.Tests.csproj", "{07A3C197-A413-4CB9-9FF6-FE7B7F0A2BFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{DC27CAE4-0979-44FF-B297-44D10094C508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC27CAE4-0979-44FF-B297-44D10094C508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC27CAE4-0979-44FF-B297-44D10094C508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A92EB6D-6BA5-41C2-8E21-699DA5223740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A92EB6D-6BA5-41C2-8E21-699DA5223740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A92EB6D-6BA5-41C2-8E21-699DA5223740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A92EB6D-6BA5-41C2-8E21-699DA5223740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07A3C197-A413-4CB9-9FF6-FE7B7F0A2BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A3C197-A413-4CB9-9FF6-FE7B7F0A2BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A3C197-A413-4CB9-9FF6-FE7B7F0A2BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A3C197-A413-4CB9-9FF6-FE7B7F0A2BFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

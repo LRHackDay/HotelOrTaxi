@@ -1,3 +1,5 @@
+using System;
+
 namespace Geography
 {
     public class Metres
@@ -17,6 +19,11 @@ namespace Geography
         public Metres(decimal distance)
         {
             Distance = distance;
+        }
+
+        public Metres(string actualDistance)
+        {
+            Distance = Decimal.Parse(actualDistance);
         }
 
         public override string ToString()

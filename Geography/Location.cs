@@ -2,6 +2,7 @@ namespace Geography
 {
     public class Location
     {
+        public string SearchTerm { get; set; }
         private string LatitudeAndLongitude { get; set; }
 
         public Location(Latitude latitude, Longitude longitude)
@@ -11,10 +12,7 @@ namespace Geography
 
         public Location(string searchTerm)
         {
-            var latitude = 10;
-            var longitude = 10;
-
-            LatitudeAndLongitude = latitude + "," + longitude;
+            SearchTerm = searchTerm;
         }
 
         public override string ToString()

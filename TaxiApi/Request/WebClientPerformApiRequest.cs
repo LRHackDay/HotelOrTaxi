@@ -7,9 +7,9 @@ namespace TaxiApi.Request
     public class WebClientApiRequest : IPerformApiRequest
     {
         private readonly ICanReadConfigurations _configReader;
-        private readonly ICanDownloadResponses _webResponseReader;
+        private readonly IDownloadResponses _webResponseReader;
 
-        public WebClientApiRequest(ICanReadConfigurations configReader, ICanDownloadResponses webResponseReader)
+        public WebClientApiRequest(ICanReadConfigurations configReader, IDownloadResponses webResponseReader)
         {
             _configReader = configReader;
             _webResponseReader = webResponseReader;

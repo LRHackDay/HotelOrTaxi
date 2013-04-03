@@ -8,5 +8,10 @@ namespace Geography
         {
             Location = location;
         }
+
+        public StartingPoint(string searchTerm)
+        {
+            Location = new Location(searchTerm);
+        }
     }
 }

@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectionsFactory.cs" />
     <Compile Include="IntegrationTestGoogleMapsApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,6 +58,10 @@
     <ProjectReference Include="..\Geography\Geography.csproj">
       <Project>{6BA51F12-00AB-4F55-8885-F2AFF731A90C}</Project>
       <Name>Geography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JourneyCalculator\JourneyCalculator.csproj">
+      <Project>{4a92eb6d-6ba5-41c2-8e21-699da5223740}</Project>
+      <Name>JourneyCalculator</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebClientWrapper\WebResponse.csproj">
       <Project>{DC27CAE4-0979-44FF-B297-44D10094C508}</Project>

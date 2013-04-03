@@ -2,7 +2,7 @@
 
 namespace WebResponse
 {
-    public class WebClientWrapper : ICanDownloadResponses
+    public class WebClientWrapper : IDownloadResponses
     {
         private readonly WebClient _webClient;
 

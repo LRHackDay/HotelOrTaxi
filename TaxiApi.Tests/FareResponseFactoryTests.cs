@@ -35,7 +35,7 @@ namespace TaxiApi.Tests
         [Ignore]
         public void makes_a_request_to_real_service()
         {
-            ICanDownloadResponses webResponseReader = new WebClientWrapper();
+            IDownloadResponses webResponseReader = new WebClientWrapper();
             var webClientApiRequest = new WebClientApiRequest(this, webResponseReader);
 
             var latitude = new Latitude("52.51211199999999");

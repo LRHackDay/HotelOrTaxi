@@ -1,4 +1,5 @@
 ﻿using Geography;
+using JourneyCalculator;
 using NUnit.Framework;
 using WebResponse;
 
@@ -11,8 +12,17 @@ namespace GoogleMapsApi.Tests
         public void ReturnsDistance()
         {
             var expectedDistance = new Metres(542383);
-            ICanDownloadResponses webResponseDownloaderWrapper = new WebClientWrapper();
-            Metres actualDistance = new DirectionsFactory(webResponseDownloaderWrapper).GetDistance();
+            IDownloadResponses webResponseDownloaderWrapper = new WebClientWrapper();
+            var specifyConditionsOfNoTaxiRoutesFound = new SpecifyConditionsOfNoTaxiRoutesFound();
+            IGetTheResponseFromGoogleMapsDirectionsApi googleMapsDirectionsResponse = new GoogleMapsDirectionsResponse(webResponseDownloaderWrapper);
+            var googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
+
+            var directionsFactory = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser, specifyConditionsOfNoTaxiRoutesFound);
+
+            var startingPoint = new StartingPoint("Toronto");
+            var destination = new Destination("Montreal");
+
+            Metres actualDistance = directionsFactory.Calculate(startingPoint, destination);
             Assert.That(actualDistance, Is.EqualTo(expectedDistance));
         }
     }

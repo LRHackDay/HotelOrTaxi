@@ -1,6 +1,6 @@
 ﻿namespace WebResponse
 {
-    public interface ICanDownloadResponses
+    public interface IDownloadResponses
     {
         string DownloadString(string address);
     }
