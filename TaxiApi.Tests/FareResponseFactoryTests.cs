@@ -36,8 +36,8 @@ namespace TaxiApi.Tests
 
             var journey = new Journey
                 {
-                    Distance = 5000,
-                    Passengers = 2,
+                    Distance = new Metres(5000),
+                    Passengers = new Passengers(2),
                     StartingPoint = "52.51211199999999,-3.3131060000000616"
                 };
             var request = new FareRequestFactory(this).Create(DateTime.Now, journey);
