@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using Geography;
 using TaxiApi.Configuration;
 
 namespace TaxiApi.Request

@@ -1,4 +1,5 @@
 ﻿using System;
+using Geography;
 using NUnit.Framework;
 using TaxiApi.Configuration;
 using TaxiApi.Request;
