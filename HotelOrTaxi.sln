@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{253D2F
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApi", "TaxiApi\TaxiApi.csproj", "{D89796E5-3B53-4A9C-B93B-8ABEAEAC31F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiApi.Tests", "TaxiApi.Tests\TaxiApi.Tests.csproj", "{4A920C9D-4EB0-4A00-8647-A71FA50214A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{0FDA1EBB-C503-4E1C-9991-30EF5E1B9A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FDA1EBB-C503-4E1C-9991-30EF5E1B9A21}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0FDA1EBB-C503-4E1C-9991-30EF5E1B9A21}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D89796E5-3B53-4A9C-B93B-8ABEAEAC31F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D89796E5-3B53-4A9C-B93B-8ABEAEAC31F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D89796E5-3B53-4A9C-B93B-8ABEAEAC31F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D89796E5-3B53-4A9C-B93B-8ABEAEAC31F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A920C9D-4EB0-4A00-8647-A71FA50214A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A920C9D-4EB0-4A00-8647-A71FA50214A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A920C9D-4EB0-4A00-8647-A71FA50214A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A920C9D-4EB0-4A00-8647-A71FA50214A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
