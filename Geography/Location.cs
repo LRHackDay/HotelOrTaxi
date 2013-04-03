@@ -4,11 +4,6 @@ namespace Geography
     {
         private string LatitudeAndLongitude { get; set; }
 
-        public Location(string latitudeAndLongitude)
-        {
-            LatitudeAndLongitude = latitudeAndLongitude;
-        }
-
         public Location(Latitude latitude, Longitude longitude)
         {
             LatitudeAndLongitude = latitude + "," + longitude;

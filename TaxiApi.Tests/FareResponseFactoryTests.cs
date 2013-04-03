@@ -42,11 +42,9 @@ namespace TaxiApi.Tests
             var destination = new Location(null, null);
             var to = new Destination(destination);
 
-            var journey = new Journey(from, to)
-                {
-                    Distance = new Metres(5000),
-                    Passengers = new Passengers(2),
-                };
+            Metres distance = new Metres(5000);
+
+            var journey = new Journey(from, to, distance);
 
             string request = new FareRequestFactory(this).Create(DateTime.Now, journey);
 

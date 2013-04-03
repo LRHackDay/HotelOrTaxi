@@ -3,7 +3,6 @@ using Geography;
 using NUnit.Framework;
 using TaxiApi.Configuration;
 using TaxiApi.Request;
-using TaxiApi.Response;
 
 namespace TaxiApi.Tests
 {
@@ -15,14 +14,12 @@ namespace TaxiApi.Tests
         {
             var fareRequestFactory = new FareRequestFactory(this);
 
-            var journey = new Journey()
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(0),
-            };
-            var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
+            string fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
-            Assert.That(fareRequest, Is.TypeOf(typeof(string)));
+            Assert.That(fareRequest, Is.TypeOf(typeof (string)));
         }
 
         [Test]
@@ -30,13 +27,11 @@ namespace TaxiApi.Tests
         {
             var fareRequestFactory = new FareRequestFactory(this);
 
-            var journey = new Journey
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(0),
-            };
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
 
-            var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
+            string fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
             Assert.That(fareRequest, Is.StringStarting("?key=test"));
         }
@@ -46,12 +41,10 @@ namespace TaxiApi.Tests
         {
             var fareRequestFactory = new FareRequestFactory(this);
 
-            var journey = new Journey
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(0),
-            };
-            var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
+            string fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
             Assert.That(fareRequest, Is.StringContaining("&type=fare"));
         }
@@ -62,12 +55,10 @@ namespace TaxiApi.Tests
             var fareRequestFactory = new FareRequestFactory(this);
 
             var date = new DateTime(2013, 1, 1);
-            var journey = new Journey
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(0),
-            };
-            var fareRequest = fareRequestFactory.Create(date, journey);
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
+            string fareRequest = fareRequestFactory.Create(date, journey);
 
             Assert.That(fareRequest, Is.StringContaining("&year=2013"));
         }
@@ -78,12 +69,10 @@ namespace TaxiApi.Tests
             var fareRequestFactory = new FareRequestFactory(this);
 
             var date = new DateTime(2013, 1, 1);
-            var journey = new Journey
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(0),
-            };
-            var fareRequest = fareRequestFactory.Create(date, journey);
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
+            string fareRequest = fareRequestFactory.Create(date, journey);
 
             Assert.That(fareRequest, Is.StringContaining("&month=1"));
         }
@@ -94,12 +83,10 @@ namespace TaxiApi.Tests
             var fareRequestFactory = new FareRequestFactory(this);
 
             var date = new DateTime(2013, 1, 1);
-            var journey = new Journey
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(0),
-            };
-            var fareRequest = fareRequestFactory.Create(date, journey);
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
+            string fareRequest = fareRequestFactory.Create(date, journey);
 
             Assert.That(fareRequest, Is.StringContaining("&day=1"));
         }
@@ -110,13 +97,11 @@ namespace TaxiApi.Tests
             var fareRequestFactory = new FareRequestFactory(this);
 
             var date = new DateTime(2013, 1, 1, 5, 5, 5);
-            var journey = new Journey
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(0),
-            };
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
 
-            var fareRequest = fareRequestFactory.Create(date, journey);
+            string fareRequest = fareRequestFactory.Create(date, journey);
 
             Assert.That(fareRequest, Is.StringContaining("&hour=5"));
         }
@@ -127,12 +112,10 @@ namespace TaxiApi.Tests
             var fareRequestFactory = new FareRequestFactory(this);
 
             var date = new DateTime(2013, 1, 1, 5, 5, 5);
-            var journey = new Journey
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(0),
-            };
-            var fareRequest = fareRequestFactory.Create(date, journey);
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
+            string fareRequest = fareRequestFactory.Create(date, journey);
 
             Assert.That(fareRequest, Is.StringContaining("&minute=5"));
         }
@@ -142,12 +125,10 @@ namespace TaxiApi.Tests
         {
             var fareRequestFactory = new FareRequestFactory(this);
 
-            var journey = new Journey
-            {
-                Distance = new Metres(5000),
-                Passengers = new Passengers(0),
-            };
-            var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
+            var distance = new Metres(5000);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
+            string fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
             Assert.That(fareRequest, Is.StringContaining("&distance=5000"));
         }
@@ -157,12 +138,10 @@ namespace TaxiApi.Tests
         {
             var fareRequestFactory = new FareRequestFactory(this);
 
-            var journey = new Journey
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(0),
-            };
-            var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
+            string fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
             Assert.That(fareRequest, Is.StringContaining("&return=json"));
         }
@@ -172,12 +151,10 @@ namespace TaxiApi.Tests
         {
             var fareRequestFactory = new FareRequestFactory(this);
 
-            var journey = new Journey
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(0),
-            };
-            var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
+            string fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
             Assert.That(fareRequest, Is.StringContaining("&mobile=0"));
         }
@@ -187,14 +164,12 @@ namespace TaxiApi.Tests
         {
             var fareRequestFactory = new FareRequestFactory(this);
 
-            var journey = new Journey
-            {
-                Distance = new Metres(0),
-                Passengers = new Passengers(5),
-            };
-            var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
+            var distance = new Metres(0);
+            var location = new Location(null, null);
+            var journey = new Journey(new StartingPoint(location), new Destination(location), distance);
+            string fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
-            Assert.That(fareRequest, Is.StringContaining("&passengers=5"));
+            Assert.That(fareRequest, Is.StringContaining("&passengers=1"));
         }
 
         [Test]
@@ -205,14 +180,13 @@ namespace TaxiApi.Tests
             var latitude = new Latitude("10");
             var longitude = new Longitude("10");
 
-            Location startingLocation = new Location(latitude, longitude);
-            var to = new StartingPoint(startingLocation);
-            var journey = new Journey(to, null)
-                {
-                    Distance = new Metres(0),
-                    Passengers = new Passengers(0),
-                };
-            var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
+            
+            var distance = new Metres(0);
+            var location = new Location(latitude, longitude);
+            var startingPoint = new StartingPoint(location);
+            var destination = new Destination(location);
+            var journey = new Journey(startingPoint, destination, distance);
+            string fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
             Assert.That(fareRequest, Is.StringContaining("&from=10,10"));
         }

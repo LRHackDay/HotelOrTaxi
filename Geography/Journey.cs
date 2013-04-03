@@ -2,18 +2,13 @@ namespace Geography
 {
     public class Journey
     {
-        public Journey(StartingPoint from, Destination to)
+        public Journey(StartingPoint from, Destination to, Metres distance)
         {
             StartingPoint = from.Location;
+            Distance = distance;
         }
 
-        public Journey()
-        {
-            
-        }
-
-        public Metres Distance { get; set; }
-        public Passengers Passengers { get; set; }
+        public Metres Distance { get; private set; }
         public Location StartingPoint { get; private set; }
     }
 
