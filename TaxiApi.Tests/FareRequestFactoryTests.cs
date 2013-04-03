@@ -15,11 +15,10 @@ namespace TaxiApi.Tests
         {
             var fareRequestFactory = new FareRequestFactory(this);
 
-            var journey = new Journey
+            var journey = new Journey()
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
             var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
@@ -35,7 +34,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
 
             var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
@@ -52,7 +50,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
             var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
@@ -69,7 +66,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
             var fareRequest = fareRequestFactory.Create(date, journey);
 
@@ -86,7 +82,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
             var fareRequest = fareRequestFactory.Create(date, journey);
 
@@ -103,7 +98,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
             var fareRequest = fareRequestFactory.Create(date, journey);
 
@@ -120,7 +114,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
 
             var fareRequest = fareRequestFactory.Create(date, journey);
@@ -138,7 +131,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
             var fareRequest = fareRequestFactory.Create(date, journey);
 
@@ -154,7 +146,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(5000),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
             var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
@@ -170,7 +161,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
             var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
@@ -186,7 +176,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(0),
-                StartingPoint = null
             };
             var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
@@ -202,7 +191,6 @@ namespace TaxiApi.Tests
             {
                 Distance = new Metres(0),
                 Passengers = new Passengers(5),
-                StartingPoint = null
             };
             var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
@@ -217,11 +205,12 @@ namespace TaxiApi.Tests
             var latitude = new Latitude("10");
             var longitude = new Longitude("10");
 
-            var journey = new Journey
+            Location startingLocation = new Location(latitude, longitude);
+            var to = new StartingPoint(startingLocation);
+            var journey = new Journey(to, null)
                 {
                     Distance = new Metres(0),
                     Passengers = new Passengers(0),
-                    StartingPoint = new Location(latitude, longitude)
                 };
             var fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 

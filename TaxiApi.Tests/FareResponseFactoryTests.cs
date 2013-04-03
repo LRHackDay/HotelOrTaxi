@@ -24,9 +24,9 @@ namespace TaxiApi.Tests
             _response =
                 "{ \"fare\": { \"cost\": \"7.20\", \"waiting\": \"0.20 every 60 seconds\",\"waitingEstimate\": \"0.00\", \"reason\": \"Standard, All day\", \"warning\": \"\", \"tariff\": { \"key\": \"79a4a1\", \"id\": \"1551\" } }, \"district\": { \"name\": \"Powys - Powys\", \"url\": \"http://yourtaximeter.com/main/council/powys--powys\", \"id\": \"819\", \"enc\": \"\", \"supported\": true }, \"map\": null, \"routeInfo\": null, \"callbackID\": \"171718\" }";
 
-            var fareResponse = new FareResponseFactory(this).Create(null);
+            FareResponse fareResponse = new FareResponseFactory(this).Create(null);
 
-            Assert.That(fareResponse.Fare.Cost, Is.EqualTo((decimal)7.20));
+            Assert.That(fareResponse.Fare.Cost, Is.EqualTo((decimal) 7.20));
         }
 
         [Test]
@@ -37,17 +37,22 @@ namespace TaxiApi.Tests
 
             var latitude = new Latitude("52.51211199999999");
             var longitude = new Longitude("-3.3131060000000616");
-            var journey = new Journey
+            var startingPoint = new Location(latitude, longitude);
+            var from = new StartingPoint(startingPoint);
+            var destination = new Location(null, null);
+            var to = new Destination(destination);
+
+            var journey = new Journey(from, to)
                 {
                     Distance = new Metres(5000),
                     Passengers = new Passengers(2),
-                    StartingPoint = new Location(latitude, longitude)
                 };
-            var request = new FareRequestFactory(this).Create(DateTime.Now, journey);
 
-            var fareResponse = new FareResponseFactory(webClientApiRequest).Create(request);
+            string request = new FareRequestFactory(this).Create(DateTime.Now, journey);
 
-            Assert.That(fareResponse.Fare.Cost, Is.EqualTo((decimal)7.20));
+            FareResponse fareResponse = new FareResponseFactory(webClientApiRequest).Create(request);
+
+            Assert.That(fareResponse.Fare.Cost, Is.EqualTo((decimal) 7.20));
         }
 
         public string Perform(string request)
