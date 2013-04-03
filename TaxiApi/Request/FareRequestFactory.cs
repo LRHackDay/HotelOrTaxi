@@ -12,18 +12,18 @@ namespace TaxiApi.Request
 
     public class FareRequestFactory : ICreateRequests
     {
-        private readonly IConfiguration _configuration;
+        private readonly ICanReadConfigurations _canReadConfigurations;
 
-        public FareRequestFactory(IConfiguration configuration)
+        public FareRequestFactory(ICanReadConfigurations canReadConfigurations)
         {
-            _configuration = configuration;
+            _canReadConfigurations = canReadConfigurations;
         }
 
         public string Create(DateTime date, Journey journey)
         {
             var request = new StringBuilder();
 
-            request.Append(string.Format("?key={0}", _configuration.ApiKey()));
+            request.Append(string.Format("?key={0}", _canReadConfigurations.ApiKey()));
             request.Append("&return=json");
             request.Append("&type=fare");
             request.Append("&passengers=1");

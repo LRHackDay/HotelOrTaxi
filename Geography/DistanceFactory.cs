@@ -9,8 +9,7 @@ namespace Geography
     {
         public Metres Create(StartingPoint @from, Destination to)
         {
-            var distance = new Metres(0);
-            return distance;
+            return new Metres(0);
         }
     }
 }

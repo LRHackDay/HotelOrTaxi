@@ -4,11 +4,12 @@ using NUnit.Framework;
 using TaxiApi.Configuration;
 using TaxiApi.Request;
 using TaxiApi.Response;
+using WebResponse;
 
 namespace TaxiApi.Tests
 {
     [TestFixture]
-    public class FareResponseFactoryTests : IPerformApiRequest, IConfiguration, ICalculateTheJourneyDistance
+    public class FareResponseFactoryTests : IPerformApiRequest, ICanReadConfigurations, ICalculateTheJourneyDistance
     {
         private string _response;
         private Metres _distance;
@@ -34,7 +35,8 @@ namespace TaxiApi.Tests
         [Ignore]
         public void makes_a_request_to_real_service()
         {
-            var webClientApiRequest = new WebClientApiRequest(this);
+            ICanDownloadResponses webResponseReader = new WebClientWrapper();
+            var webClientApiRequest = new WebClientApiRequest(this, webResponseReader);
 
             var latitude = new Latitude("52.51211199999999");
             var longitude = new Longitude("-3.3131060000000616");
@@ -42,7 +44,7 @@ namespace TaxiApi.Tests
             var from = new StartingPoint(startingPoint);
             var destination = new Location(null, null);
             string searchTerm = "my postcode";
-            var to = new Destination(destination, searchTerm);
+            var to = new Destination(searchTerm);
 
             _distance = new Metres(5000);
 

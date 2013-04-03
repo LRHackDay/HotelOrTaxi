@@ -44,8 +44,8 @@
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\Configuration.cs" />
-    <Compile Include="Configuration\IConfiguration.cs" />
+    <Compile Include="Configuration\CanReadConfigurations.cs" />
+    <Compile Include="Configuration\ICanReadConfigurations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\FareRequestFactory.cs" />
     <Compile Include="Request\IPerformApiRequest.cs" />
@@ -63,6 +63,10 @@
     <ProjectReference Include="..\Geography\Geography.csproj">
       <Project>{6ba51f12-00ab-4f55-8885-f2aff731a90c}</Project>
       <Name>Geography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebClientWrapper\WebResponse.csproj">
+      <Project>{DC27CAE4-0979-44FF-B297-44D10094C508}</Project>
+      <Name>WebResponse</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

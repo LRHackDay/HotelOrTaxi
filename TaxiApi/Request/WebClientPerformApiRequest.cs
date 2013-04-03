@@ -1,24 +1,25 @@
 using System.Net;
 using TaxiApi.Configuration;
+using WebResponse;
 
 namespace TaxiApi.Request
 {
     public class WebClientApiRequest : IPerformApiRequest
     {
-        private readonly IConfiguration _configuration;
+        private readonly ICanReadConfigurations _configReader;
+        private readonly ICanDownloadResponses _webResponseReader;
 
-        public WebClientApiRequest(IConfiguration configuration)
+        public WebClientApiRequest(ICanReadConfigurations configReader, ICanDownloadResponses webResponseReader)
         {
-            _configuration = configuration;
+            _configReader = configReader;
+            _webResponseReader = webResponseReader;
         }
 
         public string Perform(string request)
         {
-            var webClient = new WebClient();
+            var formattedRequest = string.Concat(_configReader.ApiUrl(), request);
 
-            var formattedRequest = string.Concat(_configuration.ApiUrl(), request);
-
-            return webClient.DownloadString(formattedRequest);
+            return _webResponseReader.DownloadString(formattedRequest);
         }
     }
 }
