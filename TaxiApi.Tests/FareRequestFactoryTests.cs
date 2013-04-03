@@ -177,7 +177,8 @@ namespace TaxiApi.Tests
 
             var location = new Location(latitude, longitude);
             var startingPoint = new StartingPoint(location);
-            var destination = new Destination(location);
+            string searchTerm = "M4 4EW";
+            var destination = new Destination(location, searchTerm);
             var journey = new Journey(startingPoint, destination, this);
             string fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 

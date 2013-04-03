@@ -41,7 +41,8 @@ namespace TaxiApi.Tests
             var startingPoint = new Location(latitude, longitude);
             var from = new StartingPoint(startingPoint);
             var destination = new Location(null, null);
-            var to = new Destination(destination);
+            string searchTerm = "my postcode";
+            var to = new Destination(destination, searchTerm);
 
             _distance = new Metres(5000);
 

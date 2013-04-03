@@ -20,6 +20,12 @@ namespace Geography
         {
             Location = location;
         }
+
+        public Destination(Location destination, string searchTerm)
+        {
+            Location = new Location(searchTerm);
+             
+        }
     }
 
     public class StartingPoint
