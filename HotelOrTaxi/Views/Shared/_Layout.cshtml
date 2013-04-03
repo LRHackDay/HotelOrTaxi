@@ -8,13 +8,8 @@
     <meta name="description" content="">
 
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
     @Styles.Render("~/bundles/css")
+      <script type="application/javascript" src="/assets/js/add2home.js"></script>
   </head>
 
   <body>
@@ -48,7 +43,7 @@
     </div>
     
     <script type="text/javascript" src="/assets/js/jquery-1.9.1.min.js"></script>
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/js")
     @RenderSection("scripts", required: false)
   </body>
 </html>
