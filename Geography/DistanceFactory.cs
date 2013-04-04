@@ -9,7 +9,7 @@ namespace Geography
     {
         public Metres Create(StartingPoint @from, Destination to)
         {
-            return new Metres(0);
+            return new Metres(1000);
         }
     }
 }
