@@ -44,7 +44,7 @@
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\CanReadConfigurations.cs" />
+    <Compile Include="Configuration\ConfigReader.cs" />
     <Compile Include="Configuration\ICanReadConfigurations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\FareRequestFactory.cs" />

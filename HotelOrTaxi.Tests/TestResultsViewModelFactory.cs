@@ -29,7 +29,7 @@ namespace HotelOrTaxi.Tests
             Assert.That(winner, Is.EqualTo(_hotel));
         }
 
-        TaxiResult ICreateTheTaxiResult.Create(UrlHelper urlHelper)
+        TaxiResult ICreateTheTaxiResult.Create(UrlHelper urlHelper, Journey journey)
         {
             return _taxi;
         }

@@ -34,11 +34,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICreateTheHotelResult.cs" />
@@ -58,6 +53,14 @@
     <ProjectReference Include="..\LateRoomsScraper\LateRoomsScraper.csproj">
       <Project>{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}</Project>
       <Name>LateRoomsScraper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaxiApi\TaxiApi.csproj">
+      <Project>{D89796E5-3B53-4A9C-B93B-8ABEAEAC31F7}</Project>
+      <Name>TaxiApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebClientWrapper\WebResponse.csproj">
+      <Project>{DC27CAE4-0979-44FF-B297-44D10094C508}</Project>
+      <Name>WebResponse</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

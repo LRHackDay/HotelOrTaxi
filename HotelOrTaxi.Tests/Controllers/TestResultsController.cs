@@ -2,9 +2,7 @@
 using Geography;
 using HotelOrTaxi.Controllers;
 using HotelOrTaxi.Models;
-using LateRoomsScraper;
 using NUnit.Framework;
-using Results;
 
 namespace HotelOrTaxi.Tests.Controllers
 {

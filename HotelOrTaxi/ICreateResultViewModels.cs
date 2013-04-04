@@ -23,7 +23,7 @@ namespace HotelOrTaxi
 
         public ResultsViewModel Create(UrlHelper urlHelper, Journey journey)
         {
-            var taxi = _taxiResultFactory.Create(urlHelper);
+            var taxi = _taxiResultFactory.Create(urlHelper, journey);
             Result hotel = _hotelResultFactory.Create(journey);
 
             return Winner(taxi, hotel);
