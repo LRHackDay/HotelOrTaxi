@@ -1,4 +1,124 @@
-.hero-unit
-{
-    padding: 20px;
+@charset "UTF-8";
+/* CSS Document */
+
+.hero-unit {
+padding: 20px;
+}
+
+.navbar-inverse .navbar-inner {
+    background-color: red;
+    background-image: linear-gradient(to bottom, #CF0000, #FF0000);
+    background-repeat: repeat-x;
+    border-color: RED;
+}
+
+.navbar-inner {
+    min-height: 50px;
+}
+
+.hero-unit {
+    background-color: red;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    border-radius: 4px 4px 4px 4px;
+    color: #555555;
+    display: inline-block;
+    font-size: 14px;
+    height: 40px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+/* Landscape phones and down */
+ @media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    position: static;
+  }
+  .navbar-fixed-top {
+    margin-bottom: 60px;
+  }
+ }
+@media (max-width: 768px) {
+.navbar-fixed-top {
+    margin-bottom:0;
+}
+
+.hero-unit {
+  border-radius: 0px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-left:-20px;
+
+ }
+ 
+ 
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(55, 55, 75, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+.btn:first-child {
+}
+button.btn, input.btn[type="submit"] {
+}
+.btn-fight {
+	height:82px;
+	width:287px;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-repeat: none;
+    border-color: none;
+    border-image: none;
+    border-radius: 4px 4px 4px 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 auto;
+    padding: 4px 12px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+		background:url(/assets/img/fight-button.png);
+
+    vertical-align: middle;
+}
+ 
+ .control-group {
+	 
+	 margin:0 auto;}
+
+form {
+    margin: 0 0 0px;
 }
