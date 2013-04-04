@@ -1,15 +1,17 @@
-using JourneyCalculator;
 using Newtonsoft.Json;
 
-public interface IDeserialiseGoogleMapsDirectionsResponses
+namespace JourneyCalculator
 {
-    DirectionsResponse DeserializeResponse(string response);
-}
-
-public class GoogleMapsApiDeserialiser : IDeserialiseGoogleMapsDirectionsResponses
-{
-    public DirectionsResponse DeserializeResponse(string response)
+    public interface IDeserialiseGoogleMapsDirectionsResponses
     {
-        return JsonConvert.DeserializeObject<DirectionsResponse>(response);
+        DirectionsResponse DeserializeResponse(string response);
+    }
+
+    public class GoogleMapsApiDeserialiser : IDeserialiseGoogleMapsDirectionsResponses
+    {
+        public DirectionsResponse DeserializeResponse(string response)
+        {
+            return JsonConvert.DeserializeObject<DirectionsResponse>(response);
+        }
     }
 }
