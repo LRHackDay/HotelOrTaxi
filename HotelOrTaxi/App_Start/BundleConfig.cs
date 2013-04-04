@@ -15,6 +15,7 @@ namespace HotelOrTaxi.App_Start
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                 "~/assets/css/bootstrap-responsive.css",
                 "~/assets/css/style.css",
+                "~/assets/css/style-2.css",
                 "~/assets/css/add2home.css"));
         }
     }
