@@ -15,7 +15,6 @@
       }
     </style>
     @Styles.Render("~/bundles/css")
-      <script type="application/javascript" src="/assets/js/add2home.js"></script>
   </head>
 
   <body>
@@ -49,6 +48,7 @@
     </div>
     
     <script type="text/javascript" src="/assets/js/jquery-1.9.1.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false&libraries=places" type="text/javascript"></script> 
     @Scripts.Render("~/bundles/js")
     @RenderSection("scripts", required: false)
   </body>
