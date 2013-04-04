@@ -8,7 +8,6 @@ namespace HotelOrTaxi.App_Start
         {
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
                 "~/assets/js/bootstrap.js",
-                "~/assets/js/add2home.js",
                 "~/assets/js/jquery-1.9.1.js",
                 "~/assets/js/autocomplete.js",
                 "~/assets/js/location.js"));
