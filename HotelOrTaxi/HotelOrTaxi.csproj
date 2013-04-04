@@ -145,6 +145,10 @@
       <Project>{6BA51F12-00AB-4F55-8885-F2AFF731A90C}</Project>
       <Name>Geography</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LateRoomsScraper\LateRoomsScraper.csproj">
+      <Project>{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}</Project>
+      <Name>LateRoomsScraper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TaxiApi\TaxiApi.csproj">
       <Project>{D89796E5-3B53-4A9C-B93B-8ABEAEAC31F7}</Project>
       <Name>TaxiApi</Name>
