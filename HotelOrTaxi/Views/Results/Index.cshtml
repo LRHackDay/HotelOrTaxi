@@ -1,20 +1,19 @@
 ﻿@model HotelOrTaxi.Models.ResultsViewModel
 
-<div class="hero-unit">
-<h1>Results</h1>
-<h2>Should I stay or should I go? </h2>
-<p>
-    @Model.Winner.Name
-    £@Model.Winner.Price
-    <a href="@Model.Winner.Uri">Show me</a>
-</p>
+<div class="container search-results">
+    <div class="hero-unit">
+    <h1>Results</h1>
+    <h2>Should I stay or should I go? </h2>
+    <p>
+        @Model.Winner.Name
+        £@Model.Winner.Price
+        <a href="@Model.Winner.Uri">Show me</a>
+    </p>
 
-<p>
-    @Model.Loser.Name
-    £@Model.Loser.Price
-    <a href="@Model.Loser.Uri">Show me</a>
-</p>
+    <p>
+        @Model.Loser.Name
+        £@Model.Loser.Price
+        <a href="@Model.Loser.Uri">Show me</a>
+    </p>
+    </div>
 </div>
-
-
-

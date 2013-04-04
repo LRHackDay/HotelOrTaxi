@@ -60,5 +60,10 @@ namespace HotelOrTaxi.Controllers
 
             return View("Index", resultsViewModel);
         }
+
+        public ViewResult Fight()
+        {
+            return View();
+        }
     }
 }
