@@ -1,5 +1,10 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /* CSS Document */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F3EdE0;
+}
 
 .hero-unit {
 padding: 20px;
@@ -10,6 +15,10 @@ padding: 20px;
     background-image: linear-gradient(to bottom, #CF0000, #FF0000);
     background-repeat: repeat-x;
     border-color: RED;
+}
+
+.navbar-inverse .brand {
+color: #FFFFFF;
 }
 
 .navbar-inner {
