@@ -15,7 +15,7 @@ namespace HotelOrTaxi.Controllers
         public ResultsController()
         {
             ICreateTheTaxiControllerUri createTheTaxiControllerUri = new CreateTheTaxiControllerUri();
-            _resultsViewModelFactory = new ResultsViewModelFactory(createTheTaxiControllerUri);
+            _resultsViewModelFactory = new ResultsViewModelFactory(new TaxiFactory(createTheTaxiControllerUri), new CreateHotels());
         }
 
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
