@@ -1,17 +1,21 @@
 ﻿@model HotelOrTaxi.Models.ResultsViewModel
-<div class="hero-unit">
-    <h1>Results</h1>
-    <h2>Should I stay or should I go? </h2>
-    <form>
-        <h3>Taxi</h3>
-        <p>£26</p>
-        @Html.ActionLink("Show me", "Index", "Taxi")
-    </form>
 
-    <form>
-        <h3>Hotel</h3>
-        <p>£30</p>
-        <a href ="http://m.laterooms.com/en/p9827/MobileSearch.aspx?k=Manchester&d=20130404&n=1&adults=1&children=0&minp=&maxp=&rt=1-0&Latitude=&Longitude=&MaxRadius=1&sb=tp&sd=true">Show me</a>
-    </form>
+<div class="hero-unit">
+<h1>Results</h1>
+<h2>Should I stay or should I go? </h2>
+<p>
+    Taxi
+    £26
+     
+    @Html.ActionLink("Show me", "Index", "Taxi")
+</p>
+
+<p>
+    Hotel
+    £30
+    <a href ="http://m.laterooms.com/en/p9827/MobileSearch.aspx?k=Manchester&d=20130404&n=1&adults=1&children=0&minp=&maxp=&StarRatingFilter=&rt=1-0&Latitude=&Longitude=&MaxRadius=1&PageSize=10&toStep=&SortBy=Price&Ascending=True&findButton=FIND+HOTELS&sb=tp&sd=true">Show me</a></h3>
+</p>
 </div>
+
+
 

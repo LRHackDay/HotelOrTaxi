@@ -28,5 +28,19 @@ namespace HotelOrTaxi.Tests.Controllers
 
             Assert.That(model, Is.TypeOf<ResultsViewModel>());
         }
+
+        [Test]
+        public void ReturnsWinner()
+        {
+            var resultsController = new ResultsController();
+            var viewResult = resultsController.Index(null, null, null, null);
+
+            var model = (ResultsViewModel)viewResult.Model;
+
+            Assert.That(model.Winner.Name, Is.EqualTo("Taxi"));
+            Assert.That(model.Winner.Price, Is.EqualTo("£26"));
+            Assert.That(model.Winner.Uri, Is.EqualTo("@Html.ActionLink(\"Show me\", \"Index\", \"Taxi\")"));
+        }
+
     }
 }
