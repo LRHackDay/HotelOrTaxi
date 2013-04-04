@@ -109,7 +109,7 @@
     <Content Include="assets\js\add2home.js" />
     <Content Include="assets\js\bootstrap.js" />
     <Content Include="assets\js\bootstrap.min.js" />
-    <Content Include="assets\js\jquery-1.9.1.min.js" />
+    <Content Include="assets\js\jquery-1.9.1.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
