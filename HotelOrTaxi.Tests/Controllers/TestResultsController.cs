@@ -2,6 +2,7 @@
 using Geography;
 using HotelOrTaxi.Controllers;
 using HotelOrTaxi.Models;
+using JourneyCalculator;
 using NUnit.Framework;
 
 namespace HotelOrTaxi.Tests.Controllers

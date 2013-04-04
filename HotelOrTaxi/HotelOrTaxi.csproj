@@ -171,6 +171,10 @@
       <Project>{762C86A6-C829-423E-A196-301252CE81A0}</Project>
       <Name>Results</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JourneyCalculator\JourneyCalculator.csproj">
+      <Project>{4A92EB6D-6BA5-41C2-8E21-699DA5223740}</Project>
+      <Name>JourneyCalculator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LateRoomsScraper\LateRoomsScraper.csproj">
       <Project>{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}</Project>
       <Name>LateRoomsScraper</Name>

@@ -1,5 +1,6 @@
 ﻿using System;
 using Geography;
+using JourneyCalculator;
 using LateRoomsScraper;
 
 namespace Results

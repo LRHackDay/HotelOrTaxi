@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Geography;
+using JourneyCalculator;
 using NUnit.Framework;
 using Results;
 
@@ -25,7 +25,7 @@ namespace HotelOrTaxi.Tests
                 };
 
             Result winner = new ResultsViewModelFactory(this, this).Create(null, null).Winner;
-            
+
             Assert.That(winner, Is.EqualTo(_hotel));
         }
 

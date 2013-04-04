@@ -1,5 +1,6 @@
 ﻿using System;
 using Geography;
+using JourneyCalculator;
 using NUnit.Framework;
 using TaxiApi.Request;
 using TaxiApi.Response;

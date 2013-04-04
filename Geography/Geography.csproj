@@ -40,9 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Destination.cs" />
-    <Compile Include="DistanceFactory.cs" />
     <Compile Include="GeographicCoordinate.cs" />
-    <Compile Include="Journey.cs" />
     <Compile Include="Latitude.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Longitude.cs" />

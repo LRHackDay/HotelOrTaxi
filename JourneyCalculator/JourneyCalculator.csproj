@@ -39,12 +39,15 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistanceFactory.cs" />
     <Compile Include="GoogleMapsApiDeserialiser.cs" />
     <Compile Include="DistanceCalculator.cs" />
     <Compile Include="Distance.cs" />
     <Compile Include="GoogleMapsDirectionsDistanceMapper.cs" />
     <Compile Include="GoogleMapsDirectionsResponse.cs" />
+    <Compile Include="ICalculateTheJourneyDistance.cs" />
     <Compile Include="ICanGetTheDistanceOfATaxiJourneyBetweenPoints.cs" />
+    <Compile Include="Journey.cs" />
     <Compile Include="Legs.cs" />
     <Compile Include="NoRouteFoundException.cs" />
     <Compile Include="NoRouteSpecification.cs" />

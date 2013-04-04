@@ -1,4 +1,4 @@
-﻿using Geography;
+﻿using JourneyCalculator;
 
 namespace Results
 {

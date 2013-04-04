@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using Geography;
+using HotelOrTaxi.Models;
+using JourneyCalculator;
 using LateRoomsScraper;
 using Results;
 using TaxiApi.Configuration;
@@ -12,7 +14,7 @@ namespace HotelOrTaxi.Controllers
     public class ResultsController : Controller
     {
         private readonly ICreateResultViewModels _resultsViewModelFactory;
-        private DistanceFactory _distanceFactory;
+        private readonly DistanceFactory _distanceFactory;
 
         public ResultsController(ICreateResultViewModels resultsViewModelFactory)
         {
@@ -28,7 +30,8 @@ namespace HotelOrTaxi.Controllers
             IDownloadResponses webResponseReader = new WebClientWrapper();
             IPerformApiRequest webClientApiRequest = new WebClientApiRequest(canReadConfigurations, webResponseReader);
             ICreateResponses fareResponseFactory = new FareResponseFactory(webClientApiRequest);
-            ICreateTheTaxiResult taxiResultFactory = new TaxiResultFactory(taxiResultsPage, fareRequestFactory, fareResponseFactory);
+            ICreateTheTaxiResult taxiResultFactory = new TaxiResultFactory(taxiResultsPage, fareRequestFactory,
+                                                                           fareResponseFactory);
             IScrapeWebsites websiteScraper = new HotelScraper();
             ICreateTheHotelResult hotelResultFactory = new HotelResultFactory(websiteScraper);
 
@@ -45,7 +48,7 @@ namespace HotelOrTaxi.Controllers
 
             var journey = new Journey(startingPoint, destination, _distanceFactory);
 
-            var resultsViewModel = resultsViewModelFactory.Create(Url, journey);
+            ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(Url, journey);
 
             return View("Index", resultsViewModel);
         }

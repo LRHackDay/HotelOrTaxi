@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
-using Geography;
 using HotelOrTaxi.Models;
+using JourneyCalculator;
 using Results;
 
 namespace HotelOrTaxi
@@ -23,7 +23,7 @@ namespace HotelOrTaxi
 
         public ResultsViewModel Create(UrlHelper urlHelper, Journey journey)
         {
-            var taxi = _taxiResultFactory.Create(urlHelper, journey);
+            TaxiResult taxi = _taxiResultFactory.Create(urlHelper, journey);
             Result hotel = _hotelResultFactory.Create(journey);
 
             return Winner(taxi, hotel);
