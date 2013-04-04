@@ -107,8 +107,12 @@
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\style.css" />
+    <Content Include="assets\img\fight-button.jpg" />
+    <Content Include="assets\img\fight-button.png" />
     <Content Include="assets\img\glyphicons-halflings-white.png" />
     <Content Include="assets\img\glyphicons-halflings.png" />
+    <Content Include="assets\img\icons-hotel-and-taxi.png" />
+    <Content Include="assets\img\person-thinking.jpg" />
     <Content Include="assets\js\add2home.js" />
     <Content Include="assets\js\autocomplete.js" />
     <Content Include="assets\js\bootstrap.js" />
