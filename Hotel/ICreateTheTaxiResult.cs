@@ -4,6 +4,6 @@ namespace Results
 {
     public interface ICreateTheTaxiResult
     {
-        Result Create(UrlHelper urlHelper);
+        TaxiResult Create(UrlHelper urlHelper);
     }
 }

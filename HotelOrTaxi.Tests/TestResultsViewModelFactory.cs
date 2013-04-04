@@ -8,7 +8,7 @@ namespace HotelOrTaxi.Tests
     public class TestResultsViewModelFactory : ICreateTheTaxiResult, ICreateTheHotelResult
     {
         private Result _hotel;
-        private Result _taxi;
+        private TaxiResult _taxi;
 
         [Test]
         public void SetsLowestPriceAsWinner()
@@ -28,7 +28,7 @@ namespace HotelOrTaxi.Tests
             Assert.That(winner, Is.EqualTo(_hotel));
         }
 
-        Result ICreateTheTaxiResult.Create(UrlHelper urlHelper)
+        TaxiResult ICreateTheTaxiResult.Create(UrlHelper urlHelper)
         {
             return _taxi;
         }

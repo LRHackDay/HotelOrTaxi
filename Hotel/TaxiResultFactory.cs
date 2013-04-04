@@ -11,13 +11,13 @@ namespace Results
             _createTheTaxiControllerUri = createTheTaxiControllerUri;
         }
 
-        public Result Create(UrlHelper urlHelper)
+        public TaxiResult Create(UrlHelper urlHelper)
         {
-            var taxi = new Result();
-            taxi.Name = "Taxi";
-            taxi.Price = 26.00;
-            taxi.Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper);
-            return taxi;
+            return new TaxiResult
+                {
+                    Price = 26.00,
+                    Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper)
+                };
         }
     }
 }
