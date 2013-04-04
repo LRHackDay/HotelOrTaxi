@@ -1,11 +1,6 @@
-﻿using System;
-using System.Web.Mvc;
-using Geography;
+﻿using System.Web.Mvc;
 using HotelOrTaxi.Models;
-using TaxiApi.Configuration;
-using TaxiApi.Request;
-using TaxiApi.Response;
-using WebResponse;
+using LateRoomsScraper;
 
 namespace HotelOrTaxi.Controllers
 {
@@ -13,6 +8,10 @@ namespace HotelOrTaxi.Controllers
     {
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
         {
+            var scraperResponse = new HotelScraper(from).Scrape();
+
+            var hotels = ((ScraperResponse)scraperResponse).Hotels;
+
             return View("Index", new ResultsViewModel());
         }
     }
