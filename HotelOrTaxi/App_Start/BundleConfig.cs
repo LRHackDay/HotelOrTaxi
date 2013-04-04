@@ -10,7 +10,8 @@ namespace HotelOrTaxi.App_Start
                 "~/assets/js/bootstrap.js",
                 "~/assets/js/add2home.js",
                 "~/assets/js/jquery-1.9.1.js",
-                "~/assets/js/autocomplete.js"));
+                "~/assets/js/autocomplete.js",
+                "~/assets/js/location.js"));
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                 "~/assets/css/bootstrap-responsive.css",
                 "~/assets/css/style.css",

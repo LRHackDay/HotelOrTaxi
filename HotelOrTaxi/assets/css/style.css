@@ -1,5 +1,9 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /* CSS Document */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
 
 .hero-unit {
 padding: 20px;
