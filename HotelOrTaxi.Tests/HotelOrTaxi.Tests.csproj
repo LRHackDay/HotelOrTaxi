@@ -57,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Geography\Geography.csproj">
+      <Project>{6BA51F12-00AB-4F55-8885-F2AFF731A90C}</Project>
+      <Name>Geography</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HotelOrTaxi\HotelOrTaxi.csproj">
       <Project>{23BF57C4-7449-4F1B-97F5-F8FDBB40249E}</Project>
       <Name>HotelOrTaxi</Name>

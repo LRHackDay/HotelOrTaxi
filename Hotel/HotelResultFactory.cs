@@ -1,4 +1,5 @@
-﻿using LateRoomsScraper;
+﻿using Geography;
+using LateRoomsScraper;
 
 namespace Results
 {
@@ -11,8 +12,10 @@ namespace Results
             _websiteScraper = websiteScraper;
         }
 
-        public Result Create(string latitude, string longitude)
+        public Result Create(Journey journey)
         {
+            var latitude = journey.StartingPoint.Latitude.ToString();
+            var longitude = journey.StartingPoint.Longitude.ToString();
             var response = (HotelScraperResponse)_websiteScraper.Scrape(latitude, longitude);
 
             var hotelResult = new HotelResult

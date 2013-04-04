@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Geography;
 using NUnit.Framework;
 using Results;
 
@@ -23,17 +24,17 @@ namespace HotelOrTaxi.Tests
                     Price = 20.00
                 };
 
-            Result winner = new ResultsViewModelFactory(this, this).Create(null, null, null).Winner;
+            Result winner = new ResultsViewModelFactory(this, this).Create(null, null).Winner;
             
             Assert.That(winner, Is.EqualTo(_hotel));
         }
 
-        TaxiResult ICreateTheTaxiResult.Create(UrlHelper urlHelper)
+        TaxiResult ICreateTheTaxiResult.Create(UrlHelper urlHelper, Journey journey)
         {
             return _taxi;
         }
 
-        Result ICreateTheHotelResult.Create(string latitude, string longitude)
+        Result ICreateTheHotelResult.Create(Journey journey)
         {
             return _hotel;
         }

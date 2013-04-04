@@ -1,15 +1,33 @@
-﻿namespace Results
+﻿using System;
+using Geography;
+using TaxiApi.Request;
+using TaxiApi.Response;
+
+namespace Results
 {
     public interface ICalulateTheTaxiFare
     {
-        double GetTaxiPrice();
+        double GetTaxiPrice(Journey journey);
     }
 
     public class TaxiFareCalculator : ICalulateTheTaxiFare
     {
-        public double GetTaxiPrice()
+        private readonly ICreateRequests _fareRequestFactory;
+        private readonly ICreateResponses _fareResponseFactory;
+
+        public TaxiFareCalculator(ICreateRequests fareRequestFactory, ICreateResponses fareResponseFactory)
         {
-            return 26.00;
+            _fareRequestFactory = fareRequestFactory;
+            _fareResponseFactory = fareResponseFactory;
+        }
+
+        public double GetTaxiPrice(Journey journey)
+        {
+            string request = _fareRequestFactory.Create(DateTime.Now, journey);
+
+            FareResponse fareResponse = _fareResponseFactory.Create(request);
+
+            return (double) fareResponse.Fare.Cost;
         }
     }
 }

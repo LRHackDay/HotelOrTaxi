@@ -1,7 +1,9 @@
-﻿namespace Results
+﻿using Geography;
+
+namespace Results
 {
     public interface ICreateTheHotelResult
     {
-        Result Create(string latitude, string longitude);
+        Result Create(Journey journey);
     }
 }

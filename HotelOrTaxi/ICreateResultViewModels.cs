@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Geography;
 using HotelOrTaxi.Models;
 using Results;
 
@@ -6,7 +7,7 @@ namespace HotelOrTaxi
 {
     public interface ICreateResultViewModels
     {
-        ResultsViewModel Create(UrlHelper urlHelper, string latitude, string longitude);
+        ResultsViewModel Create(UrlHelper urlHelper, Journey journey);
     }
 
     public class ResultsViewModelFactory : ICreateResultViewModels
@@ -20,10 +21,10 @@ namespace HotelOrTaxi
             _hotelResultFactory = hotelResultFactory;
         }
 
-        public ResultsViewModel Create(UrlHelper urlHelper, string latitude, string longitude)
+        public ResultsViewModel Create(UrlHelper urlHelper, Journey journey)
         {
-            var taxi = _taxiResultFactory.Create(urlHelper);
-            Result hotel = _hotelResultFactory.Create(latitude, longitude);
+            var taxi = _taxiResultFactory.Create(urlHelper, journey);
+            Result hotel = _hotelResultFactory.Create(journey);
 
             return Winner(taxi, hotel);
         }

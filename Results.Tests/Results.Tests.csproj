@@ -45,16 +45,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="TestTaxiPriceCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Geography\Geography.csproj">
+      <Project>{6BA51F12-00AB-4F55-8885-F2AFF731A90C}</Project>
+      <Name>Geography</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hotel\Results.csproj">
       <Project>{762C86A6-C829-423E-A196-301252CE81A0}</Project>
       <Name>Results</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaxiApi\TaxiApi.csproj">
+      <Project>{D89796E5-3B53-4A9C-B93B-8ABEAEAC31F7}</Project>
+      <Name>TaxiApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebClientWrapper\WebResponse.csproj">
+      <Project>{DC27CAE4-0979-44FF-B297-44D10094C508}</Project>
+      <Name>WebResponse</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
