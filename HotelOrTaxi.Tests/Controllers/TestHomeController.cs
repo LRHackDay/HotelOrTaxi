@@ -15,4 +15,18 @@ namespace HotelOrTaxi.Tests.Controllers
             Assert.That(viewName, Is.EqualTo("Index"));
         }
     }
+
+    [TestFixture]
+    public class TestResultsController
+    {
+        [Test]
+        public void DisplaysHomePage()
+        {
+            var viewResult = new ResultsController().Index();
+
+            var viewName = viewResult.ViewName;
+
+            Assert.That(viewName, Is.EqualTo("Index"));
+        }
+    }
 }
