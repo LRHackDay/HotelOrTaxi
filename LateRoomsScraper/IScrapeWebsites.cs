@@ -2,6 +2,6 @@
 {
     public interface IScrapeWebsites
     {
-        IScraperResponse Scrape(string from);
+        IScraperResponse Scrape(string latitude, string longitude);
     }
 }

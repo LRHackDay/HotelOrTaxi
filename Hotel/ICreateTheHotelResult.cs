@@ -2,6 +2,6 @@
 {
     public interface ICreateTheHotelResult
     {
-        Result Create(string from);
+        Result Create(string latitude, string longitude);
     }
 }

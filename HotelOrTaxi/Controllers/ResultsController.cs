@@ -26,7 +26,9 @@ namespace HotelOrTaxi.Controllers
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
         {
             ICreateResultViewModels resultsViewModelFactory = _resultsViewModelFactory;
-            ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(Url, from);
+            var latitude = fromlatlong.Split(',')[0];
+            var longitude = fromlatlong.Split(',')[1];
+            var resultsViewModel = resultsViewModelFactory.Create(Url, latitude, longitude);
 
             return View("Index", resultsViewModel);
         }

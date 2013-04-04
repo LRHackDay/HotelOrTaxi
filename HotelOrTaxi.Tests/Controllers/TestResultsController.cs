@@ -70,16 +70,16 @@ namespace HotelOrTaxi.Tests.Controllers
         {
             return _taxiUri;
         }
-
-        public IScraperResponse Scrape(string @from)
+       
+        public IScraperResponse Scrape(string latitude, string longitude)
         {
             return new HotelScraperResponse
+            {
+                Hotel = new Hotel
                 {
-                    Hotel = new Hotel
-                        {
-                            Price = "30"
-                        }
-                };
+                    Price = "30"
+                }
+            };
         }
     }
 }

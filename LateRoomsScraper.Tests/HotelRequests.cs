@@ -20,12 +20,12 @@ namespace LateRoomsScraper.Tests
 
             var scraperResponseFactory = new ScraperResponseFactory(webScraper);
 
-            var response = scraperResponseFactory.Create(null);
+            var response = scraperResponseFactory.Create(null, null);
 
             Assert.That(_scrapeCalled, Is.True);
         }
 
-        public IScraperResponse Scrape(string unknown)
+        public IScraperResponse Scrape(string latitude, string longitude)
         {
             _scrapeCalled = true;
             return null;
@@ -34,7 +34,7 @@ namespace LateRoomsScraper.Tests
 
     public class FakeLateRoomsScraper : IScrapeWebsites
     {
-        public IScraperResponse Scrape(string unknown)
+        public IScraperResponse Scrape(string latitude, string longitude)
         {
             throw new System.NotImplementedException();
         }

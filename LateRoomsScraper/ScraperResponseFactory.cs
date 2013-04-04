@@ -9,9 +9,9 @@
             _webScraper = webScraper;
         }
 
-        public IScraperResponse Create(string from)
+        public IScraperResponse Create(string latitude, string longitude)
         {
-            return _webScraper.Scrape(from);
+            return _webScraper.Scrape(latitude, longitude);
         }
     }
 }

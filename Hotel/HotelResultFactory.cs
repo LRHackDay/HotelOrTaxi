@@ -11,9 +11,9 @@ namespace Results
             _websiteScraper = websiteScraper;
         }
 
-        public Result Create(string from)
+        public Result Create(string latitude, string longitude)
         {
-            var response = (HotelScraperResponse)_websiteScraper.Scrape(from);
+            var response = (HotelScraperResponse)_websiteScraper.Scrape(latitude, longitude);
 
             var hotelResult = new HotelResult
                 {

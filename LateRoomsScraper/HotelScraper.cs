@@ -6,16 +6,18 @@ namespace LateRoomsScraper
 {
     public class HotelScraper : IScrapeWebsites
     {
-        private const string UrlFormat = "http://www.laterooms.com/en/Hotels.aspx?k={0}&sb=tp&sd=true";
-        private string _from;
+        private const string UrlFormat = "http://m.laterooms.com/en/p9827/MobileSearch.aspx?k=&Latitude={0}&Longitude={1}&MaxRadius=1&sb=tp&sd=true";
+        private string _latitude;
+        private string _longitude;
         private string ScrapeUrl
         {
-            get { return string.Format(UrlFormat, _from); }
+            get { return string.Format(UrlFormat, _latitude, _longitude); }
         }
 
-        public IScraperResponse Scrape(string from)
+        public IScraperResponse Scrape(string latitude, string longitude)
         {
-            _from = from;
+            _latitude = latitude;
+            _longitude = longitude;
             var hotel = ScrapeFirstHotelFromDocument();
 
             return new HotelScraperResponse
