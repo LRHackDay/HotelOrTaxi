@@ -1,29 +1,29 @@
 ﻿using System.Web.Mvc;
 using Geography;
-using TaxiApi.Configuration;
 using TaxiApi.Request;
 using TaxiApi.Response;
-using WebResponse;
 
 namespace Results
 {
     public class TaxiResultFactory : ICreateTheTaxiResult
     {
         private readonly ICreateTheTaxiControllerUri _createTheTaxiControllerUri;
+        private readonly ICreateResponses _fareResponseFactory;
+        private readonly ICreateRequests _fareRequestFactory;
 
-        public TaxiResultFactory(ICreateTheTaxiControllerUri createTheTaxiControllerUri)
+        public TaxiResultFactory(ICreateTheTaxiControllerUri createTheTaxiControllerUri,
+                                 ICreateRequests fareRequestFactory, ICreateResponses fareResponseFactory)
         {
             _createTheTaxiControllerUri = createTheTaxiControllerUri;
+            _fareRequestFactory = fareRequestFactory;
+            _fareResponseFactory = fareResponseFactory;
         }
 
         public TaxiResult Create(UrlHelper urlHelper, Journey journey)
         {
-            ICanReadConfigurations canReadConfigurations = new ConfigReader();
-            IDownloadResponses webClientWrapper = new WebClientWrapper();
-            IPerformApiRequest webClientApiRequest = new WebClientApiRequest(canReadConfigurations, webClientWrapper);
             return new TaxiResult
                 {
-                    Price = new TaxiFareCalculator(new FareRequestFactory(canReadConfigurations), new FareResponseFactory(webClientApiRequest)).GetTaxiPrice(journey),
+                    Price = new TaxiFareCalculator(_fareRequestFactory, _fareResponseFactory).GetTaxiPrice(journey),
                     Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper)
                 };
         }
