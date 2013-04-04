@@ -25,10 +25,24 @@ namespace HotelOrTaxi
             Result taxi = _taxiResultFactory.Create(urlHelper);
             Result hotel = _hotelResultFactory.Create();
 
-            var resultsViewModel = new ResultsViewModel();
-            resultsViewModel.Loser = hotel;
-            resultsViewModel.Winner = taxi;
-            return resultsViewModel;
+            return Winner(taxi, hotel);
+        }
+
+        private static ResultsViewModel Winner(Result taxi, Result hotel)
+        {
+            if (taxi.Price < hotel.Price)
+            {
+                return new ResultsViewModel
+                    {
+                        Loser = hotel,
+                        Winner = taxi
+                    };
+            }
+            return new ResultsViewModel
+                {
+                    Loser = taxi,
+                    Winner = hotel
+                };
         }
     }
 }

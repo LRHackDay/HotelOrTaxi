@@ -13,9 +13,14 @@ namespace HotelOrTaxi.Tests
         [Test]
         public void SetsLowestPriceAsWinner()
         {
-            _hotel = new Result
+            _hotel = new HotelResult
                 {
                     Price = 10.00
+                };
+
+            _taxi = new TaxiResult
+                {
+                    Price = 20.00
                 };
 
             Result winner = new ResultsViewModelFactory(this, this).Create(null).Winner;

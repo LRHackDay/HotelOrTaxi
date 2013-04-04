@@ -8,4 +8,20 @@
 
         public string Uri { get; set; }
     }
+
+    public class HotelResult : Result
+    {
+        public HotelResult()
+        {
+            Name = "Hotel";
+        }
+    }
+
+    public class TaxiResult : Result
+    {
+        public TaxiResult()
+        {
+            Name = "Taxi";
+        }
+    }
 }
