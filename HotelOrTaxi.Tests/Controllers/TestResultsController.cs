@@ -46,7 +46,7 @@ namespace HotelOrTaxi.Tests.Controllers
             var model = (ResultsViewModel) viewResult.Model;
 
             Assert.That(model.Winner.Name, Is.EqualTo("Taxi"));
-            Assert.That(model.Winner.Price, Is.EqualTo("£26"));
+            Assert.That(model.Winner.Price, Is.EqualTo(26.00));
             Assert.That(model.Winner.Uri, Is.EqualTo(_taxiUri));
         }
 
@@ -60,7 +60,7 @@ namespace HotelOrTaxi.Tests.Controllers
             var model = (ResultsViewModel) viewResult.Model;
 
             Assert.That(model.Loser.Name, Is.EqualTo("Hotel"));
-            Assert.That(model.Loser.Price, Is.EqualTo("£30"));
+            Assert.That(model.Loser.Price, Is.EqualTo(30.00));
             Assert.That(model.Loser.Uri,
                         Is.EqualTo("http://m.laterooms.com/en/p9827/MobileSearch.aspx?k=Manchester&d=20130404&n=1&adults=1&children=0&minp=&maxp=&StarRatingFilter=&rt=1-0&Latitude=&Longitude=&MaxRadius=1&PageSize=10&toStep=&SortBy=Price&Ascending=True&findButton=FIND+HOTELS&sb=tp&sd=true"));
         }

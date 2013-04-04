@@ -15,7 +15,7 @@ namespace Results
         {
             var taxi = new Result();
             taxi.Name = "Taxi";
-            taxi.Price = "£26";
+            taxi.Price = 26.00;
             taxi.Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper);
             return taxi;
         }
