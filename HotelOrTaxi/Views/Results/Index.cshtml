@@ -4,16 +4,15 @@
 <h1>Results</h1>
 <h2>Should I stay or should I go? </h2>
 <p>
-    Taxi
-    £26
-     
-    @Html.ActionLink("Show me", "Index", "Taxi")
+    @Model.Winner.Name
+    @Model.Winner.Price
+    <a href ="@Model.Winner.Uri">Show me</a></h3>
 </p>
 
 <p>
-    Hotel
-    £30
-    <a href ="http://m.laterooms.com/en/p9827/MobileSearch.aspx?k=Manchester&d=20130404&n=1&adults=1&children=0&minp=&maxp=&StarRatingFilter=&rt=1-0&Latitude=&Longitude=&MaxRadius=1&PageSize=10&toStep=&SortBy=Price&Ascending=True&findButton=FIND+HOTELS&sb=tp&sd=true">Show me</a></h3>
+    @Model.Loser.Name
+    @Model.Loser.Price
+    <a href ="@Model.Loser.Uri">Show me</a></h3>
 </p>
 </div>
 
