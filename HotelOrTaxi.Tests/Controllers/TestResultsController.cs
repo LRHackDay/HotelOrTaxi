@@ -2,6 +2,7 @@
 using HotelOrTaxi.Controllers;
 using HotelOrTaxi.Models;
 using NUnit.Framework;
+using Results;
 
 namespace HotelOrTaxi.Tests.Controllers
 {
@@ -13,7 +14,7 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void DisplaysIndex()
         {
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiFactory(this), new CreateHotels());
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory());
             var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
@@ -25,7 +26,7 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void ReturnsViewModel()
         {
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiFactory(this), new CreateHotels());
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory());
             var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
@@ -38,7 +39,7 @@ namespace HotelOrTaxi.Tests.Controllers
         public void ReturnsWinner()
         {
             _taxiUri = "bob";
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiFactory(this), new CreateHotels());
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory());
             var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
@@ -52,7 +53,7 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void ReturnsLoser()
         {
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiFactory(this), new CreateHotels());
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory());
             var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 

@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using HotelOrTaxi.Models;
+using Results;
 
 namespace HotelOrTaxi.Controllers
 {
@@ -14,8 +15,11 @@ namespace HotelOrTaxi.Controllers
 
         public ResultsController()
         {
-            ICreateTheTaxiControllerUri createTheTaxiControllerUri = new CreateTheTaxiControllerUri();
-            _resultsViewModelFactory = new ResultsViewModelFactory(new TaxiFactory(createTheTaxiControllerUri), new CreateHotels());
+            ICreateTheTaxiControllerUri taxiResultsPage = new CreateTheTaxiControllerUri();
+            var taxiResultFactory = new TaxiResultFactory(taxiResultsPage);
+            var hotelResultFactory = new HotelResultFactory();
+
+            _resultsViewModelFactory = new ResultsViewModelFactory(taxiResultFactory, hotelResultFactory);
         }
 
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)

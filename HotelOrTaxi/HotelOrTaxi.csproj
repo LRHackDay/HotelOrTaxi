@@ -90,7 +90,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="ICreateTheTaxiControllerUri.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="ICreateResultViewModels.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
@@ -150,6 +149,10 @@
     <ProjectReference Include="..\Geography\Geography.csproj">
       <Project>{6BA51F12-00AB-4F55-8885-F2AFF731A90C}</Project>
       <Name>Geography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel\Results.csproj">
+      <Project>{762C86A6-C829-423E-A196-301252CE81A0}</Project>
+      <Name>Results</Name>
     </ProjectReference>
     <ProjectReference Include="..\LateRoomsScraper\LateRoomsScraper.csproj">
       <Project>{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}</Project>
