@@ -3,30 +3,27 @@ using HotelOrTaxi.Models;
 
 namespace HotelOrTaxi.Controllers
 {
-    
-
-
     public class ResultsController : Controller
     {
-        private readonly ICreateTheTaxiControllerUri _createTheTaxiControllerUri;
-        private readonly ResultsViewModelFactory _resultsViewModelFactory;
+        private readonly ICreateResultViewModels _resultsViewModelFactory;
 
-        public ResultsController(ICreateTheTaxiControllerUri createTheTaxiControllerUri)
+        public ResultsController(ICreateResultViewModels resultsViewModelFactory)
         {
-            _createTheTaxiControllerUri = createTheTaxiControllerUri;
-            _resultsViewModelFactory = new ResultsViewModelFactory(_createTheTaxiControllerUri);
+            _resultsViewModelFactory = resultsViewModelFactory;
+        }
+
+        public ResultsController()
+        {
+            ICreateTheTaxiControllerUri createTheTaxiControllerUri = new CreateTheTaxiControllerUri();
+            _resultsViewModelFactory = new ResultsViewModelFactory(createTheTaxiControllerUri);
         }
 
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
         {
-            var resultsViewModelFactory = _resultsViewModelFactory;
-            var resultsViewModel = resultsViewModelFactory.Create(Url);
+            ICreateResultViewModels resultsViewModelFactory = _resultsViewModelFactory;
+            ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(Url);
 
             return View("Index", resultsViewModel);
         }
     }
-
-    
-
-    
 }

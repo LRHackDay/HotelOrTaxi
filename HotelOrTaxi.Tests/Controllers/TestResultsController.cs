@@ -13,7 +13,8 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void DisplaysIndex()
         {
-            var resultsController = new ResultsController(this);
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(this);
+            var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
             string viewName = viewResult.ViewName;
@@ -24,7 +25,8 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void ReturnsViewModel()
         {
-            var resultsController = new ResultsController(this);
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(this);
+            var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
             object model = viewResult.Model;
@@ -36,7 +38,8 @@ namespace HotelOrTaxi.Tests.Controllers
         public void ReturnsWinner()
         {
             _taxiUri = "bob";
-            var resultsController = new ResultsController(this);
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(this);
+            var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
             var model = (ResultsViewModel) viewResult.Model;
@@ -49,7 +52,8 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void ReturnsLoser()
         {
-            var resultsController = new ResultsController(this);
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(this);
+            var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
             var model = (ResultsViewModel) viewResult.Model;
