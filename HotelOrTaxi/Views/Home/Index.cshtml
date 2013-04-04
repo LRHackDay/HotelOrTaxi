@@ -26,5 +26,36 @@
 
 </div>
 
-<h1>Hotel vs Taxi!</h1>
-<p>It's all happened to us. You drive to work, end up in the pub, can't resist the beer and you're in that awful dilemma... You can't drive, so time to call a cab. But wait! Could it be cheaper to stay in a local hotel?! Here's a handy site to help you decide:</p>
+<div style="width:340px; margin:0 auto; font-size:1.2em;">
+<div style=" height:100px;" class="steps-numbers">
+<img style="float:left;" src="/assets/img/circle-1.png" alt="1" />
+    <p style=" padding-top:10px; vertical-align:baseline; float:left; width:240px; padding-left:20px;">      Tell us where you are and where you’re heading
+</p>
+</div>
+<div style=" height:100px;"  class="steps-numbers">
+<img style="float:right;" src="/assets/img/circle-2.png" alt="1" />
+
+    <p style="padding-right:20x; width:240px; padding-left:20px; text-align:right;">    We’ll pit local hotel deals against your taxi fare to find the best option
+</p>
+</div>
+<div style="height:100px;" class="steps-numbers">
+<img style="float:left;" src="/assets/img/circle-3.png" alt="3" />
+    <p style="padding-top:10px; float:left; width:240px; padding-left:20px;">      Tell us where you are and where you’re heading
+</p>
+</div>
+</div>
+
+<div style="text-align:center;"><img src="/assets/img/icons-hotel-and-taxi.png" alt="hotel and taxi thought bubbles" /></div>
+
+<div id="headerIMG"></div>
+
+@section Scripts {
+      <!-- Randomly generate pics -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var rand_no = Math.floor((13-1)*Math.random()) + 1;
+        var className = 'photo-set' + rand_no;
+        $("#headerIMG").addClass(className);
+    });
+    </script>
+}

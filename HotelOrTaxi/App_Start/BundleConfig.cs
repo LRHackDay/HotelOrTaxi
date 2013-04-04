@@ -15,6 +15,7 @@ namespace HotelOrTaxi.App_Start
                 "~/assets/css/bootstrap-responsive.css",
                 "~/assets/css/style.css",
                 "~/assets/css/style-2.css",
+                "~/assets/css/style-3.css",
                 "~/assets/css/add2home.css"));
         }
     }
