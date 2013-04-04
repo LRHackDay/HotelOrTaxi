@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\TestHomeController.cs" />
+    <Compile Include="Controllers\TestResultsController.cs" />
+    <Compile Include="Controllers\TestTaxiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

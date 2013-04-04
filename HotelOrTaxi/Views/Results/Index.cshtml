@@ -1,11 +1,17 @@
-﻿<div class="hero-unit">
+﻿@model HotelOrTaxi.Models.ResultsViewModel
+<div class="hero-unit">
     <h1>Results</h1>
     <h2>Should I stay or should I go? </h2>
-    <h3>Taxi</h3>
-    <p>£26</p>
+    <form>
+        <h3>Taxi</h3>
+        <p>£26</p>
+        @Html.ActionLink("Call", "Index", "Taxi")
+    </form>
 
-    <h3>Hotel</h3>
-    <p>£30</p>
-
+    <form>
+        <h3>Hotel</h3>
+        <p>£30</p>
+        <button type="submit" class="btn">Show me</button>
+    </form>
 </div>
 

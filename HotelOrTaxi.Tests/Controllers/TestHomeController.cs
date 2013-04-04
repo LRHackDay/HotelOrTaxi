@@ -7,26 +7,11 @@ namespace HotelOrTaxi.Tests.Controllers
     public class TestHomeController
     {
         [Test]
-        public void DisplaysHomePage()
+        public void DisplaysIndex()
         {
             var viewResult = new HomeController().Index();
 
             var viewName = viewResult.ViewName;
-            Assert.That(viewName, Is.EqualTo("Index"));
-        }
-    }
-
-    [TestFixture]
-    public class TestResultsController
-    {
-        [Test]
-        public void DisplaysHomePage()
-        {
-            var resultsController = new ResultsController();
-            var viewResult = resultsController.Index(null, null, null, null);
-
-            var viewName = viewResult.ViewName;
-
             Assert.That(viewName, Is.EqualTo("Index"));
         }
     }

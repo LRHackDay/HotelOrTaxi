@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using Geography;
+using HotelOrTaxi.Models;
 using TaxiApi.Configuration;
 using TaxiApi.Request;
 using TaxiApi.Response;
@@ -12,7 +13,7 @@ namespace HotelOrTaxi.Controllers
     {
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
         {
-            return View("Index");
+            return View("Index", new ResultsViewModel());
         }
     }
 }
