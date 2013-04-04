@@ -39,7 +39,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DistanceFactory.cs" />
     <Compile Include="GoogleMapsApiDeserialiser.cs" />
     <Compile Include="DistanceCalculator.cs" />
     <Compile Include="Distance.cs" />

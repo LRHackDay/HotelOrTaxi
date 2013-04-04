@@ -43,14 +43,12 @@ namespace TaxiApi.Tests
             var longitude = new Longitude("-3.3131060000000616");
             var startingPoint = new Location(latitude, longitude);
             var from = new StartingPoint(startingPoint);
-            var destination = new Location(null, null);
             string searchTerm = "my postcode";
             var to = new Destination(searchTerm);
 
             _distance = new Metres(5000);
 
-            var distanceFactory = this;
-            var journey = new Journey(@from, to, distanceFactory);
+            var journey = new Journey(@from, to, null);
 
             string request = new FareRequestFactory(this).Create(DateTime.Now, journey);
 

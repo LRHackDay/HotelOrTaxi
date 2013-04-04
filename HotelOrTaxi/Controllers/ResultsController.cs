@@ -14,12 +14,13 @@ namespace HotelOrTaxi.Controllers
     public class ResultsController : Controller
     {
         private readonly ICreateResultViewModels _resultsViewModelFactory;
-        private readonly DistanceFactory _distanceFactory;
+        private readonly ICanGetTheDistanceOfATaxiJourneyBetweenPoints _distanceCalculator;
 
-        public ResultsController(ICreateResultViewModels resultsViewModelFactory)
+        public ResultsController(ICreateResultViewModels resultsViewModelFactory,
+                                 ICanGetTheDistanceOfATaxiJourneyBetweenPoints distanceCalculator)
         {
             _resultsViewModelFactory = resultsViewModelFactory;
-            _distanceFactory = new DistanceFactory();
+            _distanceCalculator = distanceCalculator;
         }
 
         public ResultsController()
@@ -32,11 +33,17 @@ namespace HotelOrTaxi.Controllers
             ICreateResponses fareResponseFactory = new FareResponseFactory(webClientApiRequest);
             ICreateTheTaxiResult taxiResultFactory = new TaxiResultFactory(taxiResultsPage, fareRequestFactory,
                                                                            fareResponseFactory);
+            IGetTheResponseFromGoogleMapsDirectionsApi googleMapsDirectionsResponse =
+                new GoogleMapsDirectionsResponse(webResponseReader);
+            IDeserialiseGoogleMapsDirectionsResponses googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
+            ISpecifyConditionsOfNoTaxiRoutesFound specifyConditionsOfNoTaxiRoutesFound =
+                new SpecifyConditionsOfNoTaxiRoutesFound();
             IScrapeWebsites websiteScraper = new HotelScraper();
             ICreateTheHotelResult hotelResultFactory = new HotelResultFactory(websiteScraper);
 
+            _distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser,
+                                                         specifyConditionsOfNoTaxiRoutesFound);
             _resultsViewModelFactory = new ResultsViewModelFactory(taxiResultFactory, hotelResultFactory);
-            _distanceFactory = new DistanceFactory();
         }
 
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
@@ -46,7 +53,8 @@ namespace HotelOrTaxi.Controllers
             var startingPoint = new StartingPoint(fromlatlong);
             var destination = new Destination(tolatlong);
 
-            var journey = new Journey(startingPoint, destination, _distanceFactory);
+
+            var journey = new Journey(startingPoint, destination, _distanceCalculator);
 
             ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(Url, journey);
 

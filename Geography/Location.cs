@@ -13,6 +13,7 @@ namespace Geography
             Longitude = longitude;
 
             LatitudeAndLongitude = latitude + "," + longitude;
+            SearchTerm = LatitudeAndLongitude;
         }
 
         public Longitude Longitude { get; set; }

@@ -8,13 +8,14 @@ using NUnit.Framework;
 namespace HotelOrTaxi.Tests.Controllers
 {
     [TestFixture]
-    public class TestResultsController : ICreateResultViewModels
+    public class TestResultsController : ICreateResultViewModels, ICanGetTheDistanceOfATaxiJourneyBetweenPoints
     {
         [Test]
         public void DisplaysIndex()
         {
             ICreateResultViewModels resultsViewModelFactory = this;
-            var resultsController = new ResultsController(resultsViewModelFactory);
+            ICanGetTheDistanceOfATaxiJourneyBetweenPoints distanceCalculator = this;
+            var resultsController = new ResultsController(resultsViewModelFactory, distanceCalculator);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
             string viewName = viewResult.ViewName;
@@ -26,7 +27,8 @@ namespace HotelOrTaxi.Tests.Controllers
         public void ReturnsViewModel()
         {
             ICreateResultViewModels resultsViewModelFactory = this;
-            var resultsController = new ResultsController(resultsViewModelFactory);
+            ICanGetTheDistanceOfATaxiJourneyBetweenPoints distanceCalculator = this;
+            var resultsController = new ResultsController(resultsViewModelFactory, distanceCalculator);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
             object model = viewResult.Model;
@@ -37,6 +39,11 @@ namespace HotelOrTaxi.Tests.Controllers
         ResultsViewModel ICreateResultViewModels.Create(UrlHelper urlHelper, Journey journey)
         {
             return new ResultsViewModel();
+        }
+
+        Metres ICanGetTheDistanceOfATaxiJourneyBetweenPoints.Calculate(StartingPoint origin, Destination destination)
+        {
+            return new Metres(10);
         }
     }
 }

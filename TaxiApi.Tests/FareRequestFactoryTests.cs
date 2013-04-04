@@ -8,7 +8,7 @@ using TaxiApi.Request;
 namespace TaxiApi.Tests
 {
     [TestFixture]
-    public class FareRequestFactoryTests : ICanReadConfigurations, ICalculateTheJourneyDistance
+    public class FareRequestFactoryTests : ICanReadConfigurations, ICanGetTheDistanceOfATaxiJourneyBetweenPoints
     {
         private Metres _distance;
 
@@ -18,8 +18,7 @@ namespace TaxiApi.Tests
             var fareRequestFactory = new FareRequestFactory(this);
 
             var location = new Location(null, null);
-            ICalculateTheJourneyDistance distanceFactory = this;
-            var journey = new Journey(new StartingPoint(location), new Destination("my postcode"), distanceFactory);
+            var journey = new Journey(new StartingPoint(location), new Destination("my postcode"), this);
             string fareRequest = fareRequestFactory.Create(DateTime.Now, journey);
 
             Assert.That(fareRequest, Is.TypeOf(typeof (string)));
@@ -191,12 +190,12 @@ namespace TaxiApi.Tests
             throw new NotImplementedException();
         }
 
-        public string ApiKey()
+        string ICanReadConfigurations.ApiKey()
         {
             return "test";
         }
 
-        Metres ICalculateTheJourneyDistance.Create(StartingPoint @from, Destination to)
+        Metres ICanGetTheDistanceOfATaxiJourneyBetweenPoints.Calculate(StartingPoint origin, Destination destination)
         {
             return _distance;
         }

@@ -1,4 +1,7 @@
-public class Legs
+namespace JourneyCalculator
 {
-    public Distance Distance { get; set; }
+    public class Legs
+    {
+        public Distance Distance { get; set; }
+    }
 }

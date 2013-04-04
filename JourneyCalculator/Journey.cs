@@ -4,10 +4,10 @@ namespace JourneyCalculator
 {
     public class Journey
     {
-        public Journey(StartingPoint @from, Destination to, ICalculateTheJourneyDistance distanceFactory)
+        public Journey(StartingPoint @from, Destination to, ICanGetTheDistanceOfATaxiJourneyBetweenPoints distanceCalculator)
         {
             StartingPoint = from.Location;
-            Distance = distanceFactory.Create(from, to);
+            Distance = distanceCalculator.Calculate(from, to);
         }
 
         public Metres Distance { get; private set; }
