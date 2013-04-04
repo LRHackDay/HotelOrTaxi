@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyCalculator", "Journe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyCalculator.Tests", "JourneyCalculator.Tests\JourneyCalculator.Tests.csproj", "{07A3C197-A413-4CB9-9FF6-FE7B7F0A2BFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LateRoomsScraper", "LateRoomsScraper\LateRoomsScraper.csproj", "{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LateRoomsScraper.Tests", "LateRoomsScraper.Tests\LateRoomsScraper.Tests.csproj", "{1053107D-ED1A-49D9-8046-22B4378E90BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{07A3C197-A413-4CB9-9FF6-FE7B7F0A2BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07A3C197-A413-4CB9-9FF6-FE7B7F0A2BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07A3C197-A413-4CB9-9FF6-FE7B7F0A2BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1053107D-ED1A-49D9-8046-22B4378E90BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1053107D-ED1A-49D9-8046-22B4378E90BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1053107D-ED1A-49D9-8046-22B4378E90BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1053107D-ED1A-49D9-8046-22B4378E90BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
