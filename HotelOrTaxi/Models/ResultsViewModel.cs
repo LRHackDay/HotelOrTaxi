@@ -3,6 +3,8 @@
     public class ResultsViewModel
     {
         public Result Winner { get; set; }
+
+        public Result Loser { get; set; }
     }
 
     public class Result
