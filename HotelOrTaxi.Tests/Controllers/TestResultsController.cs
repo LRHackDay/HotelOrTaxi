@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Geography;
 using HotelOrTaxi.Controllers;
 using HotelOrTaxi.Models;
 using LateRoomsScraper;
@@ -8,14 +9,12 @@ using Results;
 namespace HotelOrTaxi.Tests.Controllers
 {
     [TestFixture]
-    public class TestResultsController : ICreateTheTaxiControllerUri, IScrapeWebsites
+    public class TestResultsController : ICreateResultViewModels
     {
-        private string _taxiUri;
-
         [Test]
         public void DisplaysIndex()
         {
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory(this));
+            ICreateResultViewModels resultsViewModelFactory = this;
             var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
@@ -27,7 +26,7 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void ReturnsViewModel()
         {
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory(this));
+            ICreateResultViewModels resultsViewModelFactory = this;
             var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
@@ -36,50 +35,9 @@ namespace HotelOrTaxi.Tests.Controllers
             Assert.That(model, Is.TypeOf<ResultsViewModel>());
         }
 
-        [Test]
-        public void ReturnsWinner()
+        ResultsViewModel ICreateResultViewModels.Create(UrlHelper urlHelper, Journey journey)
         {
-            _taxiUri = "bob";
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory(this));
-            var resultsController = new ResultsController(resultsViewModelFactory);
-            ViewResult viewResult = resultsController.Index(null, null, null, null);
-
-            var model = (ResultsViewModel) viewResult.Model;
-
-            Assert.That(model.Winner.Name, Is.EqualTo("Taxi"));
-            Assert.That(model.Winner.Price, Is.EqualTo(26.00));
-            Assert.That(model.Winner.Uri, Is.EqualTo(_taxiUri));
-        }
-
-        [Test]
-        public void ReturnsLoser()
-        {
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory(this));
-            var resultsController = new ResultsController(resultsViewModelFactory);
-            ViewResult viewResult = resultsController.Index(null, null, null, null);
-
-            var model = (ResultsViewModel) viewResult.Model;
-
-            Assert.That(model.Loser.Name, Is.EqualTo("Hotel"));
-            Assert.That(model.Loser.Price, Is.EqualTo(30.00));
-            Assert.That(model.Loser.Uri,
-                        Is.EqualTo("http://m.laterooms.com/en/p9827/MobileSearch.aspx?k=Manchester&d=20130404&n=1&adults=1&children=0&minp=&maxp=&StarRatingFilter=&rt=1-0&Latitude=&Longitude=&MaxRadius=1&PageSize=10&toStep=&SortBy=Price&Ascending=True&findButton=FIND+HOTELS&sb=tp&sd=true"));
-        }
-
-        public string GetUriForTaxi(UrlHelper url)
-        {
-            return _taxiUri;
-        }
-       
-        public IScraperResponse Scrape(string latitude, string longitude)
-        {
-            return new HotelScraperResponse
-            {
-                Hotel = new Hotel
-                {
-                    Price = "30"
-                }
-            };
+            return new ResultsViewModel();
         }
     }
 }
