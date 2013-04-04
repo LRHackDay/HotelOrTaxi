@@ -15,7 +15,7 @@ namespace Results
         {
             return new TaxiResult
                 {
-                    Price = 26.00,
+                    Price = new TaxiFareCalculator().GetTaxiPrice(),
                     Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper)
                 };
         }

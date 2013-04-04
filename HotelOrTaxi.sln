@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LateRoomsScraper.Tests", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Results", "Hotel\Results.csproj", "{762C86A6-C829-423E-A196-301252CE81A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Results.Tests", "Results.Tests\Results.Tests.csproj", "{AC180308-8774-48CB-A14A-BA7EBAC365F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{762C86A6-C829-423E-A196-301252CE81A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{762C86A6-C829-423E-A196-301252CE81A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{762C86A6-C829-423E-A196-301252CE81A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC180308-8774-48CB-A14A-BA7EBAC365F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC180308-8774-48CB-A14A-BA7EBAC365F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC180308-8774-48CB-A14A-BA7EBAC365F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC180308-8774-48CB-A14A-BA7EBAC365F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
