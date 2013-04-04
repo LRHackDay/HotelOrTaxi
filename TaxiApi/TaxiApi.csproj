@@ -49,7 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\FareRequestFactory.cs" />
     <Compile Include="Request\IPerformApiRequest.cs" />
-    <Compile Include="Request\WebClientPerformApiRequest.cs" />
+    <Compile Include="Request\WebClientApiRequest.cs" />
     <Compile Include="Response\FareResponse.cs" />
     <Compile Include="Response\FareResponseFactory.cs" />
   </ItemGroup>
