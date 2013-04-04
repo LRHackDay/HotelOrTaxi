@@ -6,7 +6,7 @@ namespace LateRoomsScraper
 {
     public class HotelScraper : IScrapeWebsites
     {
-        private const string UrlFormat = "http://m.laterooms.com/en/p9827/MobileSearch.aspx?k=&Latitude={0}&Longitude={1}&MaxRadius=1&sb=tp&sd=true";
+        private const string UrlFormat = "http://m.laterooms.com/en/p9827/MobileAjax.aspx?pageSize=10&search=%7B%22Latitude%22:{0},%22Longitude%22:{1},%22Radius%22:1,%22RadiusDistanceUnit%22:%22Miles%22,%22Date%22:%2220130404%22,%22CurrencyId%22:%22GBP%22,%22HotelFilter%22:1,%22SortOrder%22:%22TotalPrice%22,%22SortedAscending%22:true,%22Type%22:%22Standard%22,%22PageNumber%22:1,%22Facilities%22:0,%22StarRating%22:0,%22StarRatingBitmap%22:0,%22CustomerRatingBitmap%22:0,%22AppealBitmap%22:0,%22CustomerRatingPercentageFrom%22:0,%22MinPrice%22:0,%22MaxPrice%22:99999999,%22HasSpecialOffers%22:false,%22SpecialOffersBitmap%22:0,%22Nights%22:1%7D";
         private string _latitude;
         private string _longitude;
         private string ScrapeUrl
@@ -30,22 +30,18 @@ namespace LateRoomsScraper
         {
             var htmlDocument = GetHtmlDocument();
 
-            var node = htmlDocument.DocumentNode.SelectSingleNode("//*[@id='list']/table/tr[@class != 'head'][position() <= 1]");
+            var node = htmlDocument.DocumentNode.SelectSingleNode("//*[@id='searchResults']/a[1]/div/div[2]/div[3]/div/span/span[2]");
 
             return CreateHotelFromRow(node);
         }
 
         private Hotel CreateHotelFromRow(HtmlNode htmlNode)
         {
-            var name = htmlNode.SelectSingleNode("//tr/td[@class = 'sec hname']/div/p/a").InnerText.Trim();
-            var url = htmlNode.SelectSingleNode("//tr/td[@class = 'sec hname']/div/p/a").Attributes["href"].Value;
-            var price = htmlNode.SelectSingleNode("//tr/td[@class = 'last']/div/b").InnerText.Trim();
-
             return new Hotel
                 {
-                    Url = url,
-                    Name = name,
-                    Price = price
+                    Url = string.Empty,
+                    Name = string.Empty,
+                    Price = htmlNode.InnerText.Trim().Substring(2)
                 };
         }
 
