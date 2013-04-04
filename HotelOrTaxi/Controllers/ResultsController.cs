@@ -10,7 +10,7 @@ namespace HotelOrTaxi.Controllers
 {
     public class ResultsController : Controller
     {
-        public ActionResult Index(string from, string to, string fromlatlong, string tolatlong)
+        public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
         {
             return View("Index");
         }

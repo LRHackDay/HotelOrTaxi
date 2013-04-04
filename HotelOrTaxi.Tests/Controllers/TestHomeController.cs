@@ -22,7 +22,8 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void DisplaysHomePage()
         {
-            var viewResult = new ResultsController().Index();
+            var resultsController = new ResultsController();
+            var viewResult = resultsController.Index(null, null, null, null);
 
             var viewName = viewResult.ViewName;
 
