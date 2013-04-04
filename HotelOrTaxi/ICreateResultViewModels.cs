@@ -14,7 +14,7 @@ namespace HotelOrTaxi
         private readonly ICreateTheTaxiResult _taxiResultFactory;
         private readonly ICreateTheHotelResult _hotelResultFactory;
 
-        public ResultsViewModelFactory(TaxiResultFactory taxiResultFactory, HotelResultFactory hotelResultFactory)
+        public ResultsViewModelFactory(ICreateTheTaxiResult taxiResultFactory, ICreateTheHotelResult hotelResultFactory)
         {
             _taxiResultFactory = taxiResultFactory;
             _hotelResultFactory = hotelResultFactory;
