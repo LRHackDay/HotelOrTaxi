@@ -65,6 +65,10 @@
       <Project>{762C86A6-C829-423E-A196-301252CE81A0}</Project>
       <Name>Results</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LateRoomsScraper\LateRoomsScraper.csproj">
+      <Project>{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}</Project>
+      <Name>LateRoomsScraper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

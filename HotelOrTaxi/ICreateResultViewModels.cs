@@ -6,7 +6,7 @@ namespace HotelOrTaxi
 {
     public interface ICreateResultViewModels
     {
-        ResultsViewModel Create(UrlHelper urlHelper);
+        ResultsViewModel Create(UrlHelper urlHelper, string unknown);
     }
 
     public class ResultsViewModelFactory : ICreateResultViewModels
@@ -20,10 +20,10 @@ namespace HotelOrTaxi
             _hotelResultFactory = hotelResultFactory;
         }
 
-        public ResultsViewModel Create(UrlHelper urlHelper)
+        public ResultsViewModel Create(UrlHelper urlHelper, string from)
         {
             var taxi = _taxiResultFactory.Create(urlHelper);
-            Result hotel = _hotelResultFactory.Create();
+            Result hotel = _hotelResultFactory.Create(from);
 
             return Winner(taxi, hotel);
         }

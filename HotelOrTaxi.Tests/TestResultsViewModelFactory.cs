@@ -23,7 +23,7 @@ namespace HotelOrTaxi.Tests
                     Price = 20.00
                 };
 
-            Result winner = new ResultsViewModelFactory(this, this).Create(null).Winner;
+            Result winner = new ResultsViewModelFactory(this, this).Create(null, null).Winner;
             
             Assert.That(winner, Is.EqualTo(_hotel));
         }
@@ -33,7 +33,7 @@ namespace HotelOrTaxi.Tests
             return _taxi;
         }
 
-        Result ICreateTheHotelResult.Create()
+        Result ICreateTheHotelResult.Create(string unknown)
         {
             return _hotel;
         }

@@ -49,7 +49,7 @@
     <Compile Include="IScraperResponse.cs" />
     <Compile Include="IScrapeWebsites.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScraperResponse.cs" />
+    <Compile Include="HotelScraperResponse.cs" />
     <Compile Include="ScraperResponseFactory.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,20 +1,21 @@
 ﻿using System.Web.Mvc;
 using HotelOrTaxi.Controllers;
 using HotelOrTaxi.Models;
+using LateRoomsScraper;
 using NUnit.Framework;
 using Results;
 
 namespace HotelOrTaxi.Tests.Controllers
 {
     [TestFixture]
-    public class TestResultsController : ICreateTheTaxiControllerUri
+    public class TestResultsController : ICreateTheTaxiControllerUri, IScrapeWebsites
     {
         private string _taxiUri;
 
         [Test]
         public void DisplaysIndex()
         {
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory());
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory(this));
             var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
@@ -26,7 +27,7 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void ReturnsViewModel()
         {
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory());
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory(this));
             var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
@@ -39,7 +40,7 @@ namespace HotelOrTaxi.Tests.Controllers
         public void ReturnsWinner()
         {
             _taxiUri = "bob";
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory());
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory(this));
             var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
@@ -53,7 +54,7 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void ReturnsLoser()
         {
-            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory());
+            ICreateResultViewModels resultsViewModelFactory = new ResultsViewModelFactory(new TaxiResultFactory(this), new HotelResultFactory(this));
             var resultsController = new ResultsController(resultsViewModelFactory);
             ViewResult viewResult = resultsController.Index(null, null, null, null);
 
@@ -68,6 +69,17 @@ namespace HotelOrTaxi.Tests.Controllers
         public string GetUriForTaxi(UrlHelper url)
         {
             return _taxiUri;
+        }
+
+        public IScraperResponse Scrape(string @from)
+        {
+            return new HotelScraperResponse
+                {
+                    Hotel = new Hotel
+                        {
+                            Price = "30"
+                        }
+                };
         }
     }
 }

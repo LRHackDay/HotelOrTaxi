@@ -9,9 +9,9 @@
             _webScraper = webScraper;
         }
 
-        public IScraperResponse Create()
+        public IScraperResponse Create(string from)
         {
-            return _webScraper.Scrape();
+            return _webScraper.Scrape(from);
         }
     }
 }

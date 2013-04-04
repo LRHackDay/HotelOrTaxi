@@ -6,39 +6,31 @@ namespace LateRoomsScraper
 {
     public class HotelScraper : IScrapeWebsites
     {
-        private readonly string _city;
         private const string UrlFormat = "http://www.laterooms.com/en/Hotels.aspx?k={0}&sb=tp&sd=true";
+        private string _from;
         private string ScrapeUrl
         {
-            get { return string.Format(UrlFormat, _city); }
+            get { return string.Format(UrlFormat, _from); }
         }
 
-        public HotelScraper(string city)
+        public IScraperResponse Scrape(string from)
         {
-            _city = city;
-        }
+            _from = from;
+            var hotel = ScrapeFirstHotelFromDocument();
 
-        public IScraperResponse Scrape()
-        {
-            var hotels = ScrapeHotelsFromDocument();
-
-            return new ScraperResponse
+            return new HotelScraperResponse
                 {
-                    Hotels = hotels
+                    Hotel = hotel
                 };
         }
 
-        private List<Hotel> ScrapeHotelsFromDocument()
+        private Hotel ScrapeFirstHotelFromDocument()
         {
             var htmlDocument = GetHtmlDocument();
-            var hotels = new List<Hotel>();
 
-            foreach (var listItem in htmlDocument.DocumentNode.SelectNodes("//*[@id='list']/table/tr[@class != 'head'][position() <= 5]"))
-            {
-                hotels.Add(CreateHotelFromRow(listItem));
-            }
+            var node = htmlDocument.DocumentNode.SelectSingleNode("//*[@id='list']/table/tr[@class != 'head'][position() <= 1]");
 
-            return hotels;
+            return CreateHotelFromRow(node);
         }
 
         private Hotel CreateHotelFromRow(HtmlNode htmlNode)

@@ -50,6 +50,12 @@
     <Compile Include="TaxiPriceCalculator.cs" />
     <Compile Include="TaxiResultFactory.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LateRoomsScraper\LateRoomsScraper.csproj">
+      <Project>{2D8548AD-8581-49DA-9A0B-EF3A4E3E1A7A}</Project>
+      <Name>LateRoomsScraper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

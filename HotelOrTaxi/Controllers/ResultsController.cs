@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using HotelOrTaxi.Models;
+using LateRoomsScraper;
 using Results;
 
 namespace HotelOrTaxi.Controllers
@@ -17,7 +18,7 @@ namespace HotelOrTaxi.Controllers
         {
             ICreateTheTaxiControllerUri taxiResultsPage = new CreateTheTaxiControllerUri();
             var taxiResultFactory = new TaxiResultFactory(taxiResultsPage);
-            var hotelResultFactory = new HotelResultFactory();
+            var hotelResultFactory = new HotelResultFactory(new HotelScraper());
 
             _resultsViewModelFactory = new ResultsViewModelFactory(taxiResultFactory, hotelResultFactory);
         }
@@ -25,7 +26,7 @@ namespace HotelOrTaxi.Controllers
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
         {
             ICreateResultViewModels resultsViewModelFactory = _resultsViewModelFactory;
-            ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(Url);
+            ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(Url, from);
 
             return View("Index", resultsViewModel);
         }

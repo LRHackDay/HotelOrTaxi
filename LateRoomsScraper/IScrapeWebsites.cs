@@ -2,6 +2,6 @@
 {
     public interface IScrapeWebsites
     {
-        IScraperResponse Scrape();
+        IScraperResponse Scrape(string from);
     }
 }
