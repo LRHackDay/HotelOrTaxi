@@ -18,9 +18,11 @@ namespace Results
 
         public TaxiResult Create(UrlHelper urlHelper, Journey journey)
         {
-            var taxiResult = new TaxiResult();
-            taxiResult.Price = GetTaxiPrice(journey);
-            taxiResult.Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper);
+            var taxiResult = new TaxiResult
+                {
+                    Price = GetTaxiPrice(journey),
+                    Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper)
+                };
             return taxiResult;
         }
 

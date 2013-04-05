@@ -13,7 +13,7 @@ namespace Results
             _websiteScraper = websiteScraper;
         }
 
-        public Result Create(StartingPoint startingPoint)
+        public HotelResult Create(StartingPoint startingPoint)
         {
             var latitude = startingPoint.Location.Latitude.ToString();
             var longitude = startingPoint.Location.Longitude.ToString();

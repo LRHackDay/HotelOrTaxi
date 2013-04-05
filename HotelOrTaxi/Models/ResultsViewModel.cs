@@ -12,8 +12,10 @@ namespace HotelOrTaxi.Models
 
         public string Error { get; set; }
 
-        public bool IsDraw { get; set; }
+        public bool IsDraw { get; protected set; }
 
         public string ErrorDetails { get; set; }
+
+        public string Animation { get; protected set; }
     }
 }

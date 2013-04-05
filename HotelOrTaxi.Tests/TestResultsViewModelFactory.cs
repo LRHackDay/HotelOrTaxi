@@ -11,7 +11,7 @@ namespace HotelOrTaxi.Tests
     public class TestResultsViewModelFactory : ICreateTheTaxiResult, ICreateTheHotelResult,
                                                ICanGetTheDistanceOfATaxiJourneyBetweenPoints, ICalculateTheWinner
     {
-        private Result _hotel;
+        private HotelResult _hotel;
         private TaxiResult _taxi;
         private ResultsViewModel _viewModel;
         private bool _throwError;
@@ -50,19 +50,19 @@ namespace HotelOrTaxi.Tests
             return _taxi;
         }
 
-        Result ICreateTheHotelResult.Create(StartingPoint startingPoint)
+        HotelResult ICreateTheHotelResult.Create(StartingPoint startingPoint)
         {
             return _hotel;
         }
 
-        public Metres Calculate(StartingPoint origin, Destination destination)
+        Metres ICanGetTheDistanceOfATaxiJourneyBetweenPoints.Calculate(StartingPoint origin, Destination destination)
         {
             if (_throwError)
                 throw new NoRouteFoundException();
             return new Metres(10);
         }
 
-        public ResultsViewModel Winner(Result taxi, Result hotel)
+        ResultsViewModel ICalculateTheWinner.Fight(TaxiResult taxi, HotelResult hotel)
         {
             return _viewModel;
         }

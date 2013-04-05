@@ -30,7 +30,7 @@ namespace HotelOrTaxi
         public ResultsViewModel Create(UrlHelper urlHelper, StartingPoint startingPoint, Destination destination)
         {
             Metres distance;
-            Result hotel = _hotelResultFactory.Create(startingPoint);
+            HotelResult hotel = _hotelResultFactory.Create(startingPoint);
 
             try
             {
@@ -47,7 +47,7 @@ namespace HotelOrTaxi
             }
             var journey = new Journey(startingPoint, distance);
             TaxiResult taxi = _taxiResultFactory.Create(urlHelper, journey);
-            return _whoIsTheWinner.Winner(taxi, hotel);
+            return _whoIsTheWinner.Fight(taxi, hotel);
         }
     }
 }
