@@ -36,7 +36,7 @@ namespace HotelOrTaxi.Tests.Controllers
             Assert.That(model, Is.TypeOf<ResultsViewModel>());
         }
 
-        ResultsViewModel ICreateResultViewModels.Create(UrlHelper urlHelper, Journey journey)
+        ResultsViewModel ICreateResultViewModels.Create(UrlHelper urlHelper, StartingPoint startingPoint, Destination destination)
         {
             return new ResultsViewModel();
         }

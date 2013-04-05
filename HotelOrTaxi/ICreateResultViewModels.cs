@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Geography;
 using HotelOrTaxi.Models;
 using JourneyCalculator;
 using Results;
@@ -7,25 +8,43 @@ namespace HotelOrTaxi
 {
     public interface ICreateResultViewModels
     {
-        ResultsViewModel Create(UrlHelper urlHelper, Journey journey);
+        ResultsViewModel Create(UrlHelper urlHelper, StartingPoint startingPoint, Destination destination);
     }
 
     public class ResultsViewModelFactory : ICreateResultViewModels
     {
         private readonly ICreateTheTaxiResult _taxiResultFactory;
         private readonly ICreateTheHotelResult _hotelResultFactory;
+        private readonly ICanGetTheDistanceOfATaxiJourneyBetweenPoints _distanceCalculator;
 
-        public ResultsViewModelFactory(ICreateTheTaxiResult taxiResultFactory, ICreateTheHotelResult hotelResultFactory)
+        public ResultsViewModelFactory(ICreateTheTaxiResult taxiResultFactory, ICreateTheHotelResult hotelResultFactory,
+                                       ICanGetTheDistanceOfATaxiJourneyBetweenPoints distanceCalculator)
         {
             _taxiResultFactory = taxiResultFactory;
             _hotelResultFactory = hotelResultFactory;
+            _distanceCalculator = distanceCalculator;
         }
 
-        public ResultsViewModel Create(UrlHelper urlHelper, Journey journey)
+        public ResultsViewModel Create(UrlHelper urlHelper, StartingPoint startingPoint, Destination destination)
         {
-            TaxiResult taxi = _taxiResultFactory.Create(urlHelper, journey);
-            Result hotel = _hotelResultFactory.Create(journey);
+            Metres distance;
+            Result hotel = _hotelResultFactory.Create(startingPoint);
 
+            try
+            {
+                distance = _distanceCalculator.Calculate(startingPoint, destination);
+            }
+            catch (NoRouteFoundException)
+            {
+                return new ResultsViewModel
+                {
+                    Winner = hotel,
+                    Loser = null,
+                    PriceDifference = 0.0
+                };
+            }
+            var journey = new Journey(startingPoint, distance);
+            TaxiResult taxi = _taxiResultFactory.Create(urlHelper, journey);
             return Winner(taxi, hotel);
         }
 
