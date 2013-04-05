@@ -19,8 +19,8 @@ namespace GoogleMapsApi.Tests
 
             var directionsFactory = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser, specifyConditionsOfNoTaxiRoutesFound);
 
-            var startingPoint = new StartingPoint("Toronto");
-            var destination = new Destination("Montreal");
+            var startingPoint = new StartingPoint(null, "Toronto");
+            var destination = new Destination(null, "Montreal");
 
             Metres actualDistance = directionsFactory.Calculate(startingPoint, destination);
             Assert.That(actualDistance, Is.EqualTo(expectedDistance));

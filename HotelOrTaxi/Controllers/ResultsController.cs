@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Geography;
 using HotelOrTaxi.Models;
 using JourneyCalculator;
@@ -15,12 +16,14 @@ namespace HotelOrTaxi.Controllers
     {
         private readonly ICreateResultViewModels _resultsViewModelFactory;
         private readonly ICanGetTheDistanceOfATaxiJourneyBetweenPoints _distanceCalculator;
+        private LocationFactory _locationFactory;
 
         public ResultsController(ICreateResultViewModels resultsViewModelFactory,
                                  ICanGetTheDistanceOfATaxiJourneyBetweenPoints distanceCalculator)
         {
             _resultsViewModelFactory = resultsViewModelFactory;
             _distanceCalculator = distanceCalculator;
+            _locationFactory = new LocationFactory();
         }
 
         public ResultsController()
@@ -44,19 +47,26 @@ namespace HotelOrTaxi.Controllers
             _distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser,
                                                          specifyConditionsOfNoTaxiRoutesFound);
             _resultsViewModelFactory = new ResultsViewModelFactory(taxiResultFactory, hotelResultFactory);
+            _locationFactory = new LocationFactory();
         }
 
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
         {
-            ICreateResultViewModels resultsViewModelFactory = _resultsViewModelFactory;
+            var resultsViewModel = new ResultsViewModel();
+            try
+            {
+                var startingPoint = new StartingPoint(_locationFactory.GetLocation(fromlatlong), from);
+                var destination = new Destination(_locationFactory.GetLocation(tolatlong), to);
 
-            var startingPoint = new StartingPoint(fromlatlong);
-            var destination = new Destination(tolatlong);
+                var journey = new Journey(startingPoint, destination, _distanceCalculator);
 
-
-            var journey = new Journey(startingPoint, destination, _distanceCalculator);
-
-            ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(Url, journey);
+                resultsViewModel = _resultsViewModelFactory.Create(Url, journey);
+            }
+            catch (Exception e)
+            {
+                resultsViewModel.HasErrors = true;
+                resultsViewModel.Error = e.Message;
+            }
 
             return View("Index", resultsViewModel);
         }
@@ -64,6 +74,23 @@ namespace HotelOrTaxi.Controllers
         public ViewResult Fight()
         {
             return View();
+        }
+    }
+
+    public class LocationFactory
+    {
+        public Location GetLocation(string latlong)
+        {
+            if (latlong != null && latlong.Contains(","))
+            {
+                string[] strings = latlong.Split(',');
+
+                var latitude = new Latitude(strings[0]);
+                var longitude = new Longitude(strings[1]);
+
+                return new Location(latitude, longitude);
+            }
+            return null;
         }
     }
 }

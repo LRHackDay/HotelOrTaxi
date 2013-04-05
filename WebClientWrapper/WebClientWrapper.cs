@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 
 namespace WebResponse
 {
@@ -13,7 +14,23 @@ namespace WebResponse
 
         public string DownloadString(string address)
         {
-            return _webClient.DownloadString(address);
+            try
+            {
+                return _webClient.DownloadString(address);
+            }
+            catch (WebException e)
+            {
+                throw new TaxiApiException(e, "Error requesting Taxi Fare");
+            }
+            
+        }
+    }
+
+    public class TaxiApiException : Exception
+    {
+        public TaxiApiException(WebException webException, string errorRequestingTaxiFare)
+            : base(errorRequestingTaxiFare, webException)
+        {
         }
     }
 }
