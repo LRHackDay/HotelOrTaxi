@@ -70,6 +70,8 @@ namespace LateRoomsScraper
                 var totalPriceNode = node.SelectSingleNode(totalPriceXPath);
                 var urlXPath = string.Format("//*[@id='searchResults']/a[{0}]", index);
                 var urlNode = node.SelectSingleNode(urlXPath);
+                var imageXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/span/img", index);
+                var imageNode = node.SelectSingleNode(imageXPath);
 
                 hotels.Add(new Hotel
                     {
@@ -80,7 +82,8 @@ namespace LateRoomsScraper
                         Smiley = smileyNode.Attributes["class"].Value,
                         NumberOfReviews = numberOfReviewsNode.InnerText.Trim(),
                         TotalPrice = double.Parse(totalPriceNode.InnerText.Trim().Substring(2)),
-                        Url = urlNode.Attributes["href"].Value
+                        Url = urlNode.Attributes["href"].Value,
+                        ImageSource = imageNode.Attributes["src"].Value
                     });
             }
 

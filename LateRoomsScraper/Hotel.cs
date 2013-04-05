@@ -17,5 +17,7 @@
         public string NumberOfReviews { get; set; }
 
         public double TotalPrice { get; set; }
+
+        public string ImageSource { get; set; }
     }
 }
