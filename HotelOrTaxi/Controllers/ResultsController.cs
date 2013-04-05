@@ -30,7 +30,8 @@ namespace HotelOrTaxi.Controllers
             ICanReadConfigurations canReadConfigurations = new ConfigReader();
             ICreateRequests fareRequestFactory = new FareRequestFactory(canReadConfigurations);
             IDownloadResponses webResponseReader = new WebClientWrapper();
-            ICreateResponses fareResponseFactory = new FakeFareResponseFactory();
+            IPerformApiRequest performApiRequest = new WebClientApiRequest(canReadConfigurations, webResponseReader);
+            ICreateResponses fareResponseFactory = new FareResponseFactory(performApiRequest);
             ICreateTheTaxiResult taxiResultFactory = new TaxiResultFactory(taxiResultsPage, fareRequestFactory,
                                                                            fareResponseFactory);
             IGetTheResponseFromGoogleMapsDirectionsApi googleMapsDirectionsResponse =
