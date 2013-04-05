@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Web;
+using System.Web.Caching;
 using HtmlAgilityPack;
 
 namespace LateRoomsScraper
@@ -19,54 +21,70 @@ namespace LateRoomsScraper
         {
             _latitude = latitude;
             _longitude = longitude;
-            var hotel = ScrapeFirstHotelFromDocument();
-            //var hotels = ScrapeAllHotelsFromDocument();
+            var hotels = ScrapeAllHotelsFromDocument();
+
+            var resultsGuid = Guid.NewGuid();
+            AddResultsToCache(resultsGuid, hotels);
 
             return new HotelScraperResponse
                 {
-                    Hotel = hotel,
-                    //Hotels = hotels
+                    Hotels = hotels,
+                    ResultsGuid = resultsGuid
                 };
         }
 
-        private Hotel ScrapeFirstHotelFromDocument()
+        private static void AddResultsToCache(Guid resultsGuid, List<Hotel> hotels)
         {
-            var htmlDocument = GetHtmlDocument();
+            var key = resultsGuid.ToString();
 
-            var node = htmlDocument.DocumentNode.SelectSingleNode("//*[@id='searchResults']/a[1]/div/div[2]/div[3]/div/span/span[2]");
-
-            return CreateHotelFromRow(node);
+            if (HttpRuntime.Cache.Get(key) == null)
+            {
+                HttpRuntime.Cache.Add(key, hotels, null, DateTime.Now.AddDays(1), TimeSpan.Zero,
+                                      CacheItemPriority.Normal, null);
+            }
         }
 
         private List<Hotel> ScrapeAllHotelsFromDocument()
         {
             var htmlDocument = GetHtmlDocument();
             var hotels = new List<Hotel>();
+            var node = htmlDocument.DocumentNode;
 
             var resultIndex = 1;
             var numberOfResults = 10;
             for (int index = resultIndex; index <= numberOfResults; index++)
             {
-                var xpath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[3]/div/span/span[2]", index);
-                var hotelNameNode = htmlDocument.DocumentNode.SelectSingleNode(xpath);
+                var hotelNameXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[1]", index);
+                var hotelNameNode = node.SelectSingleNode(hotelNameXPath);
+                var locationXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/span", index);
+                var locationNode = node.SelectSingleNode(locationXPath);
+                var starRatingXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[2]", index);
+                var starRatingNode = node.SelectSingleNode(starRatingXPath);
+                var guestRatingXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/span", index);
+                var guestRatingNode = node.SelectSingleNode(guestRatingXPath);
+                var smileyXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/div", index);
+                var smileyNode = node.SelectSingleNode(smileyXPath);
+                var numberOfReviewsXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/strong", index);
+                var numberOfReviewsNode = node.SelectSingleNode(numberOfReviewsXPath);
+                var totalPriceXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[3]/div/span/span[2]", index);
+                var totalPriceNode = node.SelectSingleNode(totalPriceXPath);
+                var urlXPath = string.Format("//*[@id='searchResults']/a[{0}]", index);
+                var urlNode = node.SelectSingleNode(urlXPath);
 
                 hotels.Add(new Hotel
                     {
-                        Name = hotelNameNode.InnerText
+                        Name = hotelNameNode.InnerText.Trim(),
+                        Location = locationNode.InnerText.Trim(),
+                        StarRating = starRatingNode.InnerText.Trim(),
+                        GuestRating = guestRatingNode.InnerText.Trim(),
+                        Smiley = smileyNode.Attributes["class"].Value,
+                        NumberOfReviews = numberOfReviewsNode.InnerText.Trim(),
+                        TotalPrice = double.Parse(totalPriceNode.InnerText.Trim().Substring(2)),
+                        Url = urlNode.Attributes["href"].Value
                     });
             }
 
             return hotels;
-        }
-
-        private Hotel CreateHotelFromRow(HtmlNode htmlNode)
-        {
-            return new Hotel
-                {
-                    Url = string.Empty,
-                    Name = string.Empty,
-                    Price = htmlNode.InnerText.Trim().Substring(2)
-                };
         }
 
         private HtmlDocument GetHtmlDocument()

@@ -11,7 +11,7 @@ namespace HotelOrTaxi.Controllers
         //
         // GET: /Hotel/
 
-        public ActionResult Index()
+        public ActionResult Index(Guid id)
         {
             return View();
         }
