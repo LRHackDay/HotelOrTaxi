@@ -119,7 +119,6 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 
 .modal-fight {  background:#F3EDE0; width:100%; height:600px; background-image:url(/assets/img/fight-big.gif);  background-repeat:no-repeat; background-position:center;}
 
-
 .input-where { width:60%; float:left; }
 /* Landscape phones and down */
  @media (max-width: 979px) {

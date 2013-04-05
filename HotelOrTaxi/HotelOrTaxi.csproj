@@ -125,6 +125,8 @@
     <Content Include="assets\img\circle-2.jpg" />
     <Content Include="assets\img\circle-2.png" />
     <Content Include="assets\img\circle-3.png" />
+    <Content Include="assets\img\desktop-about.png" />
+    <Content Include="assets\img\draw-wins-small.gif" />
     <Content Include="assets\img\draw-wins.gif" />
     <Content Include="assets\img\fight-big.gif" />
     <Content Include="assets\img\fight-button.jpg" />
@@ -137,12 +139,14 @@
     <Content Include="assets\img\hotel-home-image.png" />
     <Content Include="assets\img\hotel-icon.png" />
     <Content Include="assets\img\hotel-wins-icon.png" />
+    <Content Include="assets\img\hotel-wins-small.gif" />
     <Content Include="assets\img\hotel-wins.gif" />
     <Content Include="assets\img\icon-app-v2.png" />
     <Content Include="assets\img\icon-app.png" />
     <Content Include="assets\img\icons-hotel-and-taxi.png" />
     <Content Include="assets\img\lightbulb-home-image.png" />
     <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\mobile-about.png" />
     <Content Include="assets\img\people\abi.png" />
     <Content Include="assets\img\people\adam.png" />
     <Content Include="assets\img\people\alex.png" />
@@ -159,9 +163,11 @@
     <Content Include="assets\img\search-icon.png" />
     <Content Include="assets\img\speechbubble-arrow.png" />
     <Content Include="assets\img\startscreen.png" />
+    <Content Include="assets\img\tablet-about.png" />
     <Content Include="assets\img\taxi-home-image.png" />
     <Content Include="assets\img\taxi-icon.png" />
     <Content Include="assets\img\taxi-wins-icon.png" />
+    <Content Include="assets\img\taxi-wins-small.gif" />
     <Content Include="assets\img\taxi-wins.gif" />
     <Content Include="assets\img\text-logo-mobile.png" />
     <Content Include="assets\img\text-logo-web.png" />

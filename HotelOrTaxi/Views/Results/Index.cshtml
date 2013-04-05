@@ -1,7 +1,7 @@
 ﻿@model HotelOrTaxi.Models.ResultsViewModel
 
 <div class="container search-results">
-    <div class="row"><img src="/assets/img/@Model.Animation-wins.gif"/></div>
+    <div class="row" align="center"><img src="/assets/img/@Model.Animation-wins.gif"/></div>
     @if (Model.Winner.Name == "Hotel" && Model.PriceDifference > 0)
     {
         <div id="result-info">
