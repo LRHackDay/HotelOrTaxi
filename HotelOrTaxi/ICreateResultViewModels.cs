@@ -46,11 +46,11 @@ namespace HotelOrTaxi
             {
                 Type exceptionType = ex.GetType();
                 if (exceptionType == typeof (TaxiApiException) || exceptionType == typeof (NoRouteFoundException))
-                    return new ResultsViewModel
+                    return new HotelWins
                         {
-                            Winner = hotel,
                             Loser = null,
-                            PriceDifference = 0.0
+                            Winner = hotel,
+                            PriceDifference = 0.00
                         };
                 throw;
             }
