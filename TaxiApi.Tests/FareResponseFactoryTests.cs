@@ -42,9 +42,9 @@ namespace TaxiApi.Tests
             var latitude = new Latitude("52.51211199999999");
             var longitude = new Longitude("-3.3131060000000616");
             var startingPoint = new Location(latitude, longitude);
-            var from = new StartingPoint(startingPoint);
+            var from = new StartingPoint(startingPoint, null);
             string searchTerm = "my postcode";
-            var to = new Destination(searchTerm);
+            var to = new Destination(null, searchTerm);
 
             _distance = new Metres(5000);
 

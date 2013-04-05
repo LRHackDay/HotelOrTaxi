@@ -4,20 +4,9 @@ namespace Geography
     {
         public Location Location { get; set; }
 
-        public Destination(string searchTerm)
+        public Destination(Location location, string searchTerm)
         {
-            if (searchTerm != null && searchTerm.Contains(","))
-            {
-                string[] strings = searchTerm.Split(',');
-
-                var latitude = new Latitude(strings[0]);
-                var longitude = new Longitude(strings[1]);
-
-                Location = new Location(latitude, longitude);
-            }
-
-            else
-                Location = new Location(searchTerm);
+            Location = location ?? new Location(searchTerm);
         }
     }
 }
