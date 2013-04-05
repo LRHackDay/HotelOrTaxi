@@ -8,7 +8,7 @@
 
         public string Uri { get; set; }
 
-        public string SubHeadline { get; set; }
+        public string SubHeadline { get; protected set; }
     }
 
     public class HotelResult : Result
