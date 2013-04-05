@@ -7,6 +7,8 @@
         public double Price { get; set; }
 
         public string Uri { get; set; }
+
+        public string SubHeadline { get; set; }
     }
 
     public class HotelResult : Result
@@ -14,6 +16,7 @@
         public HotelResult()
         {
             Name = "Hotel";
+            SubHeadline = "Cheapest price";
         }
     }
 
@@ -22,6 +25,7 @@
         public TaxiResult()
         {
             Name = "Taxi";
+            SubHeadline = "Avg price";
         }
     }
 }
