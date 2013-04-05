@@ -83,6 +83,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="ICreateResultViewModels.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Controllers\TaxiController.cs" />
@@ -99,6 +100,7 @@
     <Content Include="assets\css\bootstrap-responsive.min.css" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\searchresults.css" />
     <Content Include="assets\css\style-3.css" />
     <Content Include="assets\css\style-2.css" />
     <Content Include="assets\css\style.css" />
@@ -173,6 +175,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Results\Fight.cshtml" />
+    <Content Include="Views\Hotel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Taxi\Index.cshtml" />
