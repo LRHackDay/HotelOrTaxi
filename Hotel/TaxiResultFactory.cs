@@ -1,32 +1,40 @@
 ﻿using System.Web.Mvc;
-using Geography;
 using JourneyCalculator;
-using TaxiApi.Request;
-using TaxiApi.Response;
+using WebResponse;
 
 namespace Results
 {
     public class TaxiResultFactory : ICreateTheTaxiResult
     {
         private readonly ICreateTheTaxiControllerUri _createTheTaxiControllerUri;
-        private readonly ICreateResponses _fareResponseFactory;
-        private readonly ICreateRequests _fareRequestFactory;
+        private readonly TaxiFareCalculator _taxiFareCalculator;
 
         public TaxiResultFactory(ICreateTheTaxiControllerUri createTheTaxiControllerUri,
-                                 ICreateRequests fareRequestFactory, ICreateResponses fareResponseFactory)
+                                 TaxiFareCalculator taxiFareCalculator)
         {
             _createTheTaxiControllerUri = createTheTaxiControllerUri;
-            _fareRequestFactory = fareRequestFactory;
-            _fareResponseFactory = fareResponseFactory;
+            _taxiFareCalculator = taxiFareCalculator;
         }
 
         public TaxiResult Create(UrlHelper urlHelper, Journey journey)
         {
-            return new TaxiResult
-                {
-                    Price = new TaxiFareCalculator(_fareRequestFactory, _fareResponseFactory).GetTaxiPrice(journey),
-                    Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper)
-                };
+            var taxiResult = new TaxiResult();
+            taxiResult.Price = GetTaxiPrice(journey);
+            taxiResult.Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper);
+            return taxiResult;
+        }
+
+        private double GetTaxiPrice(Journey journey)
+        {
+            try
+            {
+                double taxiPrice = _taxiFareCalculator.GetTaxiPrice(journey);
+                return taxiPrice;
+            }
+            catch (TaxiApiException)
+            {
+                return 35.00;
+            }
         }
     }
 }

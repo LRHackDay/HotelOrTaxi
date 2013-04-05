@@ -18,9 +18,9 @@ namespace WebResponse
             {
                 return _webClient.DownloadString(address);
             }
-            catch (WebException e)
+            catch (WebException)
             {
-                throw new TaxiApiException(e, "Error requesting Taxi Fare");
+                throw new TaxiApiException("Error requesting Taxi Fare. We've probably run out of api requests.");
             }
             
         }
@@ -28,8 +28,8 @@ namespace WebResponse
 
     public class TaxiApiException : Exception
     {
-        public TaxiApiException(WebException webException, string errorRequestingTaxiFare)
-            : base(errorRequestingTaxiFare, webException)
+        public TaxiApiException(string errorRequestingTaxiFare)
+            : base(errorRequestingTaxiFare)
         {
         }
     }

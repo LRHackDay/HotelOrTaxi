@@ -95,6 +95,7 @@
     <Compile Include="Models\TaxisViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaxiViewModelFactory.cs" />
+    <Compile Include="WhoIsTheWinner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\add2home.css" />

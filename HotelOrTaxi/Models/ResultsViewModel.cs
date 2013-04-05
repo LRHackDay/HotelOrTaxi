@@ -4,18 +4,16 @@ namespace HotelOrTaxi.Models
 {
     public class ResultsViewModel
     {
-        public ResultsViewModel()
-        {
-            HasErrors = false;
-        }
         public Result Winner { get; set; }
 
         public Result Loser { get; set; }
 
         public double PriceDifference { get; set; }
 
-        public bool HasErrors { get; set; }
+        public string Error { get; set; }
 
-        public object Error { get; set; }
+        public bool IsDraw { get; set; }
+
+        public string ErrorDetails { get; set; }
     }
 }

@@ -16,13 +16,15 @@ namespace HotelOrTaxi
         private readonly ICreateTheTaxiResult _taxiResultFactory;
         private readonly ICreateTheHotelResult _hotelResultFactory;
         private readonly ICanGetTheDistanceOfATaxiJourneyBetweenPoints _distanceCalculator;
+        private readonly ICalculateTheWinner _whoIsTheWinner;
 
         public ResultsViewModelFactory(ICreateTheTaxiResult taxiResultFactory, ICreateTheHotelResult hotelResultFactory,
-                                       ICanGetTheDistanceOfATaxiJourneyBetweenPoints distanceCalculator)
+                                       ICanGetTheDistanceOfATaxiJourneyBetweenPoints distanceCalculator, ICalculateTheWinner whoIsTheWinner)
         {
             _taxiResultFactory = taxiResultFactory;
             _hotelResultFactory = hotelResultFactory;
             _distanceCalculator = distanceCalculator;
+            _whoIsTheWinner = whoIsTheWinner;
         }
 
         public ResultsViewModel Create(UrlHelper urlHelper, StartingPoint startingPoint, Destination destination)
@@ -45,26 +47,7 @@ namespace HotelOrTaxi
             }
             var journey = new Journey(startingPoint, distance);
             TaxiResult taxi = _taxiResultFactory.Create(urlHelper, journey);
-            return Winner(taxi, hotel);
-        }
-
-        private static ResultsViewModel Winner(Result taxi, Result hotel)
-        {
-            if (taxi.Price < hotel.Price)
-            {
-                return new ResultsViewModel
-                    {
-                        Loser = hotel,
-                        Winner = taxi,
-                        PriceDifference = hotel.Price - taxi.Price
-                    };
-            }
-            return new ResultsViewModel
-                {
-                    Loser = taxi,
-                    Winner = hotel,
-                    PriceDifference = taxi.Price - hotel.Price
-                };
+            return _whoIsTheWinner.Winner(taxi, hotel);
         }
     }
 }

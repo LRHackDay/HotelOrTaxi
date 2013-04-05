@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Geography;
+using HotelOrTaxi.Models;
 using JourneyCalculator;
 using NUnit.Framework;
 using Results;
@@ -7,30 +8,41 @@ using Results;
 namespace HotelOrTaxi.Tests
 {
     [TestFixture]
-    public class TestResultsViewModelFactory : ICreateTheTaxiResult, ICreateTheHotelResult, ICanGetTheDistanceOfATaxiJourneyBetweenPoints
+    public class TestResultsViewModelFactory : ICreateTheTaxiResult, ICreateTheHotelResult,
+                                               ICanGetTheDistanceOfATaxiJourneyBetweenPoints, ICalculateTheWinner
     {
         private Result _hotel;
         private TaxiResult _taxi;
-        private Metres _distance;
+        private ResultsViewModel _viewModel;
+        private bool _throwError;
 
         [Test]
-        public void SetsLowestPriceAsWinner()
+        public void ReturnsViewModel()
         {
-            _distance = new Metres(10);
+            _throwError = false;
+            _viewModel = new ResultsViewModel();
 
-            _hotel = new HotelResult
-                {
-                    Price = 10.00
-                };
+            var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, this);
+            var startingPoint = new StartingPoint(null, null);
+            ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(null, startingPoint, null);
 
-            _taxi = new TaxiResult
-                {
-                    Price = 20.00
-                };
+            Assert.That(resultsViewModel, Is.EqualTo(_viewModel));
+        }
 
-            Result winner = new ResultsViewModelFactory(this, this, this).Create(null, new StartingPoint(null, null), null).Winner;
+        [Test]
+        public void OnlyReturnWinningHotelWhenNoTaxiRouteFound()
+        {
+            _throwError = true;
 
-            Assert.That(winner, Is.EqualTo(_hotel));
+            _hotel = new HotelResult();
+            _taxi = new TaxiResult();
+
+            var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, this);
+            var startingPoint = new StartingPoint(null, null);
+            ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(null, startingPoint, null);
+
+            Assert.That(resultsViewModel.Loser, Is.Null);
+            Assert.That(resultsViewModel.Winner, Is.EqualTo(_hotel));
         }
 
         TaxiResult ICreateTheTaxiResult.Create(UrlHelper urlHelper, Journey journey)
@@ -45,7 +57,14 @@ namespace HotelOrTaxi.Tests
 
         public Metres Calculate(StartingPoint origin, Destination destination)
         {
-            return _distance;
+            if (_throwError)
+                throw new NoRouteFoundException();
+            return new Metres(10);
+        }
+
+        public ResultsViewModel Winner(Result taxi, Result hotel)
+        {
+            return _viewModel;
         }
     }
 }

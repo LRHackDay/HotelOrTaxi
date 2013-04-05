@@ -1,5 +1,4 @@
 ﻿using System;
-using Geography;
 using JourneyCalculator;
 using TaxiApi.Request;
 using TaxiApi.Response;
@@ -25,7 +24,6 @@ namespace Results
         public double GetTaxiPrice(Journey journey)
         {
             string request = _fareRequestFactory.Create(DateTime.Now, journey);
-
             FareResponse fareResponse = _fareResponseFactory.Create(request);
 
             return (double) fareResponse.Fare.Cost;

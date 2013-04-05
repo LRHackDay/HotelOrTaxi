@@ -31,8 +31,7 @@ namespace HotelOrTaxi.Controllers
             IDownloadResponses webResponseReader = new WebClientWrapper();
             IPerformApiRequest performApiRequest = new WebClientApiRequest(canReadConfigurations, webResponseReader);
             ICreateResponses fareResponseFactory = new FareResponseFactory(performApiRequest);
-            ICreateTheTaxiResult taxiResultFactory = new TaxiResultFactory(taxiResultsPage, fareRequestFactory,
-                                                                           fareResponseFactory);
+            ICreateTheTaxiResult taxiResultFactory = new TaxiResultFactory(taxiResultsPage, new TaxiFareCalculator(fareRequestFactory, fareResponseFactory));
             IGetTheResponseFromGoogleMapsDirectionsApi googleMapsDirectionsResponse =
                 new GoogleMapsDirectionsResponse(webResponseReader);
             IDeserialiseGoogleMapsDirectionsResponses googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
@@ -44,7 +43,7 @@ namespace HotelOrTaxi.Controllers
             var distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser,
                                                             specifyConditionsOfNoTaxiRoutesFound);
             _resultsViewModelFactory = new ResultsViewModelFactory(taxiResultFactory, hotelResultFactory,
-                                                                   distanceCalculator);
+                                                                   distanceCalculator, new WhoIsTheWinner());
             _createLocations = new LocationFactory();
         }
 
@@ -63,6 +62,7 @@ namespace HotelOrTaxi.Controllers
             catch (Exception e)
             {
                 resultsViewModel.Error = e.Message;
+                resultsViewModel.ErrorDetails = e.StackTrace;
             }
 
             return View("Error", resultsViewModel);
