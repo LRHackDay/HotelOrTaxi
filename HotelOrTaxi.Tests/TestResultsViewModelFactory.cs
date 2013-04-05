@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Geography;
 using JourneyCalculator;
 using NUnit.Framework;
 using Results;
@@ -6,14 +7,17 @@ using Results;
 namespace HotelOrTaxi.Tests
 {
     [TestFixture]
-    public class TestResultsViewModelFactory : ICreateTheTaxiResult, ICreateTheHotelResult
+    public class TestResultsViewModelFactory : ICreateTheTaxiResult, ICreateTheHotelResult, ICanGetTheDistanceOfATaxiJourneyBetweenPoints
     {
         private Result _hotel;
         private TaxiResult _taxi;
+        private Metres _distance;
 
         [Test]
         public void SetsLowestPriceAsWinner()
         {
+            _distance = new Metres(10);
+
             _hotel = new HotelResult
                 {
                     Price = 10.00
@@ -24,7 +28,7 @@ namespace HotelOrTaxi.Tests
                     Price = 20.00
                 };
 
-            Result winner = new ResultsViewModelFactory(this, this).Create(null, null).Winner;
+            Result winner = new ResultsViewModelFactory(this, this, this).Create(null, new StartingPoint(null, null), null).Winner;
 
             Assert.That(winner, Is.EqualTo(_hotel));
         }
@@ -34,9 +38,14 @@ namespace HotelOrTaxi.Tests
             return _taxi;
         }
 
-        Result ICreateTheHotelResult.Create(Journey journey)
+        Result ICreateTheHotelResult.Create(StartingPoint startingPoint)
         {
             return _hotel;
+        }
+
+        public Metres Calculate(StartingPoint origin, Destination destination)
+        {
+            return _distance;
         }
     }
 }

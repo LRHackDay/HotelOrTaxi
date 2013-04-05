@@ -1,9 +1,10 @@
-﻿using JourneyCalculator;
+﻿using Geography;
+using JourneyCalculator;
 
 namespace Results
 {
     public interface ICreateTheHotelResult
     {
-        Result Create(Journey journey);
+        Result Create(StartingPoint startingPoint);
     }
 }

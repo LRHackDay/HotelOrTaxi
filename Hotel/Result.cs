@@ -2,7 +2,7 @@
 {
     public class Result
     {
-        public string Name { get; set; }
+        public string Name { get; protected set; }
 
         public double Price { get; set; }
 

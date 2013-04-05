@@ -28,7 +28,7 @@ namespace Results.Tests
 
             var startingPoint = new StartingPoint(null, "bob");
             var destination = new Destination(null, "bob");
-            var journey = new Journey(startingPoint, destination, null);
+            var journey = new Journey(startingPoint, ((ICanGetTheDistanceOfATaxiJourneyBetweenPoints) null).Calculate(startingPoint, destination));
 
 
             ICreateRequests jane = this;

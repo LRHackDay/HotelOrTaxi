@@ -48,7 +48,7 @@ namespace TaxiApi.Tests
 
             _distance = new Metres(5000);
 
-            var journey = new Journey(@from, to, null);
+            var journey = new Journey(@from, ((ICanGetTheDistanceOfATaxiJourneyBetweenPoints) null).Calculate(@from, to));
 
             string request = new FareRequestFactory(this).Create(DateTime.Now, journey);
 
