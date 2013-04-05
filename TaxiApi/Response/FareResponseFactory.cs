@@ -29,4 +29,18 @@ namespace TaxiApi.Response
             return JsonConvert.DeserializeObject<FareResponse>(response);
         }
     }
+
+    public class FakeFareResponseFactory : ICreateResponses
+    {
+        public FareResponse Create(string fareRequest)
+        {
+            return new FareResponse
+                {
+                    Fare = new Fare
+                        {
+                            Cost = (decimal)30.25
+                        }
+                };
+        }
+    }
 }
