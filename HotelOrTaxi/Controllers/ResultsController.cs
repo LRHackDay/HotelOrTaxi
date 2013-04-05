@@ -15,13 +15,12 @@ namespace HotelOrTaxi.Controllers
     public class ResultsController : Controller
     {
         private readonly ICreateResultViewModels _resultsViewModelFactory;
-        private readonly LocationFactory _locationFactory;
+        private readonly ICreateLocations _createLocations;
 
-        public ResultsController(ICreateResultViewModels resultsViewModelFactory,
-                                 ICanGetTheDistanceOfATaxiJourneyBetweenPoints distanceCalculator)
+        public ResultsController(ICreateResultViewModels resultsViewModelFactory, ICreateLocations createLocations)
         {
             _resultsViewModelFactory = resultsViewModelFactory;
-            _locationFactory = new LocationFactory();
+            _createLocations = createLocations;
         }
 
         public ResultsController()
@@ -43,9 +42,10 @@ namespace HotelOrTaxi.Controllers
             ICreateTheHotelResult hotelResultFactory = new HotelResultFactory(websiteScraper);
 
             var distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser,
-                                                         specifyConditionsOfNoTaxiRoutesFound);
-            _resultsViewModelFactory = new ResultsViewModelFactory(taxiResultFactory, hotelResultFactory, distanceCalculator);
-            _locationFactory = new LocationFactory();
+                                                            specifyConditionsOfNoTaxiRoutesFound);
+            _resultsViewModelFactory = new ResultsViewModelFactory(taxiResultFactory, hotelResultFactory,
+                                                                   distanceCalculator);
+            _createLocations = new LocationFactory();
         }
 
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
@@ -53,18 +53,19 @@ namespace HotelOrTaxi.Controllers
             var resultsViewModel = new ResultsViewModel();
             try
             {
-                var startingPoint = new StartingPoint(_locationFactory.GetLocation(fromlatlong), from);
-                var destination = new Destination(_locationFactory.GetLocation(tolatlong), to);
+                var startingPoint = new StartingPoint(_createLocations.GetLocation(fromlatlong), from);
+                var destination = new Destination(_createLocations.GetLocation(tolatlong), to);
 
                 resultsViewModel = _resultsViewModelFactory.Create(Url, startingPoint, destination);
+
+                return View("Index", resultsViewModel);
             }
             catch (Exception e)
             {
-                resultsViewModel.HasErrors = true;
                 resultsViewModel.Error = e.Message;
             }
 
-            return View("Index", resultsViewModel);
+            return View("Error", resultsViewModel);
         }
 
         public ViewResult Fight()
@@ -73,7 +74,12 @@ namespace HotelOrTaxi.Controllers
         }
     }
 
-    public class LocationFactory
+    public interface ICreateLocations
+    {
+        Location GetLocation(string latlong);
+    }
+
+    public class LocationFactory : ICreateLocations
     {
         public Location GetLocation(string latlong)
         {

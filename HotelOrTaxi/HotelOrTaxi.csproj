@@ -179,6 +179,7 @@
     <Content Include="Views\Results\Fight.cshtml" />
     <Content Include="Views\Hotel\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Results\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Taxi\Index.cshtml" />

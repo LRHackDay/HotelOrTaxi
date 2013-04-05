@@ -1,17 +1,6 @@
 ﻿@using Results
 @model HotelOrTaxi.Models.ResultsViewModel
 
-@if (Model.HasErrors)
-{
-    <div class="container search-results">
-        <h1>Whoops!</h1>
-        <p>
-            The fight got a bit messy and we have no clear winner.
-            <br/>
-            @Model.Error
-        </p>
-    </div>
-}
 else
 {
     <div class="container search-results">
