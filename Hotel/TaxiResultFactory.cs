@@ -28,15 +28,8 @@ namespace Results
 
         private double GetTaxiPrice(Journey journey)
         {
-            try
-            {
                 double taxiPrice = _taxiFareCalculator.GetTaxiPrice(journey);
                 return taxiPrice;
-            }
-            catch (TaxiApiException)
-            {
-                return 35.00;
-            }
         }
     }
 }
