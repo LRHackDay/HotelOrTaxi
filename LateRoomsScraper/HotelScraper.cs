@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using HtmlAgilityPack;
 
@@ -19,10 +20,12 @@ namespace LateRoomsScraper
             _latitude = latitude;
             _longitude = longitude;
             var hotel = ScrapeFirstHotelFromDocument();
+            //var hotels = ScrapeAllHotelsFromDocument();
 
             return new HotelScraperResponse
                 {
-                    Hotel = hotel
+                    Hotel = hotel,
+                    //Hotels = hotels
                 };
         }
 
@@ -33,6 +36,27 @@ namespace LateRoomsScraper
             var node = htmlDocument.DocumentNode.SelectSingleNode("//*[@id='searchResults']/a[1]/div/div[2]/div[3]/div/span/span[2]");
 
             return CreateHotelFromRow(node);
+        }
+
+        private List<Hotel> ScrapeAllHotelsFromDocument()
+        {
+            var htmlDocument = GetHtmlDocument();
+            var hotels = new List<Hotel>();
+
+            var resultIndex = 1;
+            var numberOfResults = 10;
+            for (int index = resultIndex; index <= numberOfResults; index++)
+            {
+                var xpath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[3]/div/span/span[2]", index);
+                var hotelNameNode = htmlDocument.DocumentNode.SelectSingleNode(xpath);
+
+                hotels.Add(new Hotel
+                    {
+                        Name = hotelNameNode.InnerText
+                    });
+            }
+
+            return hotels;
         }
 
         private Hotel CreateHotelFromRow(HtmlNode htmlNode)
