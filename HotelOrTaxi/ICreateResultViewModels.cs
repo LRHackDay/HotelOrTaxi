@@ -36,13 +36,15 @@ namespace HotelOrTaxi
                 return new ResultsViewModel
                     {
                         Loser = hotel,
-                        Winner = taxi
+                        Winner = taxi,
+                        PriceDifference = taxi.Price - hotel.Price
                     };
             }
             return new ResultsViewModel
                 {
                     Loser = taxi,
-                    Winner = hotel
+                    Winner = hotel,
+                    PriceDifference = hotel.Price - taxi.Price
                 };
         }
     }
