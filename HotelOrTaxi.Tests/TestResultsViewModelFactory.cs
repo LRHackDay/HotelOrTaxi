@@ -4,6 +4,7 @@ using HotelOrTaxi.Models;
 using JourneyCalculator;
 using NUnit.Framework;
 using Results;
+using WebResponse;
 
 namespace HotelOrTaxi.Tests
 {
@@ -14,17 +15,25 @@ namespace HotelOrTaxi.Tests
         private HotelResult _hotel;
         private TaxiResult _taxi;
         private ResultsViewModel _viewModel;
-        private bool _throwError;
+        private bool _throwNoTaxiRouteFoundException;
+        private bool _throwNoHotelFoundException;
+        private bool _throwTaxiApiException;
+        private Metres _distance;
 
         [Test]
         public void ReturnsViewModel()
         {
-            _throwError = false;
             _viewModel = new ResultsViewModel();
+            _distance = new Metres(0);
+            _taxi = new TaxiResult();
+            _hotel = new HotelResult();
+            _throwNoHotelFoundException = false;
+            _throwNoTaxiRouteFoundException = false;
+            _throwTaxiApiException = false;
 
             var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, this);
             var startingPoint = new StartingPoint(null, null);
-            ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(null, startingPoint, null);
+            var resultsViewModel = resultsViewModelFactory.Create(null, startingPoint, null);
 
             Assert.That(resultsViewModel, Is.EqualTo(_viewModel));
         }
@@ -32,37 +41,80 @@ namespace HotelOrTaxi.Tests
         [Test]
         public void OnlyReturnWinningHotelWhenNoTaxiRouteFound()
         {
-            _throwError = true;
+            _throwNoTaxiRouteFoundException = true;
+            _throwNoHotelFoundException = false;
+            _throwTaxiApiException = false;
 
             _hotel = new HotelResult();
             _taxi = new TaxiResult();
 
-            var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, this);
+            var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, new WhoIsTheWinner());
             var startingPoint = new StartingPoint(null, null);
-            ResultsViewModel resultsViewModel = resultsViewModelFactory.Create(null, startingPoint, null);
+            var resultsViewModel = resultsViewModelFactory.Create(null, startingPoint, null);
 
             Assert.That(resultsViewModel.Loser, Is.Null);
             Assert.That(resultsViewModel.Winner, Is.EqualTo(_hotel));
         }
 
+        [Test]
+        public void OnlyReturnWinningHotelWhenProblemWithTaxiApi()
+        {
+            _throwTaxiApiException = true;
+            _throwNoHotelFoundException = false;
+            _throwNoTaxiRouteFoundException = false;
+
+            _hotel = new HotelResult();
+            _taxi = new TaxiResult();
+
+            var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, new WhoIsTheWinner());
+            var startingPoint = new StartingPoint(null, null);
+            var resultsViewModel = resultsViewModelFactory.Create(null, startingPoint, null);
+
+            Assert.That(resultsViewModel.Loser, Is.Null);
+            Assert.That(resultsViewModel.Winner, Is.EqualTo(_hotel));
+        }
+
+        [Test]
+        public void DealWithNoHotelFound()
+        {
+            _throwNoHotelFoundException = true;
+            _throwTaxiApiException = false;
+            _throwNoTaxiRouteFoundException = false;
+
+            _distance = new Metres(0);
+            _hotel = new HotelResult();
+            _taxi = new TaxiResult();
+
+            var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, new WhoIsTheWinner());
+            var startingPoint = new StartingPoint(null, null);
+            var resultsViewModel = resultsViewModelFactory.Create(null, startingPoint, null);
+
+            Assert.That(resultsViewModel.Loser, Is.Null);
+            Assert.That(resultsViewModel.Winner, Is.EqualTo(_taxi));
+        }
+
         TaxiResult ICreateTheTaxiResult.Create(UrlHelper urlHelper, Journey journey)
         {
+            if (_throwTaxiApiException)
+                throw new TaxiApiException();
             return _taxi;
         }
 
         HotelResult ICreateTheHotelResult.Create(StartingPoint startingPoint)
         {
+            if (_throwNoHotelFoundException)
+                throw new NoHotelFoundException();
             return _hotel;
         }
 
         Metres ICanGetTheDistanceOfATaxiJourneyBetweenPoints.Calculate(StartingPoint origin, Destination destination)
         {
-            if (_throwError)
+            if (_throwNoTaxiRouteFoundException)
                 throw new NoRouteFoundException();
-            return new Metres(10);
+            return _distance;
         }
 
-        ResultsViewModel ICalculateTheWinner.Fight(TaxiResult taxi, HotelResult hotel)
+        public ResultsViewModel Fight(TaxiResult taxi, HotelResult hotel)
         {
             return _viewModel;
         }

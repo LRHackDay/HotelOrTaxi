@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Geography;
 using HotelOrTaxi.Models;
 using JourneyCalculator;
@@ -32,28 +31,43 @@ namespace HotelOrTaxi
 
         public ResultsViewModel Create(UrlHelper urlHelper, StartingPoint startingPoint, Destination destination)
         {
-            Metres distance;
-            HotelResult hotel = _hotelResultFactory.Create(startingPoint);
+            Metres distance = null;
+            TaxiResult taxi = null;
+            HotelResult hotel = null;
+            try
+            {
+                hotel = _hotelResultFactory.Create(startingPoint);
+            }
+            catch (NoHotelFoundException)
+            {
+            }
 
             try
             {
                 distance = _distanceCalculator.Calculate(startingPoint, destination);
-                var journey = new Journey(startingPoint, distance);
-                TaxiResult taxi = _taxiResultFactory.Create(urlHelper, journey);
-                return _whoIsTheWinner.Fight(taxi, hotel);
             }
-            catch (Exception ex)
+            catch (NoRouteFoundException)
             {
-                Type exceptionType = ex.GetType();
-                if (exceptionType == typeof (TaxiApiException) || exceptionType == typeof (NoRouteFoundException))
-                    return new HotelWins
-                        {
-                            Loser = null,
-                            Winner = hotel,
-                            PriceDifference = 0.00
-                        };
-                throw;
             }
+
+            if (distance != null)
+            {
+                try
+                {
+                    var journey = new Journey(startingPoint, distance);
+                    taxi = _taxiResultFactory.Create(urlHelper, journey);
+                }
+                catch (TaxiApiException)
+                {
+                }
+            }
+
+            if (taxi == null && hotel == null)
+            {
+                throw new NoClearWinnerExeption();
+            }
+
+            return _whoIsTheWinner.Fight(taxi, hotel);
         }
     }
 }

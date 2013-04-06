@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using HotelOrTaxi.Models;
 using Results;
 
@@ -12,15 +14,36 @@ namespace HotelOrTaxi
     {
         public ResultsViewModel Fight(TaxiResult taxi, HotelResult hotel)
         {
-            if (IsDraw(taxi, hotel))
+            ResultsViewModel result;
+            if (taxi == null && hotel != null)
             {
-                return CreateDraw(taxi, hotel);
+                result = new HotelWins
+                    {
+                        Loser = null,
+                        Winner = hotel,
+                        PriceDifference = 0.00
+                    };
             }
-            if (TaxiIsCheaper(taxi, hotel))
+            else if (hotel == null && taxi != null)
             {
-                return CreateTaxiWinner(taxi, hotel);
+                result = new TaxiWins
+                    {
+                        Loser = null,
+                        Winner = taxi,
+                        PriceDifference = 0.0
+                    };
             }
-            return CreateHotelWinner(taxi, hotel);
+            
+            else if (IsDraw(taxi, hotel))
+            {
+                result = Draw(taxi, hotel);
+            }
+            else if (TaxiIsCheaper(taxi, hotel))
+            {
+                result = TaxiWins(taxi, hotel);
+            }
+            else {result = HotelWins(taxi, hotel);}
+            return result;
         }
 
         private static bool TaxiIsCheaper(TaxiResult taxi, HotelResult hotel)
@@ -33,7 +56,7 @@ namespace HotelOrTaxi
             return taxi.Price == hotel.Price;
         }
 
-        private static ResultsViewModel CreateDraw(TaxiResult taxi, HotelResult hotel)
+        private static ResultsViewModel Draw(TaxiResult taxi, HotelResult hotel)
         {
             return new ItWasADraw
                 {
@@ -43,7 +66,7 @@ namespace HotelOrTaxi
                 };
         }
 
-        private static ResultsViewModel CreateTaxiWinner(Result taxi, Result hotel)
+        private static ResultsViewModel TaxiWins(Result taxi, Result hotel)
         {
             return new TaxiWins
                 {
@@ -53,7 +76,7 @@ namespace HotelOrTaxi
                 };
         }
 
-        private static ResultsViewModel CreateHotelWinner(TaxiResult taxi, HotelResult hotel)
+        private static ResultsViewModel HotelWins(TaxiResult taxi, HotelResult hotel)
         {
             var resultsViewModel = new HotelWins
                 {
@@ -63,6 +86,15 @@ namespace HotelOrTaxi
                 };
 
             return resultsViewModel;
+        }
+    }
+
+    public class NoClearWinnerExeption : Exception
+    {   
+        public NoClearWinnerExeption():
+            base("No clear winner.")
+        {
+            
         }
     }
 

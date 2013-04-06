@@ -76,6 +76,10 @@
       <Project>{4A92EB6D-6BA5-41C2-8E21-699DA5223740}</Project>
       <Name>JourneyCalculator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebClientWrapper\WebResponse.csproj">
+      <Project>{DC27CAE4-0979-44FF-B297-44D10094C508}</Project>
+      <Name>WebResponse</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
