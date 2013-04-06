@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Geography;
 using HotelOrTaxi.Models;
 using JourneyCalculator;
@@ -50,11 +51,20 @@ namespace HotelOrTaxi
             {
             }
 
-            if (distance != null)
+            Journey journey = null;
+            try
             {
+                journey = new Journey(startingPoint, distance);
+            }
+            catch (Exception)
+            {
+            }
+
+            if (distance != null && journey != null)
+            {
+                
                 try
                 {
-                    var journey = new Journey(startingPoint, distance);
                     taxi = _taxiResultFactory.Create(urlHelper, journey);
                 }
                 catch (TaxiApiException)
