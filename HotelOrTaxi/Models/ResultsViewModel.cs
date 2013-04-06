@@ -17,5 +17,7 @@ namespace HotelOrTaxi.Models
         public string ErrorDetails { get; set; }
 
         public string Animation { get; protected set; }
+
+        public string LoserText { get; set; }
     }
 }

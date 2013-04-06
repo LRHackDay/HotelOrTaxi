@@ -21,7 +21,8 @@ namespace HotelOrTaxi
                     {
                         Loser = null,
                         Winner = hotel,
-                        PriceDifference = 0.00
+                        PriceDifference = 0.00,
+                        LoserText = "We weren't able to find you a taxi right now."
                     };
             }
             else if (hotel == null && taxi != null)
@@ -30,7 +31,8 @@ namespace HotelOrTaxi
                     {
                         Loser = null,
                         Winner = taxi,
-                        PriceDifference = 0.0
+                        PriceDifference = 0.0,
+                        LoserText = "We weren't able to find a hotel within a mile of you."
                     };
             }
             
