@@ -4,7 +4,7 @@
         <div class="row">
             <div class="span5">
                 <div class="control-group">
-                    <input type="text" id="from" placeholder="From" class="input-block-level" name="From" value="Your location">
+                    <input type="text" id="from" placeholder="From" class="input-block-level" name="From" value="Your location" onfocus="if(this.value == 'Your location') {this.value=''}" onblur="if(this.value == ''){this.value ='Your location'}">
                 </div>
             </div>
             <div class="span5">
