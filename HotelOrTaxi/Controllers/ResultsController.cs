@@ -61,8 +61,7 @@ namespace HotelOrTaxi.Controllers
             }
             catch (Exception e)
             {
-                resultsViewModel.Error = e.Message;
-                resultsViewModel.ErrorDetails = e.StackTrace;
+                resultsViewModel.Error = e;
             }
 
             return View("Error", resultsViewModel);

@@ -1,4 +1,5 @@
-﻿using Results;
+﻿using System;
+using Results;
 
 namespace HotelOrTaxi.Models
 {
@@ -10,11 +11,9 @@ namespace HotelOrTaxi.Models
 
         public double PriceDifference { get; set; }
 
-        public string Error { get; set; }
+        public Exception Error { get; set; }
 
         public bool IsDraw { get; protected set; }
-
-        public string ErrorDetails { get; set; }
 
         public string Animation { get; protected set; }
 
