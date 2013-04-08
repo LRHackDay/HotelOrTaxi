@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Hotel.cs" />
+    <Compile Include="HotelCache.cs" />
     <Compile Include="HotelScraper.cs" />
     <Compile Include="IScraperResponse.cs" />
     <Compile Include="IScrapeWebsites.cs" />

@@ -37,7 +37,8 @@ namespace HotelOrTaxi.Controllers
             IDeserialiseGoogleMapsDirectionsResponses googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
             ISpecifyConditionsOfNoTaxiRoutesFound specifyConditionsOfNoTaxiRoutesFound =
                 new SpecifyConditionsOfNoTaxiRoutesFound();
-            IScrapeWebsites websiteScraper = new HotelScraper();
+            ISaveHotels hotelStore = new HotelCache();
+            IScrapeWebsites websiteScraper = new HotelScraper(hotelStore);
             ICreateTheHotelResult hotelResultFactory = new HotelResultFactory(websiteScraper);
 
             var distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser,
