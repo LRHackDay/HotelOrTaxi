@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using HtmlAgilityPack;
 
 namespace LateRoomsScraper
@@ -49,7 +48,7 @@ namespace LateRoomsScraper
             const int numberOfResults = 10;
             for (int index = resultIndex; index <= numberOfResults; index++)
             {
-                var hotel = RetrieveHotel(index, node, hotels);
+                var hotel = RetrieveHotel(index, node);
                 if (hotel.TotalPrice > 0)
                 {
                     hotels.Add(hotel);
@@ -59,7 +58,7 @@ namespace LateRoomsScraper
             return hotels;
         }
 
-        private static Hotel RetrieveHotel(int index, HtmlNode node, List<Hotel> hotels)
+        private static Hotel RetrieveHotel(int index, HtmlNode node)
         {
             var hotelNameXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[1]", index);
             var hotelNameNode = node.SelectSingleNode(hotelNameXPath);
