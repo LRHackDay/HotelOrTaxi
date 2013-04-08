@@ -24,7 +24,7 @@
     <div class="separator"></div>
     @if (Model.Loser != null)
     {
-        if (Model.Loser.Name == "Hotel" && Model.PriceDifference < 50)
+        if (Model.Upsell)
         {
             <div id="result-info">
                 <span>But a hotel is only £@(string.Format("{0:0.00}", Model.PriceDifference)) more…</span><br/>Still worth a stay?
