@@ -4,6 +4,8 @@
     } else {
         alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
     }
+
+    validateSearchForm();
 });
 
 function successFunction(position) {
@@ -11,5 +13,16 @@ function successFunction(position) {
 }
 
 function errorFunction(position) {
-    alert("Geolocation error!");
+       
+}
+
+function validateSearchForm() {
+    $('#fight-button').click(function (e) {
+        var from = $('#from').val(),
+            to = $('#to').val();
+        if (from.length === 0 || to.length === 0) {
+            e.preventDefault();
+            alert('Please enter your current destination and desired location');
+        }
+    });
 }
