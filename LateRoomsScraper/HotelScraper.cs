@@ -49,40 +49,49 @@ namespace LateRoomsScraper
             const int numberOfResults = 10;
             for (int index = resultIndex; index <= numberOfResults; index++)
             {
-                var hotelNameXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[1]", index);
-                var hotelNameNode = node.SelectSingleNode(hotelNameXPath);
-                var locationXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/span", index);
-                var locationNode = node.SelectSingleNode(locationXPath);
-                var starRatingXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[2]", index);
-                var starRatingNode = node.SelectSingleNode(starRatingXPath);
-                var guestRatingXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/span", index);
-                var guestRatingNode = node.SelectSingleNode(guestRatingXPath);
-                var smileyXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/div", index);
-                var smileyNode = node.SelectSingleNode(smileyXPath);
-                var numberOfReviewsXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/strong", index);
-                var numberOfReviewsNode = node.SelectSingleNode(numberOfReviewsXPath);
-                var totalPriceXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[3]/div/span/span[2]", index);
-                var totalPriceNode = node.SelectSingleNode(totalPriceXPath);
-                var urlXPath = string.Format("//*[@id='searchResults']/a[{0}]", index);
-                var urlNode = node.SelectSingleNode(urlXPath);
-                var imageXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/span/img", index);
-                var imageNode = node.SelectSingleNode(imageXPath);
-
-                hotels.Add(new Hotel
-                    {
-                        Name = hotelNameNode.InnerText.Trim(),
-                        Location = locationNode.InnerText.Trim(),
-                        StarRating = starRatingNode.InnerText.Trim(),
-                        GuestRating = guestRatingNode.InnerText.Trim(),
-                        Smiley = smileyNode.Attributes["class"].Value,
-                        NumberOfReviews = numberOfReviewsNode.InnerText.Trim(),
-                        TotalPrice = totalPriceNode == null ? 0 : double.Parse(totalPriceNode.InnerText.Trim().Substring(2)),
-                        Url = urlNode.Attributes["href"].Value,
-                        ImageSource = imageNode.Attributes["src"].Value
-                    });
+                var hotel = RetrieveHotel(index, node, hotels);
+                if (hotel.TotalPrice > 0)
+                {
+                    hotels.Add(hotel);
+                }
             }
 
             return hotels;
+        }
+
+        private static Hotel RetrieveHotel(int index, HtmlNode node, List<Hotel> hotels)
+        {
+            var hotelNameXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[1]", index);
+            var hotelNameNode = node.SelectSingleNode(hotelNameXPath);
+            var locationXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/span", index);
+            var locationNode = node.SelectSingleNode(locationXPath);
+            var starRatingXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[2]", index);
+            var starRatingNode = node.SelectSingleNode(starRatingXPath);
+            var guestRatingXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/span", index);
+            var guestRatingNode = node.SelectSingleNode(guestRatingXPath);
+            var smileyXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/div", index);
+            var smileyNode = node.SelectSingleNode(smileyXPath);
+            var numberOfReviewsXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/strong", index);
+            var numberOfReviewsNode = node.SelectSingleNode(numberOfReviewsXPath);
+            var totalPriceXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[3]/div/span/span[2]", index);
+            var totalPriceNode = node.SelectSingleNode(totalPriceXPath);
+            var urlXPath = string.Format("//*[@id='searchResults']/a[{0}]", index);
+            var urlNode = node.SelectSingleNode(urlXPath);
+            var imageXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/span/img", index);
+            var imageNode = node.SelectSingleNode(imageXPath);
+
+            return new Hotel
+                {
+                    Name = hotelNameNode.InnerText.Trim(),
+                    Location = locationNode.InnerText.Trim(),
+                    StarRating = starRatingNode.InnerText.Trim(),
+                    GuestRating = guestRatingNode.InnerText.Trim(),
+                    Smiley = smileyNode.Attributes["class"].Value,
+                    NumberOfReviews = numberOfReviewsNode.InnerText.Trim(),
+                    TotalPrice = totalPriceNode == null ? 0 : double.Parse(totalPriceNode.InnerText.Trim().Substring(2)),
+                    Url = urlNode.Attributes["href"].Value,
+                    ImageSource = imageNode.Attributes["src"].Value
+                };
         }
     }
 }
