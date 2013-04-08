@@ -19,7 +19,7 @@ namespace TaxiApi.Request
         {
             var formattedRequest = string.Concat(_configReader.ApiUrl(), request);
 
-            return _webResponseReader.DownloadString(formattedRequest);
+            return _webResponseReader.Get(formattedRequest);
         }
     }
 }

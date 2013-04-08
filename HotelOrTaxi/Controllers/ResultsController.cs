@@ -38,7 +38,8 @@ namespace HotelOrTaxi.Controllers
             ISpecifyConditionsOfNoTaxiRoutesFound specifyConditionsOfNoTaxiRoutesFound =
                 new SpecifyConditionsOfNoTaxiRoutesFound();
             ISaveHotels hotelStore = new HotelCache();
-            IScrapeWebsites websiteScraper = new HotelScraper(hotelStore);
+            var downloadHtml = new DownloadHtml(webResponseReader);
+            IScrapeWebsites websiteScraper = new HotelScraper(hotelStore, downloadHtml);
             ICreateTheHotelResult hotelResultFactory = new HotelResultFactory(websiteScraper);
 
             var distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser,

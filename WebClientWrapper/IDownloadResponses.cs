@@ -2,6 +2,6 @@
 {
     public interface IDownloadResponses
     {
-        string DownloadString(string address);
+        string Get(string address);
     }
 }

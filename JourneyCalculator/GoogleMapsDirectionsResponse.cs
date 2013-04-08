@@ -34,7 +34,7 @@ namespace JourneyCalculator
                                            origin.Location.SearchTerm,
                                            destination.Location.SearchTerm);
 
-            return _webResponseDownloader.DownloadString(address);
+            return _webResponseDownloader.Get(address);
         }
     }
 }

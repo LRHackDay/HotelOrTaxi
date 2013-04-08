@@ -20,7 +20,7 @@ namespace YahooSearchApi
                 "http://local.yahooapis.com/LocalSearchService/V3/localSearch?appid=yahoo_app_id&query=taxi&location=Manchester&results=3&output=json";
 
             var response =
-                webClient.DownloadString(
+                webClient.Get(
                     address);
 
             YahooSearchResponse bob = JsonConvert.DeserializeObject<YahooSearchResponse>(response);

@@ -12,7 +12,7 @@ namespace WebResponse
             _webClient = new WebClient();
         }
 
-        public string DownloadString(string address)
+        public string Get(string address)
         {
             try
             {
@@ -20,7 +20,7 @@ namespace WebResponse
             }
             catch (WebException e)
             {
-                throw new TaxiApiException("Error requesting Taxi Fare. We've probably run out of api requests.", e);
+                throw new TaxiApiException("Error requesting address.", e);
             }
             
         }

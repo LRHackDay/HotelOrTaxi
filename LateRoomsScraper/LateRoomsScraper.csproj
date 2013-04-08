@@ -47,6 +47,7 @@
     <Compile Include="Hotel.cs" />
     <Compile Include="HotelCache.cs" />
     <Compile Include="HotelScraper.cs" />
+    <Compile Include="IDownloadHtml.cs" />
     <Compile Include="IScraperResponse.cs" />
     <Compile Include="IScrapeWebsites.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebClientWrapper\WebResponse.csproj">
+      <Project>{DC27CAE4-0979-44FF-B297-44D10094C508}</Project>
+      <Name>WebResponse</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
