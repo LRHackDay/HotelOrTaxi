@@ -6,10 +6,6 @@ body {
     background-color: #F3EdE0;
 }
 
-.hero-unit {
-padding: 20px;
-}
-
 .navbar-inverse .navbar-inner {
     background-color: red;
     background-image: linear-gradient(to bottom, #CF0000, #FF0000);
@@ -23,10 +19,6 @@ color: #FFFFFF;
 
 .navbar-inner {
     min-height: 50px;
-}
-
-.hero-unit {
-    background-color: red;
 }
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
@@ -56,18 +48,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 @media (max-width: 768px) {
 .navbar-fixed-top {
     margin-bottom:0;
-}
-
-.hero-unit {
-  border-radius: 0px;
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  margin-left:-20px;
-
- }
- 
- 
+} 
 }
 
 textarea:focus,
@@ -98,31 +79,7 @@ input[type="color"]:focus,
 
 .btn:first-child {
 }
-button.btn, input.btn[type="submit"] {
-}
-.btn-fight {
-	height:82px;
-	width:287px;
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-repeat: none;
-    border-color: none;
-    border-image: none;
-    border-radius: 4px 4px 4px 4px;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    line-height: 20px;
-    margin: 0 auto;
-    padding: 4px 12px;
-    text-align: center;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-		background:url(/assets/img/fight-button.png);
 
-    vertical-align: middle;
-}
  
  .control-group {
 	 

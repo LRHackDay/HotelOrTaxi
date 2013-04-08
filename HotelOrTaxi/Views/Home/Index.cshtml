@@ -4,7 +4,7 @@
         <div class="row">
             <div class="span5">
                 <div class="control-group">
-                    <input type="text" id="from" placeholder="From" class="input-block-level" name="From" value="Your location" onfocus="if(this.value == 'Your location') {this.value=''}" onblur="if(this.value == ''){this.value ='Your location'}">
+                    <input type="text" id="from" placeholder="From" class="input-block-level" name="From" value="Current location" onfocus="if(this.value == 'Current location') {this.value=''}" onblur="if(this.value == ''){this.value ='Current Location'}">
                 </div>
             </div>
             <div class="span5">
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="span12">
+            <div class="span5">
                 <div class="control-group">
                     <button type="submit" class="btn-fight"></button>
                 </div>
@@ -23,26 +23,28 @@
         <input type="hidden" id="fromlatlong" name="fromlatlong"/>
         <input type="hidden" id="tolatlong" name="tolatlong"/>
     </form>
-
+</div>
+<div class="arrow-down-bottom">
+    <div class="arrow-down-bottom-img"></div>
 </div>
 
-<div style="width:340px; margin:0 auto; font-size:1.2em;">
-<div style=" height:100px;" class="steps-numbers">
-<img style="float:left;" src="/assets/img/circle-1.png" alt="1" />
-    <p style=" padding-top:10px; vertical-align:baseline; float:left; width:240px; padding-left:20px;">      Tell us where you are and where you’re heading
-</p>
+<div id="moreinfo">
+    <div style=" height:100px;" class="steps-numbers">
+        <img style="float:left;" src="/assets/img/circle-1.png" alt="1" />
+        <p style=" padding-top:10px; vertical-align:baseline; float:left; width:240px; padding-left:20px;">      Tell us where you are and where you’re heading
+        </p>
+    </div>
+    <div style=" height:100px;"  class="steps-numbers">
+        <img style="float:right;" src="/assets/img/circle-2.png" alt="1" />
+        <p style="padding-right:20px; width:240px; padding-left:20px; text-align:right;">    We’ll pit local hotel deals against your taxi fare to find the best option
+        </p>
+    </div>
 </div>
-<div style=" height:100px;"  class="steps-numbers">
-<img style="float:right;" src="/assets/img/circle-2.png" alt="1" />
 
-    <p style="padding-right:20x; width:240px; padding-left:20px; text-align:right;">    We’ll pit local hotel deals against your taxi fare to find the best option
-</p>
+<div id="content">
+    <img src="/assets/img/icons-hotel-and-taxi.png" alt="hotel and taxi thought bubbles" />
+    <div id="headerIMG"></div>
 </div>
-</div>
-
-<div style="text-align:center;"><img src="/assets/img/icons-hotel-and-taxi.png" alt="hotel and taxi thought bubbles" /></div>
-
-<div id="headerIMG"></div>
 
 @section Scripts {
       <!-- Randomly generate pics -->
