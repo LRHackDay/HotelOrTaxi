@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
     <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-overide.css" rel="stylesheet">
     <link rel="apple-touch-icon" href="/assets/img/icon-app.png"/>
     <link rel="apple-touch-startup-image" href="/assets/img/startscreen.png" />
     <style type="text/css">
@@ -51,10 +52,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="/"><img src="/assets/img/logo.png" alt="Hotel vs Taxis" /></a>
+          <div id="logo">
+            <a class="brand" href="/"><img src="/assets/img/logo.png" alt="Hotel vs Taxis" /></a>
+          </div>
           <div class="nav-collapse collapse">
             <ul class="nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="#">Search</a></li>
                 <li>@Html.ActionLink("About", "Index", "About")</li>
             </ul>
           </div>
@@ -63,6 +66,9 @@
     </div>
 
     <div class="container">
+        <div id="sublogo">
+			<h1><a class="brand" href="./page_files/page.htm"><img src="assets/img/hotel-vs-taxi-bigger-logo.png" alt="Hotel vs Taxis" /></a></h1>
+		</div>
         @RenderBody()
 
         <footer>
