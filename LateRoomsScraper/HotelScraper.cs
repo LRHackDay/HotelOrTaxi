@@ -86,7 +86,7 @@ namespace LateRoomsScraper
                     StarRating = starRatingNode.InnerText.Trim(),
                     GuestRating = guestRatingNode.InnerText.Trim(),
                     Smiley = smileyNode.Attributes["class"].Value,
-                    NumberOfReviews = numberOfReviewsNode.InnerText.Trim(),
+                    NumberOfReviews = numberOfReviewsNode.InnerText.Trim().Replace("Genuine Reviews", " genuine reviews"),
                     TotalPrice = totalPriceNode == null ? 0 : double.Parse(totalPriceNode.InnerText.Trim().Substring(2)),
                     Url = urlNode.Attributes["href"].Value,
                     ImageSource = imageNode.Attributes["src"].Value
