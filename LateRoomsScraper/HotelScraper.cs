@@ -60,37 +60,40 @@ namespace LateRoomsScraper
 
         private static Hotel RetrieveHotel(int index, HtmlNode node)
         {
-            var hotelNameXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[1]", index);
-            var hotelNameNode = node.SelectSingleNode(hotelNameXPath);
-            var locationXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/span", index);
-            var locationNode = node.SelectSingleNode(locationXPath);
-            var starRatingXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[2]", index);
-            var starRatingNode = node.SelectSingleNode(starRatingXPath);
-            var guestRatingXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/span", index);
-            var guestRatingNode = node.SelectSingleNode(guestRatingXPath);
-            var smileyXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/div", index);
-            var smileyNode = node.SelectSingleNode(smileyXPath);
-            var numberOfReviewsXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/strong", index);
-            var numberOfReviewsNode = node.SelectSingleNode(numberOfReviewsXPath);
-            var totalPriceXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[3]/div/span/span[2]", index);
-            var totalPriceNode = node.SelectSingleNode(totalPriceXPath);
-            var urlXPath = string.Format("//*[@id='searchResults']/a[{0}]", index);
-            var urlNode = node.SelectSingleNode(urlXPath);
-            var imageXPath = string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/span/img", index);
-            var imageNode = node.SelectSingleNode(imageXPath);
+            var hotelName = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[1]", index));
+            var location = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/span", index));
+            var starRating = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[2]", index));
+            var guestRating = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/span", index));
+            var smiley = RetrieveNodeAttribute(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/div", index), "class");
+            var numberOfReviews = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/strong", index));
+            var totalPrice = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[3]/div/span/span[2]", index));
+            var url = RetrieveNodeAttribute(node, string.Format("//*[@id='searchResults']/a[{0}]", index), "href");
+            var image = RetrieveNodeAttribute(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/span/img", index), "src");
 
             return new Hotel
                 {
-                    Name = hotelNameNode.InnerText.Trim(),
-                    Location = locationNode.InnerText.Trim(),
-                    StarRating = starRatingNode.InnerText.Trim(),
-                    GuestRating = guestRatingNode.InnerText.Trim(),
-                    Smiley = smileyNode.Attributes["class"].Value,
-                    NumberOfReviews = numberOfReviewsNode.InnerText.Trim().Replace("Genuine Reviews", " genuine reviews"),
-                    TotalPrice = totalPriceNode == null ? 0 : double.Parse(totalPriceNode.InnerText.Trim().Substring(2)),
-                    Url = urlNode.Attributes["href"].Value,
-                    ImageSource = imageNode.Attributes["src"].Value
+                    Name = hotelName,
+                    Location = location,
+                    StarRating = starRating,
+                    GuestRating = guestRating,
+                    Smiley = smiley,
+                    NumberOfReviews = numberOfReviews.Replace("Genuine Reviews", " genuine reviews"),
+                    TotalPrice = totalPrice == null ? 0 : double.Parse(totalPrice.Substring(2)),
+                    Url = url,
+                    ImageSource = image
                 };
+        }
+
+        private static string RetrieveNodeText(HtmlNode parent, string xPath)
+        {
+            var node = parent.SelectSingleNode(xPath);
+            return node != null ? node.InnerText.Trim() : null;
+        }
+
+        private static string RetrieveNodeAttribute(HtmlNode parent, string xPath, string attribute)
+        {
+            var node = parent.SelectSingleNode(xPath);
+            return node != null ? node.Attributes[attribute].Value : null;
         }
     }
 }
