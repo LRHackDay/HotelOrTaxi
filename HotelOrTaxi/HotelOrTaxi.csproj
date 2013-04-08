@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\add2home.css" />
+    <Content Include="assets\css\bootstrap-overide.css" />
     <Content Include="assets\css\bootstrap-responsive.css" />
     <Content Include="assets\css\bootstrap-responsive.min.css" />
     <Content Include="assets\css\bootstrap.css" />
@@ -119,6 +120,8 @@
     <Content Include="assets\img\areas\searchresults\sort-header-border.png" />
     <Content Include="assets\img\areas\searchresults\SR-button-small.png" />
     <Content Include="assets\img\areas\searchresults\star-small.png" />
+    <Content Include="assets\img\arrow-down.png" />
+    <Content Include="assets\img\bubbles-hotel-vs-taxi.png" />
     <Content Include="assets\img\button-arrow.png" />
     <Content Include="assets\img\circle-1.jpg" />
     <Content Include="assets\img\circle-1.png" />
@@ -129,6 +132,7 @@
     <Content Include="assets\img\draw-wins-small.gif" />
     <Content Include="assets\img\draw-wins.gif" />
     <Content Include="assets\img\fight-big.gif" />
+    <Content Include="assets\img\fight-button-text.png" />
     <Content Include="assets\img\fight-button.jpg" />
     <Content Include="assets\img\fight-button.png" />
     <Content Include="assets\img\fight-small.gif" />
@@ -138,6 +142,7 @@
     <Content Include="assets\img\header-gradient.jpg" />
     <Content Include="assets\img\hotel-home-image.png" />
     <Content Include="assets\img\hotel-icon.png" />
+    <Content Include="assets\img\hotel-vs-taxi-bigger-logo.png" />
     <Content Include="assets\img\hotel-wins-icon.png" />
     <Content Include="assets\img\hotel-wins-small.gif" />
     <Content Include="assets\img\hotel-wins.gif" />
