@@ -18,5 +18,9 @@ namespace HotelOrTaxi.Models
         public string Animation { get; protected set; }
 
         public string LoserText { get; set; }
+
+        public bool Upsell {
+            get { return Loser.Name == "Hotel" && PriceDifference < 25; }
+        }
     }
 }
