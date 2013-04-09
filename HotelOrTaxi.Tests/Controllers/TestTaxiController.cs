@@ -1,4 +1,5 @@
-﻿using HotelOrTaxi.Controllers;
+﻿using Geography;
+using HotelOrTaxi.Controllers;
 using HotelOrTaxi.Models;
 using NUnit.Framework;
 
@@ -25,7 +26,7 @@ namespace HotelOrTaxi.Tests.Controllers
             Assert.That(model, Is.TypeOf<TaxisViewModel>());
         }
 
-        public TaxisViewModel Create()
+        public TaxisViewModel Create(Location location)
         {
             return new TaxisViewModel();
         }

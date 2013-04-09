@@ -1,11 +1,7 @@
 ﻿@model HotelOrTaxi.Models.TaxisViewModel
 
 <h2>Taxis near you</h2>
-<p>Olympic Taxis <a href="tel:01618480963">(0161) 848 0963</a>
-    
-</p>
-<p>Mantax Taxis Ltd <a href="tel:0161230 3333">(0161) 230 3333</a>
-</p>
-<p>
-    Taxi Centre <a href="tel:0161 834 8896">(0161) 834 8896</a>
-</p>
+@foreach (var taxi in Model.TaxiFirms)
+{
+    <p> @taxi.Name <a href="@taxi.Number">@taxi.Number</a></p>
+}

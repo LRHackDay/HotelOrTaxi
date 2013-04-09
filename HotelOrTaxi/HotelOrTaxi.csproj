@@ -234,6 +234,10 @@
       <Project>{D89796E5-3B53-4A9C-B93B-8ABEAEAC31F7}</Project>
       <Name>TaxiApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TaxiFirmDetails\TaxiFirmDetails.csproj">
+      <Project>{545E84DD-A60B-47FA-A970-B3BD98FAD485}</Project>
+      <Name>TaxiFirmDetails</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebClientWrapper\WebResponse.csproj">
       <Project>{DC27CAE4-0979-44FF-B297-44D10094C508}</Project>
       <Name>WebResponse</Name>

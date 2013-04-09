@@ -1,17 +1,32 @@
+using System.Collections.Generic;
+using Geography;
 using HotelOrTaxi.Models;
+using TaxiFirmDetails;
 
 namespace HotelOrTaxi
 {
     public interface ICreateTaxiViewModels
     {
-        TaxisViewModel Create();
+        TaxisViewModel Create(Location longitude);
     }
 
     public class TaxiViewModelFactory : ICreateTaxiViewModels
     {
-        public TaxisViewModel Create()
+        private readonly TaxiFirmFactory _taxiFirmFactory;
+
+        public TaxiViewModelFactory(TaxiFirmFactory taxiFirmFactory)
         {
-            return new TaxisViewModel();
+            _taxiFirmFactory = taxiFirmFactory;
+        }
+
+        public TaxisViewModel Create(Location location)
+        {
+            var taxisViewModel = new TaxisViewModel
+                {
+                    TaxiFirms = _taxiFirmFactory.Create(location)
+                };
+
+            return taxisViewModel;
         }
     }
 }
