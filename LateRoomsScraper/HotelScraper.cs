@@ -42,13 +42,15 @@ namespace LateRoomsScraper
         {
             var htmlDocument = _downloadHtml.GetHtmlDocument(ScrapeUrl);
             var hotels = new List<Hotel>();
-            var node = htmlDocument.DocumentNode;
+            var documentNode = htmlDocument.DocumentNode;
 
             const int resultIndex = 1;
             const int numberOfResults = 10;
             for (int index = resultIndex; index <= numberOfResults; index++)
             {
-                var hotel = RetrieveHotel(index, node);
+                HtmlNode anchorNode = null;
+                anchorNode = documentNode.SelectSingleNode(string.Format("//*[@id='searchResults']/a[{0}]", index));
+                var hotel = RetrieveHotel(anchorNode);
                 if (hotel.TotalPrice > 0)
                 {
                     hotels.Add(hotel);
@@ -58,17 +60,17 @@ namespace LateRoomsScraper
             return hotels;
         }
 
-        private static Hotel RetrieveHotel(int index, HtmlNode node)
+        private static Hotel RetrieveHotel(HtmlNode node)
         {
-            var hotelName = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[1]", index));
-            var location = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/span", index));
-            var starRating = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/div/div[2]", index));
-            var guestRating = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/span", index));
-            var smiley = RetrieveNodeAttribute(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/div/div", index), "class");
-            var numberOfReviews = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[1]/strong", index));
-            var totalPrice = RetrieveNodeText(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[2]/div[3]/div/span/span[2]", index));
-            var url = RetrieveNodeAttribute(node, string.Format("//*[@id='searchResults']/a[{0}]", index), "href");
-            var image = RetrieveNodeAttribute(node, string.Format("//*[@id='searchResults']/a[{0}]/div/div[1]/span/img", index), "src");
+            var hotelName = RetrieveNodeText(node, "div/div[1]/div/div[1]");
+            var location = RetrieveNodeText(node, "div/div[1]/div/span");
+            var starRating = RetrieveNodeText(node, "div/div[1]/div/div[2]");
+            var guestRating = RetrieveNodeText(node, "div/div[2]/div[1]/div/span");
+            var smiley = RetrieveNodeAttribute(node, "div/div[2]/div[1]/div/div", "class");
+            var numberOfReviews = RetrieveNodeText(node, "div/div[2]/div[1]/strong");
+            var totalPrice = RetrieveNodeText(node, "div/div[2]/div[3]/div/span/span[2]");
+            var url = RetrieveNodeAttribute(node, "a", "href");
+            var image = RetrieveNodeAttribute(node, "div/div[1]/span/img", "src");
 
             return new Hotel
                 {
