@@ -22,8 +22,10 @@
         </div>
         <div class="subheadline">@Model.Winner.SubHeadline</div>
         <div class="price">&pound; @string.Format("{0:0.00}", Model.Winner.Price)</div>
-        <div class="show-me">    
-            <a href="@Model.Winner.Uri" class="red-button">Show me</a>
+        <div class="show-me-holder">
+            <div class="show-me">   
+                <a href="@Model.Winner.Uri" class="red-button">Show me</a>
+            </div>
         </div>
     </div>
     <div class="separator"></div>
