@@ -7,16 +7,19 @@
 
 .grey { color:#999; }
 
-.search-results { padding:15px; }
-div#result-info { position:relative; margin-bottom:20px; padding:10px; width:98%; font-size:16px; text-align:center; background:#FFF; border-radius: 4px 4px 4px 4px; }
+.search-results { padding:15px 0; }
+div#result-info { position:relative; margin-bottom:20px; padding:10px; width:94%; font-size:16px; text-align:center; background:#FFF; border-radius: 4px 4px 4px 4px; }
     div#result-info span { font-size:16px; font-weight:bold; }
 .result-info-inner { margin:0 auto; width:100%; }
 .results-box { min-height:120px; }
 .results-box span { display:block; }
-    span.subheadline { float:left; width:40%; margin-right:15px; font-size:14px; }
-    span.price { float:left; width:50%; font-size:52px; font-weight:bold; }
+    .subheadline { float:left; width:40%; margin:0 0 10px 0; font-size:14px; }
+    .price { float:left; width:55%; font-size:52px; font-weight:bold; }
+    .show-me-holder { float:right; width:50%; }
+.show-me { margin:0 auto; width: 212px; height: 53px; }
 .arrow-down { position:absolute; left:45px; top:60px; width:28px; height:10px; background: url(/assets/img/speechbubble-arrow.png) no-repeat bottom; }
-.search-results img { margin-right:25px; }
+.results-box-img { float:left; margin-right:25px; }
+.search-results img { margin-right:0; }
 .search-results span { vertical-align:middle; }
 
 .red-button { float:right; margin-top:25px; padding-left:10px; width:200px; height:50px; font-size:26px; color:white; line-height:50px; text-decoration:none; background:red url(/assets/img/button-arrow.png) no-repeat 90%; border:solid 1px white; border-radius: 4px 4px 4px 4px; }
@@ -124,11 +127,11 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 }
 
 .red-button {
-	float:left;
+	/*float:left;*/
 }
 
 .results-box {
-	min-height:150px;
+	min-height:164px;
 }
  
 .modal-fight {  background:#F3EDE0; width:100%; height:500px; background-image:url(/assets/img/fight-small.gif);  background-repeat:no-repeat; background-position:center;}
@@ -330,6 +333,14 @@ p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; 
 
   p.one { padding:10px 0 0 10px; width:192px; font-size:14px; }
   p.two { width:207px; font-size:14px; }
+
+  .results-box-img { margin-right:15px; }
+  .subheadline { float:left; width:40%; margin:10px 0 0 0; font-size:15px; }
+  .price { float:left; width:46%; font-size:34px; font-weight:bold; }
+  .show-me-holder { float:right; margin:10px 0 0; width:100%; }
+
+  .red-button {  margin-top:0;  }
+  .red-button:hover { color:white; text-decoration:none; }
 }
  
 @media (max-width: 979px) and (min-width: 710px){

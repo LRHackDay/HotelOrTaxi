@@ -17,10 +17,16 @@
         </div>
     }
     <div class="results-box">
-        <img src="/assets/img/@Model.Winner.Name.ToLower()-wins-icon.png" width="118" height="111" alt="" />
-        <span class="subheadline">@Model.Winner.SubHeadline</span>
-        <span class="price">&pound; @string.Format("{0:0.00}", Model.Winner.Price)</span>
-        <a href="@Model.Winner.Uri" class="red-button">Show me</a>
+        <div class="results-box-img">
+            <img src="/assets/img/@Model.Winner.Name.ToLower()-wins-icon.png" width="118" height="111" alt="" />
+        </div>
+        <div class="subheadline">@Model.Winner.SubHeadline</div>
+        <div class="price">&pound; @string.Format("{0:0.00}", Model.Winner.Price)</div>
+        <div class="show-me-holder">
+            <div class="show-me">   
+                <a href="@Model.Winner.Uri" class="red-button">Show me</a>
+            </div>
+        </div>
     </div>
     <div class="separator"></div>
     @if (Model.Loser != null)
