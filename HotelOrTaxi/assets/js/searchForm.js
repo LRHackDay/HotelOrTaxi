@@ -15,20 +15,20 @@ function bindChangeClick(searchBoxHolder, fromEle) {
     });
 }
 
-function geoLocate() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(bindLatLong, errorFunction);
-    } else {
-        alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
-    }
-}
-
 function bindLocateClick(searchBoxHolder, fromEle) {
     $('#find-my-loc').click(function () {
         toggleView(searchBoxHolder, fromEle, 'Current location');
         fromEle.attr('disabled', 'disabled');
         geoLocate();
     });
+}
+
+function geoLocate() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(bindLatLong, errorFunction);
+    } else {
+        alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
+    }
 }
 
 function toggleView(searchBoxHolder, fromEle, placeholderText) {
