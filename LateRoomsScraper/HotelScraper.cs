@@ -11,11 +11,13 @@ namespace LateRoomsScraper
         private string _latitude;
         private string _longitude;
         private readonly IDownloadHtml _downloadHtml;
+        private readonly IRetrieveElementText _retrieveElementText;
 
-        public HotelScraper(ISaveHotels hotelStore, IDownloadHtml downloadHtml)
+        public HotelScraper(ISaveHotels hotelStore, IDownloadHtml downloadHtml, IRetrieveElementText retrieveElementText)
         {
             _hotelStore = hotelStore;
             _downloadHtml = downloadHtml;
+            _retrieveElementText = retrieveElementText;
         }
 
         private string ScrapeUrl
@@ -48,8 +50,7 @@ namespace LateRoomsScraper
             const int numberOfResults = 10;
             for (int index = resultIndex; index <= numberOfResults; index++)
             {
-                HtmlNode anchorNode = null;
-                anchorNode = documentNode.SelectSingleNode(string.Format("//*[@id='searchResults']/a[{0}]", index));
+                var anchorNode = documentNode.SelectSingleNode(string.Format("//*[@id='searchResults']/a[{0}]", index));
                 var hotel = RetrieveHotel(anchorNode);
                 if (hotel.TotalPrice > 0)
                 {
@@ -60,17 +61,17 @@ namespace LateRoomsScraper
             return hotels;
         }
 
-        private static Hotel RetrieveHotel(HtmlNode node)
+        private Hotel RetrieveHotel(HtmlNode node)
         {
-            var hotelName = RetrieveNodeText(node, "div/div[1]/div/div[1]");
-            var location = RetrieveNodeText(node, "div/div[1]/div/span");
-            var starRating = RetrieveNodeText(node, "div/div[1]/div/div[2]");
-            var guestRating = RetrieveNodeText(node, "div/div[2]/div[1]/div/span");
-            var smiley = RetrieveNodeAttribute(node, "div/div[2]/div[1]/div/div", "class");
-            var numberOfReviews = RetrieveNodeText(node, "div/div[2]/div[1]/strong");
-            var totalPrice = RetrieveNodeText(node, "div/div[2]/div[3]/div/span/span[2]");
-            var url = RetrieveNodeAttribute(node, "a", "href");
-            var image = RetrieveNodeAttribute(node, "div/div[1]/span/img", "src");
+            var hotelName = _retrieveElementText.RetrieveNodeText(node, "div/div[1]/div/div[1]");
+            var location = _retrieveElementText.RetrieveNodeText(node, "div/div[1]/div/span");
+            var starRating = _retrieveElementText.RetrieveNodeText(node, "div/div[1]/div/div[2]");
+            var guestRating = _retrieveElementText.RetrieveNodeText(node, "div/div[2]/div[1]/div/span");
+            var smiley = _retrieveElementText.RetrieveNodeAttribute(node, "div/div[2]/div[1]/div/div", "class");
+            var numberOfReviews = _retrieveElementText.RetrieveNodeText(node, "div/div[2]/div[1]/strong");
+            var totalPrice = _retrieveElementText.RetrieveNodeText(node, "div/div[2]/div[3]/div/span/span[2]");
+            var url = _retrieveElementText.RetrieveNodeAttribute(node, "a", "href");
+            var image = _retrieveElementText.RetrieveNodeAttribute(node, "div/div[1]/span/img", "src");
 
             return new Hotel
                 {
@@ -84,18 +85,6 @@ namespace LateRoomsScraper
                     Url = url,
                     ImageSource = image
                 };
-        }
-
-        private static string RetrieveNodeText(HtmlNode parent, string xPath)
-        {
-            var node = parent.SelectSingleNode(xPath);
-            return node != null ? node.InnerText.Trim() : null;
-        }
-
-        private static string RetrieveNodeAttribute(HtmlNode parent, string xPath, string attribute)
-        {
-            var node = parent.SelectSingleNode(xPath);
-            return node != null ? node.Attributes[attribute].Value : null;
         }
     }
 }
