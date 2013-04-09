@@ -25,27 +25,25 @@ namespace HotelOrTaxi.Controllers
 
         public ResultsController()
         {
-            ICreateTheTaxiControllerUri taxiResultsPage = new CreateTheTaxiControllerUri();
-            ICanReadConfigurations canReadConfigurations = new ConfigReader();
-            ICreateRequests fareRequestFactory = new FareRequestFactory(canReadConfigurations);
-            IDownloadResponses webResponseReader = new WebClientWrapper();
-            IPerformApiRequest performApiRequest = new WebClientApiRequest(canReadConfigurations, webResponseReader);
-            ICreateResponses fareResponseFactory = new FareResponseFactory(performApiRequest);
-            ICreateTheTaxiResult taxiResultFactory = new TaxiResultFactory(taxiResultsPage, new TaxiFareCalculator(fareRequestFactory, fareResponseFactory));
-            IGetTheResponseFromGoogleMapsDirectionsApi googleMapsDirectionsResponse =
-                new GoogleMapsDirectionsResponse(webResponseReader);
-            IDeserialiseGoogleMapsDirectionsResponses googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
-            ISpecifyConditionsOfNoTaxiRoutesFound specifyConditionsOfNoTaxiRoutesFound =
-                new SpecifyConditionsOfNoTaxiRoutesFound();
-            ISaveHotels hotelStore = new HotelCache();
+            var taxiResultsPage = new CreateTheTaxiControllerUri();
+            var canReadConfigurations = new ConfigReader();
+            var fareRequestFactory = new FareRequestFactory(canReadConfigurations);
+            var webResponseReader = new WebClientWrapper();
+            var performApiRequest = new WebClientApiRequest(canReadConfigurations, webResponseReader);
+            var fareResponseFactory = new FareResponseFactory(performApiRequest);
+            var taxiFareCalculator = new TaxiFareCalculator(fareRequestFactory, fareResponseFactory);
+            var taxiResultFactory = new TaxiResultFactory(taxiResultsPage, taxiFareCalculator);
+            var googleMapsDirectionsResponse = new GoogleMapsDirectionsResponse(webResponseReader);
+            var googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
+            var specifyConditionsOfNoTaxiRoutesFound = new SpecifyConditionsOfNoTaxiRoutesFound();
+            var hotelStore = new HotelCache();
             var downloadHtml = new DownloadHtml(webResponseReader);
-            IScrapeWebsites websiteScraper = new HotelScraper(hotelStore, downloadHtml);
-            ICreateTheHotelResult hotelResultFactory = new HotelResultFactory(websiteScraper);
-
-            var distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser,
-                                                            specifyConditionsOfNoTaxiRoutesFound);
-            _resultsViewModelFactory = new ResultsViewModelFactory(taxiResultFactory, hotelResultFactory,
-                                                                   distanceCalculator, new WhoIsTheWinner());
+            var retrieveElementText = new HtmlElement();
+            var websiteScraper = new HotelScraper(hotelStore, downloadHtml, retrieveElementText);
+            var hotelResultFactory = new HotelResultFactory(websiteScraper);
+            var distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser, specifyConditionsOfNoTaxiRoutesFound);
+            var whoIsTheWinner = new WhoIsTheWinner();
+            _resultsViewModelFactory = new ResultsViewModelFactory(taxiResultFactory, hotelResultFactory, distanceCalculator, whoIsTheWinner);
             _createLocations = new LocationFactory();
         }
 
