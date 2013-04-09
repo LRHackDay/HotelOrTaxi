@@ -11,7 +11,7 @@ namespace LateRoomsScraper
         List<Hotel> Get(Guid id);
     }
 
-    public class HotelCache : ISaveHotels
+    public class AspNetCache : ISaveHotels
     {
         public Guid Add(List<Hotel> hotels)
         {

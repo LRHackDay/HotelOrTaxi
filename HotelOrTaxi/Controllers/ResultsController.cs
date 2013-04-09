@@ -36,7 +36,7 @@ namespace HotelOrTaxi.Controllers
             var googleMapsDirectionsResponse = new GoogleMapsDirectionsResponse(webResponseReader);
             var googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
             var specifyConditionsOfNoTaxiRoutesFound = new SpecifyConditionsOfNoTaxiRoutesFound();
-            var hotelStore = new HotelCache();
+            var hotelStore = new AspNetCache();
             var downloadHtml = new DownloadHtml(webResponseReader);
             var retrieveElementText = new HtmlElement();
             var websiteScraper = new HotelScraper(hotelStore, downloadHtml, retrieveElementText);

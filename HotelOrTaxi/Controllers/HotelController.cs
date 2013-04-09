@@ -8,7 +8,7 @@ namespace HotelOrTaxi.Controllers
     {
         public ActionResult Index(Guid id)
         {
-            var hotelStore = new HotelCache();
+            var hotelStore = new AspNetCache();
             var hotelResults = hotelStore.Get(id);
 
             return View(hotelResults);
