@@ -1,5 +1,6 @@
 using System;
 using Geography;
+using WebResponse;
 
 namespace TaxiFirmDetails
 {
@@ -11,10 +12,18 @@ namespace TaxiFirmDetails
     public class GoogleTextSearchRequestConstructor : IConstructGoogleTextSearchRequests
     {
         private readonly ICanReadConfigurations _configReader;
+        private readonly IDownloadResponses _webClientWrapper;
 
-        public GoogleTextSearchRequestConstructor(ICanReadConfigurations configReader)
+        public GoogleTextSearchRequestConstructor(ICanReadConfigurations configReader, IDownloadResponses webClientWrapper)
         {
             _configReader = configReader;
+            _webClientWrapper = webClientWrapper;
+        }
+
+        public GoogleTextSearchRequestConstructor()
+        {
+            _configReader = new ConfigReader();
+            _webClientWrapper = new WebClientWrapper();
         }
 
         public string GetTextSearchRequests(Location geoLocation)
@@ -26,7 +35,10 @@ namespace TaxiFirmDetails
             string query = "query=taxi";
             string sensor = "sensor=true";
 
-            return String.Format("{0}?{1}&{2}&{3}&{4}&{5}", baseUri, location, radius, query, sensor, key);
+            var address = String.Format("{0}?{1}&{2}&{3}&{4}&{5}", baseUri, location, radius, query, sensor, key);
+
+            return _webClientWrapper.Get(address);
+
         }
     }
 }

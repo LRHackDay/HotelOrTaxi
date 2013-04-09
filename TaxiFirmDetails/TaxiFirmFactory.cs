@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Geography;
 using Newtonsoft.Json;
-using WebResponse;
 
 namespace TaxiFirmDetails
 {
@@ -12,25 +11,25 @@ namespace TaxiFirmDetails
 
     public class TaxiFirmFactory : ITaxiFirmFactory
     {
-        private readonly IDownloadResponses _webClientWrapper;
         private readonly IConstructGoogleTextSearchRequests _googleTextSearchRequestConstructor;
         private readonly IConstructGooglePlaceRequests _googlePlaceRequestConstructor;
 
         public TaxiFirmFactory(IConstructGoogleTextSearchRequests googleTextSearchRequestConstructor,
-                               IConstructGooglePlaceRequests googlePlaceRequestConstructor,
-                               IDownloadResponses webClientWrapper)
+                               IConstructGooglePlaceRequests googlePlaceRequestConstructor)
         {
-            _webClientWrapper = webClientWrapper;
             _googleTextSearchRequestConstructor = googleTextSearchRequestConstructor;
             _googlePlaceRequestConstructor = googlePlaceRequestConstructor;
         }
 
+        public TaxiFirmFactory()
+        {
+            _googleTextSearchRequestConstructor = new GoogleTextSearchRequestConstructor();
+            _googlePlaceRequestConstructor = new GooglePlaceRequestConstructor();
+        }
+
         public List<TaxiFirm> Create(Location location)
         {
-            //return new List<TaxiFirm> {new TaxiFirm {Name = "Olympic", Number = "0161 872 4040"}};
-
-            string address = _googleTextSearchRequestConstructor.GetTextSearchRequests(location);
-            string response = _webClientWrapper.Get(address);
+            string response = _googleTextSearchRequestConstructor.GetTextSearchRequests(location);
 
             var places = JsonConvert.DeserializeObject<GooglePlaces>(response);
 
@@ -46,13 +45,10 @@ namespace TaxiFirmDetails
 
         private TaxiFirm TaxiFirm(GooglePlacesResults firstGooglePlacesResults)
         {
-            string response;
             string companyName = firstGooglePlacesResults.Name;
             string placeReference = firstGooglePlacesResults.Reference;
 
-            string placeRequest = _googlePlaceRequestConstructor.GetPlaceRequest(placeReference);
-
-            response = _webClientWrapper.Get(placeRequest);
+            string response = _googlePlaceRequestConstructor.GetPlaceRequest(placeReference);
 
             var place = JsonConvert.DeserializeObject<GooglePlace>(response);
 

@@ -2,12 +2,11 @@
 using Geography;
 using NUnit.Framework;
 using TaxiFirmDetails;
-using WebResponse;
 
 namespace TaxiDetails.Tests
 {
     [TestFixture]
-    public class TestTaxiFirmFactory : ICanReadConfigurations
+    public class TestTaxiFirmFactory : IConstructGoogleTextSearchRequests, IConstructGooglePlaceRequests
     {
         [Test]
         [Ignore]
@@ -16,10 +15,7 @@ namespace TaxiDetails.Tests
             var longitude = new Longitude("-2.240117");
             var latitude = new Latitude("53.477716");
 
-            ICanReadConfigurations configReader = this;
-            var taxiFirmRepository = new TaxiFirmFactory(new GoogleTextSearchRequestConstructor(configReader),
-                                                            new GooglePlaceRequestConstructor(configReader),
-                                                            new WebClientWrapper());
+            var taxiFirmRepository = new TaxiFirmFactory(this, this);
             Location location = new Location(latitude, longitude);
             List<TaxiFirm> taxiFirms = taxiFirmRepository.Create(location);
 
@@ -27,9 +23,14 @@ namespace TaxiDetails.Tests
             Assert.That(taxiFirms[0].Number, Is.EqualTo("0161 228 3355"));
         }
 
-        public string ApiKey()
+        string IConstructGoogleTextSearchRequests.GetTextSearchRequests(Location location)
         {
-            return "AIzaSyAGpY8q9gQnZl4VhdX9u7Twm_YEdUhvCsc";
+            throw new System.NotImplementedException();
+        }
+
+        string IConstructGooglePlaceRequests.GetPlaceRequest(string placeReference)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

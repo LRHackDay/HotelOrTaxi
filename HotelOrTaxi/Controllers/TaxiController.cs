@@ -2,7 +2,6 @@
 using Geography;
 using HotelOrTaxi.Models;
 using TaxiFirmDetails;
-using WebResponse;
 
 namespace HotelOrTaxi.Controllers
 {
@@ -17,12 +16,7 @@ namespace HotelOrTaxi.Controllers
 
         public TaxiController()
         {
-            var webClientWrapper = new WebClientWrapper();
-            var configReader = new ConfigReader();
-            var taxiFirmFactory = new TaxiFirmFactory(new GoogleTextSearchRequestConstructor(configReader),
-                                                      new GooglePlaceRequestConstructor(configReader),
-                                                      webClientWrapper);
-            _taxiViewModelFactory = new TaxiViewModelFactory(taxiFirmFactory);
+            _taxiViewModelFactory = new TaxiViewModelFactory();
         }
 
 

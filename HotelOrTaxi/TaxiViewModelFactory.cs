@@ -19,6 +19,11 @@ namespace HotelOrTaxi
             _taxiFirmFactory = taxiFirmFactory;
         }
 
+        public TaxiViewModelFactory()
+        {
+            _taxiFirmFactory = new TaxiFirmFactory();
+        }
+
         public TaxisViewModel Create(Location location)
         {
             var taxisViewModel = new TaxisViewModel
