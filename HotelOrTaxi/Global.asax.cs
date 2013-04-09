@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using HotelOrTaxi.App_Start;
+using HotelOrTaxi.StructureMap;
 
 namespace HotelOrTaxi
 {
@@ -17,6 +18,8 @@ namespace HotelOrTaxi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Bootstrapper.Run();
         }
     }
 }
