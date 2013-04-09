@@ -76,7 +76,6 @@ namespace HotelOrTaxi
             {
                 throw new NoClearWinnerExeption();
             }
-
             return _whoIsTheWinner.Fight(taxi, hotel);
         }
     }

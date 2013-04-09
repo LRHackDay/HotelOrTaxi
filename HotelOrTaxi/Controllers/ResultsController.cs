@@ -54,7 +54,7 @@ namespace HotelOrTaxi.Controllers
             {
                 var startingPoint = new StartingPoint(_createLocations.GetLocation(fromlatlong), from);
                 var destination = new Destination(_createLocations.GetLocation(tolatlong), to);
-
+                
                 resultsViewModel = _resultsViewModelFactory.Create(Url, startingPoint, destination);
 
                 return View("Index", resultsViewModel);

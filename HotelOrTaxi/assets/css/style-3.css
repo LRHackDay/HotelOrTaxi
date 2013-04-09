@@ -297,12 +297,14 @@ footer {
     padding: 0;
 }
 
- #moreinfo { 
+#moreinfo { 
 	float:left;
 	width:380px;
 	margin-left:50px;
 	margin-top:50px;
  }
+p.one { float:left; padding:10px 0 0 20px; width:240px; vertical-align:baseline; }
+p.two { float:left; padding:10px 0 0 5px; width:263px; vertical-align:baseline; }
  
  .citation {
 	width:290px;
@@ -330,17 +332,8 @@ footer {
   #sublogo, .citation  { display:none }
   .hero-unit{ width:100%; }
 	 
-  #moreinfo { 
-	  clear:both;
-	  float:none;
-	  margin:0 auto;
-	  font-size:1.2em;
-  }
-  
-  #moreinfo {
-	width:360px;
-  }
-  
+  #moreinfo { clear:both; float:none; margin:0 auto;  font-size:1.2em; }
+  #moreinfo { width:340px; }
 }
  
 @media (max-width: 979px) and (min-width: 710px){
@@ -356,29 +349,15 @@ footer {
 		width: 620px;
 	}
 	
-    .span5, .hero-unit {
-		width: 580px;
-	}
-	
+    .span5, .hero-unit { width: 580px; }
 
-	.hero-unit {
-		-webkit-border-radius: 6px;
-		-moz-border-radius: 6px;
-		border-radius: 6px;
-	}
-	
+	.hero-unit { -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
 	 
-	.citation {
-		display:none;
-	}
-	
+	.citation { display:none; }
 }
 
 @media (max-width: 1199px) and (min-width: 980px){
     
-   .hero-unit {
-	width:470px;
-	float:left;
-   }
+   .hero-unit { width:470px; float:left; }
 	.span5 { width: 470px;  }
 }
