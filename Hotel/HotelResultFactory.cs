@@ -13,13 +13,18 @@ namespace Results
             _websiteScraper = websiteScraper;
         }
 
+        public HotelResultFactory()
+        {
+            _websiteScraper = new HotelScraper();
+        }
+
         public HotelResult Create(StartingPoint startingPoint)
         {
-            var latitude = startingPoint.Location.Latitude.ToString();
-            var longitude = startingPoint.Location.Longitude.ToString();
-
             try
             {
+                var latitude = startingPoint.Location.Latitude.ToString();
+                var longitude = startingPoint.Location.Longitude.ToString();
+
                 var response =
                     (HotelScraperResponse)
                     _websiteScraper.Scrape(latitude,
@@ -34,7 +39,9 @@ namespace Results
             }
             catch (Exception e)
             {
+                return null;
                 throw new NoHotelFoundException("No hotel found", e);
+
             }
         }
 

@@ -13,7 +13,7 @@ namespace JourneyCalculator.Tests
         private string _distance;
 
         [Test]
-        public void ThrowsExceptionWhenNoRouteFound()
+        public void ReturnsNullWhenNoRouteFound()
         {
             _noRoutesFound = true;
 
@@ -24,7 +24,7 @@ namespace JourneyCalculator.Tests
                 new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser,
                                        specifyConditionsOfNoTaxiRoutesFound);
 
-            Assert.Throws<NoRouteFoundException>(() => directionsFactory.Calculate(null, null));
+            Assert.That(directionsFactory.Calculate(null, null), Is.EqualTo(null));
         }
 
         [Test]

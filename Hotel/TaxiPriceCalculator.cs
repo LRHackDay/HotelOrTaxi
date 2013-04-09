@@ -21,6 +21,12 @@ namespace Results
             _fareResponseFactory = fareResponseFactory;
         }
 
+        public TaxiFareCalculator()
+        {
+            _fareRequestFactory = new FareRequestFactory();
+            _fareResponseFactory = new FareResponseFactory();
+        }
+
         public double GetTaxiPrice(Journey journey)
         {
             string request = _fareRequestFactory.Create(DateTime.Now, journey);

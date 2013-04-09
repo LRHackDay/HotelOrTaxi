@@ -1,3 +1,4 @@
+using System;
 using Geography;
 
 namespace JourneyCalculator
@@ -16,18 +17,32 @@ namespace JourneyCalculator
             _specifyConditionsOfNoTaxiRoutesFound = noTaxiRoutesSpecification;
         }
 
+        public DistanceCalculator()
+        {
+            _googleMapsDirectionsResponse = new GoogleMapsDirectionsResponse();
+            _googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
+            _specifyConditionsOfNoTaxiRoutesFound = new NoTaxiRoutesFoundSpecification();
+        }
+
         public Metres Calculate(StartingPoint origin, Destination destination)
         {
-            string response = _googleMapsDirectionsResponse.Generate(origin, destination);
+            try
+            {
+                string response = _googleMapsDirectionsResponse.Generate(origin, destination);
 
-            DirectionsResponse googleMapsDirections =
-                _googleMapsApiDeserialiser.DeserializeResponse(response);
+                DirectionsResponse googleMapsDirections =
+                    _googleMapsApiDeserialiser.DeserializeResponse(response);
 
-            if (_specifyConditionsOfNoTaxiRoutesFound.IsSatisfiedBy(googleMapsDirections))
-                throw new NoRouteFoundException();
-            string actualDistance = DistanceInMetres(googleMapsDirections);
+                if (_specifyConditionsOfNoTaxiRoutesFound.IsSatisfiedBy(googleMapsDirections))
+                    throw new NoRouteFoundException();
+                string actualDistance = DistanceInMetres(googleMapsDirections);
 
-            return new Metres(actualDistance);
+                return new Metres(actualDistance);
+            }
+            catch (NoRouteFoundException)
+            {
+                return null;
+            }
         }
 
         private static string DistanceInMetres(DirectionsResponse directionsResponse)

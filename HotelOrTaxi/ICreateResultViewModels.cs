@@ -3,12 +3,7 @@ using System.Web.Mvc;
 using Geography;
 using HotelOrTaxi.Models;
 using JourneyCalculator;
-using LateRoomsScraper;
 using Results;
-using TaxiApi.Configuration;
-using TaxiApi.Request;
-using TaxiApi.Response;
-using WebResponse;
 
 namespace HotelOrTaxi
 {
@@ -36,73 +31,40 @@ namespace HotelOrTaxi
 
         public ResultsViewModelFactory()
         {
-            var canReadConfigurations = new ConfigReader();
-            var fareRequestFactory = new FareRequestFactory();
-            var webResponseReader = new WebClientWrapper();
-            var taxiResultsPage = new CreateTheTaxiControllerUri();
-            var performApiRequest = new WebClientApiRequest(canReadConfigurations, webResponseReader);
-            var fareResponseFactory = new FareResponseFactory(performApiRequest);
-            var taxiFareCalculator = new TaxiFareCalculator(fareRequestFactory, fareResponseFactory);
-            var googleMapsDirectionsResponse = new GoogleMapsDirectionsResponse(webResponseReader);
-            var googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
-            var specifyConditionsOfNoTaxiRoutesFound = new SpecifyConditionsOfNoTaxiRoutesFound();
-            var hotelStore = new AspNetCache();
-            var downloadHtml = new DownloadHtml(webResponseReader);
-            var retrieveElementText = new HtmlElement();
-            var websiteScraper = new HotelScraper(hotelStore, downloadHtml, retrieveElementText);
-            _taxiResultFactory = new TaxiResultFactory(taxiResultsPage, taxiFareCalculator);
-            _hotelResultFactory = new HotelResultFactory(websiteScraper);
-            _distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser, specifyConditionsOfNoTaxiRoutesFound);
+            _hotelResultFactory = new HotelResultFactory();
+            _taxiResultFactory = new TaxiResultFactory();
+            _distanceCalculator = new DistanceCalculator();
             _whoIsTheWinner = new WhoIsTheWinner();
         }
 
         public ResultsViewModel Create(UrlHelper urlHelper, StartingPoint startingPoint, Destination destination)
         {
-            Metres distance = null;
             TaxiResult taxi = null;
-            HotelResult hotel = null;
-            try
-            {
-                hotel = _hotelResultFactory.Create(startingPoint);
-            }
-            catch (NoHotelFoundException)
-            {
-            }
+            HotelResult hotel = _hotelResultFactory.Create(startingPoint);
 
-            try
-            {
-                distance = _distanceCalculator.Calculate(startingPoint, destination);
-            }
-            catch (NoRouteFoundException)
-            {
-            }
+            Metres distance = _distanceCalculator.Calculate(startingPoint, destination);
 
-            Journey journey = null;
+            Journey journey = Journey(startingPoint, distance);
+
+            if (distance != null && journey != null)
+                taxi = _taxiResultFactory.Create(urlHelper, journey);
+
+            if (taxi == null && hotel == null)
+                throw new NoClearWinnerExeption();
+
+            return _whoIsTheWinner.Fight(taxi, hotel);
+        }
+
+        private static Journey Journey(StartingPoint startingPoint, Metres distance)
+        {
             try
             {
-                journey = new Journey(startingPoint, distance);
+                return new Journey(startingPoint, distance);
             }
             catch (Exception)
             {
+                return null;
             }
-
-            if (distance != null && journey != null)
-            {
-                
-                try
-                {
-                    taxi = _taxiResultFactory.Create(urlHelper, journey);
-                }
-                catch (TaxiApiException)
-                {
-                }
-            }
-
-            if (taxi == null && hotel == null)
-            {
-                throw new NoClearWinnerExeption();
-            }
-            return _whoIsTheWinner.Fight(taxi, hotel);
         }
     }
 }

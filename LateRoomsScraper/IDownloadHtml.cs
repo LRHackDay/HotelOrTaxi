@@ -17,6 +17,11 @@ namespace LateRoomsScraper
             _responseDownloader = responseDownloader;
         }
 
+        public DownloadHtml()
+        {
+            _responseDownloader = new WebClientWrapper();
+        }
+
         public HtmlNode GetHtmlDocumentNode(string url)
         {
             var html = _responseDownloader.Get(url);

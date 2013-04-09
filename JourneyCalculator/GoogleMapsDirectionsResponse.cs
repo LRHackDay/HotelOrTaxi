@@ -27,12 +27,22 @@ namespace JourneyCalculator
             _webResponseDownloader = webResponseDownloader;
         }
 
+        public GoogleMapsDirectionsResponse()
+        {
+            _webResponseDownloader = new WebClientWrapper();
+        }
+
         public string Generate(StartingPoint origin, Destination destination)
         {
             string baseUri = "http://maps.googleapis.com/maps/api/directions/";
+
+            string searchTerm = origin.Location.SearchTerm;
+
+            string term = destination.Location.SearchTerm;
+
             string address = String.Format("{0}json?origin={1}&destination={2}&sensor=false", baseUri,
-                                           origin.Location.SearchTerm,
-                                           destination.Location.SearchTerm);
+                                           searchTerm,
+                                           term);
 
             return _webResponseDownloader.Get(address);
         }

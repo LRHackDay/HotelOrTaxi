@@ -13,7 +13,7 @@ namespace GoogleMapsApi.Tests
         {
             var expectedDistance = new Metres(542383);
             IDownloadResponses webResponseDownloaderWrapper = new WebClientWrapper();
-            var specifyConditionsOfNoTaxiRoutesFound = new SpecifyConditionsOfNoTaxiRoutesFound();
+            var specifyConditionsOfNoTaxiRoutesFound = new NoTaxiRoutesFoundSpecification();
             IGetTheResponseFromGoogleMapsDirectionsApi googleMapsDirectionsResponse = new GoogleMapsDirectionsResponse(webResponseDownloaderWrapper);
             var googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
 

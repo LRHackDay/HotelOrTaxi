@@ -8,7 +8,7 @@ namespace Results
         string GetUriForTaxi(UrlHelper url, Location location);
     }
 
-    public class CreateTheTaxiControllerUri : ICreateTheTaxiControllerUri
+    public class TaxiControllerUriFactory : ICreateTheTaxiControllerUri
     {
         public string GetUriForTaxi(UrlHelper url, Location location)
         {

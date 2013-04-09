@@ -4,7 +4,6 @@ using HotelOrTaxi.Models;
 using JourneyCalculator;
 using NUnit.Framework;
 using Results;
-using WebResponse;
 
 namespace HotelOrTaxi.Tests
 {
@@ -15,9 +14,6 @@ namespace HotelOrTaxi.Tests
         private HotelResult _hotel;
         private TaxiResult _taxi;
         private ResultsViewModel _viewModel;
-        private bool _throwNoTaxiRouteFoundException;
-        private bool _throwNoHotelFoundException;
-        private bool _throwTaxiApiException;
         private Metres _distance;
 
         [Test]
@@ -27,9 +23,6 @@ namespace HotelOrTaxi.Tests
             _distance = new Metres(0);
             _taxi = new TaxiResult();
             _hotel = new HotelResult();
-            _throwNoHotelFoundException = false;
-            _throwNoTaxiRouteFoundException = false;
-            _throwTaxiApiException = false;
 
             var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, this);
             var startingPoint = new StartingPoint(null, null);
@@ -41,12 +34,9 @@ namespace HotelOrTaxi.Tests
         [Test]
         public void OnlyReturnWinningHotelWhenNoTaxiRouteFound()
         {
-            _throwNoTaxiRouteFoundException = true;
-            _throwNoHotelFoundException = false;
-            _throwTaxiApiException = false;
-
             _hotel = new HotelResult();
             _taxi = new TaxiResult();
+            _distance = null;
 
             var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, new WhoIsTheWinner());
             var startingPoint = new StartingPoint(null, null);
@@ -57,14 +47,10 @@ namespace HotelOrTaxi.Tests
         }
 
         [Test]
-        public void OnlyReturnWinningHotelWhenProblemWithTaxiApi()
+        public void OnlyReturnWinningHotelWhenNoTaxiResult()
         {
-            _throwTaxiApiException = true;
-            _throwNoHotelFoundException = false;
-            _throwNoTaxiRouteFoundException = false;
-
             _hotel = new HotelResult();
-            _taxi = new TaxiResult();
+            _taxi = null;
 
             var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, new WhoIsTheWinner());
             var startingPoint = new StartingPoint(null, null);
@@ -77,12 +63,8 @@ namespace HotelOrTaxi.Tests
         [Test]
         public void DealWithNoHotelFound()
         {
-            _throwNoHotelFoundException = true;
-            _throwTaxiApiException = false;
-            _throwNoTaxiRouteFoundException = false;
-
             _distance = new Metres(0);
-            _hotel = new HotelResult();
+            _hotel = null;
             _taxi = new TaxiResult();
 
             var resultsViewModelFactory = new ResultsViewModelFactory(this, this, this, new WhoIsTheWinner());
@@ -95,22 +77,16 @@ namespace HotelOrTaxi.Tests
 
         TaxiResult ICreateTheTaxiResult.Create(UrlHelper urlHelper, Journey journey)
         {
-            if (_throwTaxiApiException)
-                throw new TaxiApiException();
             return _taxi;
         }
 
         HotelResult ICreateTheHotelResult.Create(StartingPoint startingPoint)
         {
-            if (_throwNoHotelFoundException)
-                throw new NoHotelFoundException();
             return _hotel;
         }
 
         Metres ICanGetTheDistanceOfATaxiJourneyBetweenPoints.Calculate(StartingPoint origin, Destination destination)
         {
-            if (_throwNoTaxiRouteFoundException)
-                throw new NoRouteFoundException();
             return _distance;
         }
 

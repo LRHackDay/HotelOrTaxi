@@ -5,7 +5,7 @@ public interface ISpecifyConditionsOfNoTaxiRoutesFound
     bool IsSatisfiedBy(DirectionsResponse googleMapsDirections);
 }
 
-public class SpecifyConditionsOfNoTaxiRoutesFound : ISpecifyConditionsOfNoTaxiRoutesFound
+public class NoTaxiRoutesFoundSpecification : ISpecifyConditionsOfNoTaxiRoutesFound
 {
     public bool IsSatisfiedBy(DirectionsResponse googleMapsDirections)
     {

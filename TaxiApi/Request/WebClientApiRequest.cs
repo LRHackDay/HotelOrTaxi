@@ -1,4 +1,3 @@
-using System.Net;
 using TaxiApi.Configuration;
 using WebResponse;
 
@@ -15,9 +14,15 @@ namespace TaxiApi.Request
             _webResponseReader = webResponseReader;
         }
 
+        public WebClientApiRequest()
+        {
+            _configReader = new ConfigReader();
+            _webResponseReader = new WebClientWrapper();
+        }
+
         public string Perform(string request)
         {
-            var formattedRequest = string.Concat(_configReader.ApiUrl(), request);
+            string formattedRequest = string.Concat(_configReader.ApiUrl(), request);
 
             return _webResponseReader.Get(formattedRequest);
         }

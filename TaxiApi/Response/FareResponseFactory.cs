@@ -1,7 +1,5 @@
-using System;
 using Newtonsoft.Json;
 using TaxiApi.Request;
-using WebResponse;
 
 namespace TaxiApi.Response
 {
@@ -19,12 +17,16 @@ namespace TaxiApi.Response
             _performApiRequest = performApiRequest;
         }
 
+        public FareResponseFactory()
+        {
+            _performApiRequest = new WebClientApiRequest();
+        }
+
         public FareResponse Create(string fareRequest)
         {
-                var response = _performApiRequest.Perform(fareRequest);
+            string response = _performApiRequest.Perform(fareRequest);
 
-                return DeserializeResponse(response);
-            
+            return DeserializeResponse(response);
         }
 
         private static FareResponse DeserializeResponse(string response)
@@ -41,7 +43,7 @@ namespace TaxiApi.Response
                 {
                     Fare = new Fare
                         {
-                            Cost = (decimal)30.25
+                            Cost = (decimal) 30.25
                         }
                 };
         }
