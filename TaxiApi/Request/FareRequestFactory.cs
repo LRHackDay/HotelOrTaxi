@@ -19,6 +19,11 @@ namespace TaxiApi.Request
             _canReadConfigurations = canReadConfigurations;
         }
 
+        public FareRequestFactory()
+        {
+            _canReadConfigurations = new ConfigReader();
+        }
+
         public string Create(DateTime date, Journey journey)
         {
             var request = new StringBuilder();

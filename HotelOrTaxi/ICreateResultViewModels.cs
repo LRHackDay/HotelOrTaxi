@@ -36,10 +36,10 @@ namespace HotelOrTaxi
 
         public ResultsViewModelFactory()
         {
-            var taxiResultsPage = new CreateTheTaxiControllerUri();
             var canReadConfigurations = new ConfigReader();
-            var fareRequestFactory = new FareRequestFactory(canReadConfigurations);
+            var fareRequestFactory = new FareRequestFactory();
             var webResponseReader = new WebClientWrapper();
+            var taxiResultsPage = new CreateTheTaxiControllerUri();
             var performApiRequest = new WebClientApiRequest(canReadConfigurations, webResponseReader);
             var fareResponseFactory = new FareResponseFactory(performApiRequest);
             var taxiFareCalculator = new TaxiFareCalculator(fareRequestFactory, fareResponseFactory);
