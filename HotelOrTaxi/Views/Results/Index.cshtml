@@ -4,7 +4,9 @@
     @if (Model.Winner.Name == "Hotel" && Model.PriceDifference > 0)
     {
         <div id="result-info">
-            <span>Hotel is &pound;@string.Format("{0:0.00}", Model.PriceDifference) cheaper</span><br/>So now you can stay – result!<div class="arrow-down"></div>
+            <div class="result-info-inner">
+                <span>Hotel is &pound;@string.Format("{0:0.00}", Model.PriceDifference) cheaper</span><br/>So now you can stay – result!<div class="arrow-down"></div>
+            </div>
         </div>
     }
     @if (Model.IsDraw)
