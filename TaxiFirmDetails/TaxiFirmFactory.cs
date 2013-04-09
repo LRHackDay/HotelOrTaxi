@@ -27,7 +27,7 @@ namespace TaxiFirmDetails
 
         public List<TaxiFirm> Create(Location location)
         {
-            return new List<TaxiFirm> {new TaxiFirm {Name = "Olympic", Number = "0161 872 4040"}};
+            //return new List<TaxiFirm> {new TaxiFirm {Name = "Olympic", Number = "0161 872 4040"}};
 
             string address = _googleTextSearchRequestConstructor.GetTextSearchRequests(location);
             string response = _webClientWrapper.Get(address);
