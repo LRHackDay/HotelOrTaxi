@@ -370,3 +370,7 @@ p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; 
     .hero-unit { width:470px; float:left; }
     .span5 { width: 470px;  }
 }
+
+#find-my-loc {
+    cursor: pointer;
+}
