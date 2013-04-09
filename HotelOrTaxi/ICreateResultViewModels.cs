@@ -3,7 +3,11 @@ using System.Web.Mvc;
 using Geography;
 using HotelOrTaxi.Models;
 using JourneyCalculator;
+using LateRoomsScraper;
 using Results;
+using TaxiApi.Configuration;
+using TaxiApi.Request;
+using TaxiApi.Response;
 using WebResponse;
 
 namespace HotelOrTaxi
@@ -28,6 +32,28 @@ namespace HotelOrTaxi
             _hotelResultFactory = hotelResultFactory;
             _distanceCalculator = distanceCalculator;
             _whoIsTheWinner = whoIsTheWinner;
+        }
+
+        public ResultsViewModelFactory()
+        {
+            var taxiResultsPage = new CreateTheTaxiControllerUri();
+            var canReadConfigurations = new ConfigReader();
+            var fareRequestFactory = new FareRequestFactory(canReadConfigurations);
+            var webResponseReader = new WebClientWrapper();
+            var performApiRequest = new WebClientApiRequest(canReadConfigurations, webResponseReader);
+            var fareResponseFactory = new FareResponseFactory(performApiRequest);
+            var taxiFareCalculator = new TaxiFareCalculator(fareRequestFactory, fareResponseFactory);
+            var googleMapsDirectionsResponse = new GoogleMapsDirectionsResponse(webResponseReader);
+            var googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
+            var specifyConditionsOfNoTaxiRoutesFound = new SpecifyConditionsOfNoTaxiRoutesFound();
+            var hotelStore = new AspNetCache();
+            var downloadHtml = new DownloadHtml(webResponseReader);
+            var retrieveElementText = new HtmlElement();
+            var websiteScraper = new HotelScraper(hotelStore, downloadHtml, retrieveElementText);
+            _taxiResultFactory = new TaxiResultFactory(taxiResultsPage, taxiFareCalculator);
+            _hotelResultFactory = new HotelResultFactory(websiteScraper);
+            _distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser, specifyConditionsOfNoTaxiRoutesFound);
+            _whoIsTheWinner = new WhoIsTheWinner();
         }
 
         public ResultsViewModel Create(UrlHelper urlHelper, StartingPoint startingPoint, Destination destination)

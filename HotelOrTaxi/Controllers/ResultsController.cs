@@ -25,25 +25,7 @@ namespace HotelOrTaxi.Controllers
 
         public ResultsController()
         {
-            var taxiResultsPage = new CreateTheTaxiControllerUri();
-            var canReadConfigurations = new ConfigReader();
-            var fareRequestFactory = new FareRequestFactory(canReadConfigurations);
-            var webResponseReader = new WebClientWrapper();
-            var performApiRequest = new WebClientApiRequest(canReadConfigurations, webResponseReader);
-            var fareResponseFactory = new FareResponseFactory(performApiRequest);
-            var taxiFareCalculator = new TaxiFareCalculator(fareRequestFactory, fareResponseFactory);
-            var taxiResultFactory = new TaxiResultFactory(taxiResultsPage, taxiFareCalculator);
-            var googleMapsDirectionsResponse = new GoogleMapsDirectionsResponse(webResponseReader);
-            var googleMapsApiDeserialiser = new GoogleMapsApiDeserialiser();
-            var specifyConditionsOfNoTaxiRoutesFound = new SpecifyConditionsOfNoTaxiRoutesFound();
-            var hotelStore = new AspNetCache();
-            var downloadHtml = new DownloadHtml(webResponseReader);
-            var retrieveElementText = new HtmlElement();
-            var websiteScraper = new HotelScraper(hotelStore, downloadHtml, retrieveElementText);
-            var hotelResultFactory = new HotelResultFactory(websiteScraper);
-            var distanceCalculator = new DistanceCalculator(googleMapsDirectionsResponse, googleMapsApiDeserialiser, specifyConditionsOfNoTaxiRoutesFound);
-            var whoIsTheWinner = new WhoIsTheWinner();
-            _resultsViewModelFactory = new ResultsViewModelFactory(taxiResultFactory, hotelResultFactory, distanceCalculator, whoIsTheWinner);
+            _resultsViewModelFactory = new ResultsViewModelFactory();
             _createLocations = new LocationFactory();
         }
 
