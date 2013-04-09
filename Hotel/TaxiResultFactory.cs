@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using JourneyCalculator;
-using WebResponse;
 
 namespace Results
 {
@@ -21,15 +20,14 @@ namespace Results
             var taxiResult = new TaxiResult
                 {
                     Price = GetTaxiPrice(journey),
-                    Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper)
+                    Uri = _createTheTaxiControllerUri.GetUriForTaxi(urlHelper, journey.StartingPoint)
                 };
             return taxiResult;
         }
 
         private double GetTaxiPrice(Journey journey)
         {
-                double taxiPrice = _taxiFareCalculator.GetTaxiPrice(journey);
-                return taxiPrice;
+            return _taxiFareCalculator.GetTaxiPrice(journey);
         }
     }
 }
