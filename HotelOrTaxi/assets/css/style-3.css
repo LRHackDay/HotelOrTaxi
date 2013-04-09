@@ -7,7 +7,7 @@
 
 .grey { color:#999; }
 
-.search-results { padding:15px; }
+.search-results { padding:15px 0; }
 div#result-info { position:relative; margin-bottom:20px; padding:10px; width:98%; font-size:16px; text-align:center; background:#FFF; border-radius: 4px 4px 4px 4px; }
     div#result-info span { font-size:16px; font-weight:bold; }
 .result-info-inner { margin:0 auto; width:100%; }
