@@ -18,7 +18,7 @@ namespace LateRoomsScraper
 
         public string RetrieveNodeAttribute(HtmlNode parent, string xPath, string attribute)
         {
-            var node = parent.SelectSingleNode(xPath);
+            var node = string.IsNullOrEmpty(xPath) ? parent : parent.SelectSingleNode(xPath);
             return node != null ? node.Attributes[attribute].Value : null;
         }
     }

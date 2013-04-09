@@ -70,7 +70,7 @@ namespace LateRoomsScraper
             var smiley = _retrieveElementText.RetrieveNodeAttribute(node, "div/div[2]/div[1]/div/div", "class");
             var numberOfReviews = _retrieveElementText.RetrieveNodeText(node, "div/div[2]/div[1]/strong");
             var totalPrice = _retrieveElementText.RetrieveNodeText(node, "div/div[2]/div[3]/div/span/span[2]");
-            var url = _retrieveElementText.RetrieveNodeAttribute(node, "a", "href");
+            var url = _retrieveElementText.RetrieveNodeAttribute(node, null, "href");
             var image = _retrieveElementText.RetrieveNodeAttribute(node, "div/div[1]/span/img", "src");
 
             return new Hotel
