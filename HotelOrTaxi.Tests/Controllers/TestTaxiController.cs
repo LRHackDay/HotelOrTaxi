@@ -11,7 +11,7 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void DisplaysIndex()
         {
-            var viewResult = new TaxiController(this).Index();
+            var viewResult = new TaxiController(this).Index("53.479251", "-2.247926");
 
             var viewName = viewResult.ViewName;
             Assert.That(viewName, Is.EqualTo("Index"));
@@ -20,7 +20,7 @@ namespace HotelOrTaxi.Tests.Controllers
         [Test]
         public void ReturnsViewModel()
         {
-            var viewResult = new TaxiController(this).Index();
+            var viewResult = new TaxiController(this).Index("53.479251", "-2.247926");
 
             var model = viewResult.Model;
             Assert.That(model, Is.TypeOf<TaxisViewModel>());

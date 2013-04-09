@@ -25,11 +25,12 @@ namespace HotelOrTaxi.Controllers
             _taxiViewModelFactory = new TaxiViewModelFactory(taxiFirmFactory);
         }
 
-        public ViewResult Index()
+
+        public ViewResult Index(string latitude, string longitude)
         {
-            var latitude = new Latitude("53.479251");
-            var longitude = new Longitude("-2.247926");
-            var location = new Location(latitude, longitude);
+            Latitude latitude1 = new Latitude(latitude);
+            Longitude longitude1 = new Longitude(longitude);
+            Location location = new Location(latitude1, longitude1);
             TaxisViewModel taxisViewModel = _taxiViewModelFactory.Create(location);
             return View("Index", taxisViewModel);
         }

@@ -12,7 +12,7 @@ namespace Results
     {
         public string GetUriForTaxi(UrlHelper url, Location location)
         {
-            return url.Action("Index", "Taxi");
+            return url.Action("Index", "Taxi",  new {latitude = location.Latitude, longitude = location.Longitude });
         }
     }
 }
