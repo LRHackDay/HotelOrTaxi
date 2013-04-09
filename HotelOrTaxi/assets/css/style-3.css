@@ -57,7 +57,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 .search-box-holder { width:100%; height:40px; background-color:#FFF; border-radius: 4px 4px 4px 4px; border:1px solid #CCCCCC; }
 .s-on { background-color:red; }
 .s-on #from { color:#FFF; background-color:red; }
-#from { float:left; margin:0 0 0 2px; width:60%; border-radius:0; border:none; }
+#from { float:left; margin:0 0 0 2px; width:50%; border-radius:0; border:none; }
 
 .s-on ::-webkit-input-placeholder{ color: #ffffff;}
 .s-on ::-webkit-input-placeholder { /* WebKit browsers */ color: #ffffff;}
