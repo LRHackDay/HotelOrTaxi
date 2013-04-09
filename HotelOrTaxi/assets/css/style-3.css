@@ -8,7 +8,7 @@
 .grey { color:#999; }
 
 .search-results { padding:15px 0; }
-div#result-info { position:relative; margin-bottom:20px; padding:10px; width:98%; font-size:16px; text-align:center; background:#FFF; border-radius: 4px 4px 4px 4px; }
+div#result-info { position:relative; margin-bottom:20px; padding:10px; width:94%; font-size:16px; text-align:center; background:#FFF; border-radius: 4px 4px 4px 4px; }
     div#result-info span { font-size:16px; font-weight:bold; }
 .result-info-inner { margin:0 auto; width:100%; }
 .results-box { min-height:120px; }
@@ -334,8 +334,9 @@ p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; 
   p.one { padding:10px 0 0 10px; width:192px; font-size:14px; }
   p.two { width:207px; font-size:14px; }
 
-  .subheadline { float:left; width:40%; margin:0 0 10px 0; font-size:14px; }
-  .price { float:left; width:43%; font-size:32px; font-weight:bold; }
+  .results-box-img { margin-right:15px; }
+  .subheadline { float:left; width:40%; margin:10px 0 0 0; font-size:15px; }
+  .price { float:left; width:46%; font-size:34px; font-weight:bold; }
   .show-me-holder { float:right; margin:10px 0 0; width:100%; }
 
   .red-button {  margin-top:0;  }
