@@ -181,6 +181,7 @@
     <Content Include="assets\js\autocomplete.js" />
     <Content Include="assets\js\bootstrap.js" />
     <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\searchForm.js" />
     <Content Include="assets\js\fight.js" />
     <Content Include="assets\js\location.js" />
     <Content Include="assets\js\jquery-1.9.1.js" />

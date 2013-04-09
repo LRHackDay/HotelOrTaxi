@@ -4,9 +4,9 @@
         <div class="row">
             <div class="span5">
                 <div class="control-group">
-                    <div class="search-box-holder">
-                        <input type="text" id="from" placeholder="From" class="input-block-level" name="From" value="Current location" onfocus="if(this.value == 'Current location') {this.value=''}" onblur="if(this.value == ''){this.value ='Current Location'}">
-                        <button id="change-location" type="submit" value="change">Change</button>
+                    <div class="search-box-holder s-on s-on-change">
+                        <input type="text" disabled="disabled" id="from" placeholder="Current location" class="input-block-level" name="From">
+                        <button id="change-location" type="button" value="change">Change</button>
                         <div id="find-my-loc"></div>
                     </div>
                 </div>
