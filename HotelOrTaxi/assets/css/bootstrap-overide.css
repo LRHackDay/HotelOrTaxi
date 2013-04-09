@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /* CSS Document */
 
 /*888888*/
@@ -256,7 +256,7 @@ form {
 /* PROMOTION HEADER - NEEDS CHANGING */
 #headerIMG {
 	height:149px;
-	width:320px;
+	width:300px;
 	margin:0 auto;
 }
 
