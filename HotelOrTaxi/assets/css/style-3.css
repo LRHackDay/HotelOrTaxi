@@ -34,6 +34,7 @@ body, input, button, select, textarea { font-family: 'Open Sans', sans-serif; }
     background-image: linear-gradient(to bottom, #CF0000, #FF0000);
     background-repeat: repeat-x;
     border-color: red;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #CF0000), color-stop(1, #FF0000));
 }
 
 .navbar-inner { min-height: 50px; }

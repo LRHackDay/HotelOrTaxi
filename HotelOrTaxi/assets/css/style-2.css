@@ -3,12 +3,6 @@
 
 
 body { background: #F3EDE0; }
-.navbar-inverse .navbar-inner {
-    background-color: red;
-    background-image: linear-gradient(to bottom, #CF0000, #FF0000);
-    background-repeat: repeat-x;
-    border-color: RED;
-}
 
 .navbar-inner {
     min-height: 50px;
