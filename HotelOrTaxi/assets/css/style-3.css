@@ -55,8 +55,8 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 }
 
 .search-box-holder { width:100%; height:40px; background-color:#FFF; border-radius: 4px 4px 4px 4px; border:1px solid #CCCCCC; }
-.s-on { background-color:red; }
-.s-on #from { color:#FFF; background-color:red; }
+.s-on { background-color:#fa8e8e; }
+.s-on #from { color:#FFF; background-color:#fa8e8e; }
 #from { float:left; margin:0 0 0 2px; width:50%; border-radius:0; border:none; }
 
 .s-on ::-webkit-input-placeholder{ color: #ffffff;}
@@ -304,7 +304,7 @@ footer {
 	margin-top:50px;
  }
 p.one { float:left; padding:10px 0 0 20px; width:240px; vertical-align:baseline; }
-p.two { float:left; padding:10px 0 0 5px; width:263px; vertical-align:baseline; }
+p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; }
  
  .citation {
 	width:290px;
@@ -333,10 +333,10 @@ p.two { float:left; padding:10px 0 0 5px; width:263px; vertical-align:baseline; 
   .hero-unit{ width:100%; }
 	 
   #moreinfo { clear:both; float:none; margin:0 auto;  font-size:1.2em; }
-  #moreinfo { width:290px; }
+  #moreinfo { width:279px; }
 
-  p.one { width:209px; }
-    p.two { width:220px; }
+  p.one { padding:10px 0 0 10px; width:192px; font-size:14px; }
+  p.two { width:207px; font-size:14px; }
 }
  
 @media (max-width: 979px) and (min-width: 710px){
@@ -347,6 +347,9 @@ p.two { float:left; padding:10px 0 0 5px; width:263px; vertical-align:baseline; 
 	  margin:0 auto; 
 	  font-size:1.2em;
 	}
+
+     p.one { padding:10px 0 0 20px; width:260px; }
+     p.two { padding:10px 0 0 22px; width:293px; }
 
 	.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, #sublogo {
 		width: 620px;
@@ -360,7 +363,9 @@ p.two { float:left; padding:10px 0 0 5px; width:263px; vertical-align:baseline; 
 }
 
 @media (max-width: 1199px) and (min-width: 980px){
-    
-   .hero-unit { width:470px; float:left; }
-	.span5 { width: 470px;  }
+
+    #moreinfo { font-size:1.2em; }
+
+    .hero-unit { width:470px; float:left; }
+    .span5 { width: 470px;  }
 }
