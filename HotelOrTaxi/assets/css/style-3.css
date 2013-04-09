@@ -59,6 +59,13 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 .s-on #from { color:#FFF; background-color:red; }
 #from { float:left; margin:0 0 0 2px; width:50%; border-radius:0; border:none; }
 
+.s-on ::-webkit-input-placeholder{ color: #ffffff;}
+.s-on ::-webkit-input-placeholder { /* WebKit browsers */ color: #ffffff;}
+.s-on :-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color: #ffffff;}
+.s-on ::-moz-placeholder { /* Mozilla Firefox 19+ */ color: #ffffff;}
+.s-on :-ms-input-placeholder { /* Internet Explorer 10+ */color: #ffffff;}
+
+
 #change-location { display:none; }
 .s-on-change #change-location { display:block; }
 #change-location { float:right; margin:5px 5px 0; height:30px; font-size:12px; font-weight:bold; color:#FFF; background-color:#6b0324; border-radius: 4px 4px 4px 4px; border:2px solid #FFF; }
