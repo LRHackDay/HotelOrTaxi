@@ -5,7 +5,7 @@ namespace LateRoomsScraper
 {
     public interface IDownloadHtml
     {
-        HtmlDocument GetHtmlDocument(string url);
+        HtmlNode GetHtmlDocumentNode(string url);
     }
 
     public class DownloadHtml : IDownloadHtml
@@ -17,14 +17,14 @@ namespace LateRoomsScraper
             _responseDownloader = responseDownloader;
         }
 
-        public HtmlDocument GetHtmlDocument(string url)
+        public HtmlNode GetHtmlDocumentNode(string url)
         {
             var html = _responseDownloader.Get(url);
             
             var document = new HtmlDocument();
             document.LoadHtml(html);
 
-            return document;
+            return document.DocumentNode;
         }
     }
 }

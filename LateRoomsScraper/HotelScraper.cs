@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using HtmlAgilityPack;
 
 namespace LateRoomsScraper
@@ -42,23 +43,17 @@ namespace LateRoomsScraper
 
         private List<Hotel> ScrapeAllHotelsFromDocument()
         {
-            var htmlDocument = _downloadHtml.GetHtmlDocument(ScrapeUrl);
-            var hotels = new List<Hotel>();
-            var documentNode = htmlDocument.DocumentNode;
+            var documentNode = _downloadHtml.GetHtmlDocumentNode(ScrapeUrl);
+            var anchorNodes = documentNode.SelectNodes("//*[@id='searchResults']/a");
 
-            const int resultIndex = 1;
-            const int numberOfResults = 10;
-            for (int index = resultIndex; index <= numberOfResults; index++)
-            {
-                var anchorNode = documentNode.SelectSingleNode(string.Format("//*[@id='searchResults']/a[{0}]", index));
-                var hotel = RetrieveHotel(anchorNode);
-                if (hotel.TotalPrice > 0)
-                {
-                    hotels.Add(hotel);
-                }
-            }
+            var hotels = ScrapeHotels(anchorNodes);
 
             return hotels;
+        }
+
+        private List<Hotel> ScrapeHotels(IEnumerable<HtmlNode> anchorNodes)
+        {
+            return anchorNodes.Select(RetrieveHotel).Where(hotel => hotel.TotalPrice > 0).ToList();
         }
 
         private Hotel RetrieveHotel(HtmlNode node)
