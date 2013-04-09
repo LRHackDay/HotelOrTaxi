@@ -16,12 +16,6 @@ namespace HotelOrTaxi.Controllers
             _createLocations = createLocations;
         }
 
-        public ResultsController()
-        {
-            _resultsViewModelFactory = new ResultsViewModelFactory();
-            _createLocations = new LocationFactory();
-        }
-
         public ViewResult Index(string from, string to, string fromlatlong, string tolatlong)
         {
             var resultsViewModel = new ResultsViewModel();
