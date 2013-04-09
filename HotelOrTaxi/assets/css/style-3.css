@@ -333,7 +333,10 @@ p.two { float:left; padding:10px 0 0 5px; width:263px; vertical-align:baseline; 
   .hero-unit{ width:100%; }
 	 
   #moreinfo { clear:both; float:none; margin:0 auto;  font-size:1.2em; }
-  #moreinfo { width:340px; }
+  #moreinfo { width:300px; }
+
+  p.one { width:209px; }
+    p.two { width:220px; }
 }
  
 @media (max-width: 979px) and (min-width: 710px){
