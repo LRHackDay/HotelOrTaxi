@@ -165,6 +165,7 @@
     <Content Include="assets\img\people\rob.png" />
     <Content Include="assets\img\people\sam.png" />
     <Content Include="assets\img\person-thinking.jpg" />
+    <Content Include="assets\img\search-arrow.png" />
     <Content Include="assets\img\search-icon.png" />
     <Content Include="assets\img\speechbubble-arrow.png" />
     <Content Include="assets\img\startscreen.png" />

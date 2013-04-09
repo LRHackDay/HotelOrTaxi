@@ -123,6 +123,19 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     vertical-align: middle;
 }
 
+.search-box-holder { width:100%; height:40px; background-color:#FFF; border-radius: 4px 4px 4px 4px; border:1px solid #CCCCCC; }
+.s-on { background-color:red; }
+.s-on #from { color:#FFF; background-color:red; }
+#from { float:left; margin:0 0 0 2px; width:50%; border-radius:0; border:none; }
+
+#change-location { display:none; }
+.s-on-change #change-location { display:block; }
+#change-location { float:right; margin:5px 5px 0; height:30px; font-size:12px; font-weight:bold; color:#FFF; background-color:#6b0324; border-radius: 4px 4px 4px 4px; border:2px solid #FFF; }
+
+#find-my-loc { display:none; }
+.s-on-find #find-my-loc { display:block; }
+#find-my-loc { float:right; margin:5px 5px 0; width:26px; height:26px; background:url(/assets/img/search-arrow.png) no-repeat 5px 6px; background-color:#6b0324; border-radius: 4px 4px 4px 4px; border:2px solid #FFF; }
+
 .modal-fight {  background:#F3EDE0; width:100%; height:600px; background-image:url(/assets/img/fight-big.gif);  background-repeat:no-repeat; background-position:center;}
 
 .input-where { width:60%; float:left; }
@@ -263,9 +276,6 @@ element.style {
 body {
     font-family: 'Open Sans',sans-serif;
 }
-body, input, button, select, textarea {
-    font-family: 'Open Sans',sans-serif;
-}
 
 html {
     font-size: 100%;
@@ -274,6 +284,15 @@ html {
 }
 .navbar-inverse .btn-navbar {
     background-color: #810026;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar-inverse .btn-navbar {
+    background-color: red;
+    background-image: linear-gradient(to bottom, #CF0000, #FF0000);
+    background-repeat: repeat-x;
+    border-color:none;
     color: #FFFFFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
@@ -290,7 +309,6 @@ html {
     margin: 0 auto;
     width: 49px;
 }
-
 
 @media (min-width: 1200px){
 	.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
