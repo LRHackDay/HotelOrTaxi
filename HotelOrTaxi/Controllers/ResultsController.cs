@@ -2,13 +2,6 @@
 using System.Web.Mvc;
 using Geography;
 using HotelOrTaxi.Models;
-using JourneyCalculator;
-using LateRoomsScraper;
-using Results;
-using TaxiApi.Configuration;
-using TaxiApi.Request;
-using TaxiApi.Response;
-using WebResponse;
 
 namespace HotelOrTaxi.Controllers
 {

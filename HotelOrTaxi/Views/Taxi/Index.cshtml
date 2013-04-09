@@ -1,6 +1,7 @@
 ﻿@model HotelOrTaxi.Models.TaxisViewModel
 
 <h2>Taxis near you</h2>
+<img src="/assets/img/powered-by-google-on-non-white.png"/>
 @foreach (var taxi in Model.TaxiFirms)
 {
     <p> @taxi.Name <a href="@taxi.Number">@taxi.Number</a></p>
