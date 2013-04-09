@@ -10,6 +10,7 @@ namespace TaxiDetails.Tests
     public class TestTaxiFirmFactory : ICanReadConfigurations
     {
         [Test]
+        [Ignore]
         public void ReturnsNameAndNumber()
         {
             var longitude = new Longitude("-2.240117");
