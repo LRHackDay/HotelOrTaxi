@@ -1,8 +1,8 @@
 ﻿using System;
+using Configuration;
 using Geography;
 using JourneyCalculator;
 using NUnit.Framework;
-using TaxiApi.Configuration;
 using TaxiApi.Request;
 using TaxiApi.Response;
 using WebResponse;
@@ -62,14 +62,19 @@ namespace TaxiApi.Tests
             return _response;
         }
 
-        public string ApiUrl()
+        public string TaxiApiUrl()
         {
             return "http://yourtaximeter.com/api/";
         }
 
-        public string ApiKey()
+        public string TaxiApiKey()
         {
             return "test";
+        }
+
+        public string GooglePlacesApiKey()
+        {
+            throw new NotImplementedException();
         }
 
         Metres ICalculateTheJourneyDistance.Create(StartingPoint @from, Destination to)

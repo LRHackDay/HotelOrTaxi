@@ -14,12 +14,6 @@ namespace HotelOrTaxi.Controllers
             _taxiViewModelFactory = taxiViewModelFactory;
         }
 
-        public TaxiController()
-        {
-            _taxiViewModelFactory = new TaxiViewModelFactory();
-        }
-
-
         public ViewResult Index(string latitude, string longitude)
         {
             Latitude latitude1 = new Latitude(latitude);

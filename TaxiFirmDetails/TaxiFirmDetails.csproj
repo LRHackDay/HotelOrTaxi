@@ -40,8 +40,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICanReadConfigurations.cs" />
-    <Compile Include="ConfigReader.cs" />
     <Compile Include="GooglePlaceRequestConstructor.cs" />
     <Compile Include="GooglePlacesResults.cs" />
     <Compile Include="GooglePlace.cs" />
@@ -53,6 +51,10 @@
     <Compile Include="TaxiFirmFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Configuration\Configuration.csproj">
+      <Project>{BCB5B7E9-DE32-4495-AEA1-0CC2061D3340}</Project>
+      <Name>Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Geography\Geography.csproj">
       <Project>{6BA51F12-00AB-4F55-8885-F2AFF731A90C}</Project>
       <Name>Geography</Name>

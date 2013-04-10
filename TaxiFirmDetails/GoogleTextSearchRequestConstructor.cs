@@ -1,4 +1,5 @@
 using System;
+using Configuration;
 using Geography;
 using WebResponse;
 
@@ -20,17 +21,11 @@ namespace TaxiFirmDetails
             _webClientWrapper = webClientWrapper;
         }
 
-        public GoogleTextSearchRequestConstructor()
-        {
-            _configReader = new ConfigReader();
-            _webClientWrapper = new WebClientWrapper();
-        }
-
         public string GetTextSearchRequests(Location geoLocation)
         {
             string baseUri = "https://maps.googleapis.com/maps/api/place/textsearch/json";
             string location = "location=" + geoLocation;
-            string key = "key=" + _configReader.ApiKey();
+            string key = "key=" + _configReader.TaxiApiKey();
             string radius = "radius=100";
             string query = "query=taxi";
             string sensor = "sensor=true";

@@ -1,8 +1,8 @@
 ﻿using System;
+using Configuration;
 using Geography;
 using JourneyCalculator;
 using NUnit.Framework;
-using TaxiApi.Configuration;
 using TaxiApi.Request;
 
 namespace TaxiApi.Tests
@@ -208,14 +208,19 @@ namespace TaxiApi.Tests
             Assert.That(fareRequest, Is.StringContaining("&from=10,10"));
         }
 
-        string ICanReadConfigurations.ApiUrl()
+        public string TaxiApiUrl()
         {
             throw new NotImplementedException();
         }
 
-        string ICanReadConfigurations.ApiKey()
+        public string TaxiApiKey()
         {
             return "test";
+        }
+
+        public string GooglePlacesApiKey()
+        {
+            throw new NotImplementedException();
         }
 
         Metres ICanGetTheDistanceOfATaxiJourneyBetweenPoints.Calculate(StartingPoint origin, Destination destination)
