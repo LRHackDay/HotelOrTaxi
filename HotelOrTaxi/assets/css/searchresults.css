@@ -1,6 +1,6 @@
 ﻿body {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 0;
+    padding-right: 0;
 }
 #hotel-distance { height:31px; background:url(/assets/img/areas/searchresults/map-pins.png) no-repeat -17px -161px; }
 #distanceHeader { margin:0 8px; padding:6px 0 5px 27px; font-size:15px; font-weight:bold; }
