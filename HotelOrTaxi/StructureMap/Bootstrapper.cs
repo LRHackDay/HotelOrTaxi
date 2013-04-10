@@ -3,10 +3,12 @@ using JourneyCalculator;
 using LateRoomsScraper;
 using Results;
 using StructureMap;
-using TaxiApi.Configuration;
 using TaxiApi.Request;
 using TaxiApi.Response;
+using TaxiFirmDetails;
 using WebResponse;
+using ConfigReader = TaxiFirmDetails.ConfigReader;
+using ICanReadConfigurations = TaxiFirmDetails.ICanReadConfigurations;
 
 namespace HotelOrTaxi.StructureMap
 {
@@ -37,6 +39,10 @@ namespace HotelOrTaxi.StructureMap
                     expression.For<ICalculateTheWinner>().Use<WhoIsTheWinner>();
                     expression.For<ICreateTheTaxiControllerUri>().Use<TaxiControllerUriFactory>();
                     expression.For<ISpecifyConditionsOfNoTaxiRoutesFound>().Use<NoTaxiRoutesFoundSpecification>();
+                    expression.For<ICreateTaxiViewModels>().Use<TaxiViewModelFactory>();
+                    expression.For<IConstructGoogleTextSearchRequests>().Use<GoogleTextSearchRequestConstructor>();
+                    expression.For<ICanReadConfigurations>().Use<ConfigReader>();
+                    expression.For<IConstructGooglePlaceRequests>().Use<GooglePlaceRequestConstructor>();
                 });
         }
     }
