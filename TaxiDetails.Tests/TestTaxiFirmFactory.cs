@@ -9,7 +9,6 @@ namespace TaxiDetails.Tests
     public class TestTaxiFirmFactory : IConstructGoogleTextSearchRequests, IConstructGooglePlaceRequests
     {
         [Test]
-        [Ignore]
         public void ReturnsNameAndNumber()
         {
             var longitude = new Longitude("-2.240117");
@@ -25,12 +24,13 @@ namespace TaxiDetails.Tests
 
         string IConstructGoogleTextSearchRequests.GetTextSearchRequests(Location location)
         {
-            throw new System.NotImplementedException();
+            return
+                "{\"results\" : [{\"formatted_address\" : \"41 Bloom Street, Manchester, United Kingdom\",\"geometry\" : {\"location\" : {\"lat\" : 53.4770480,\"lng\" : -2.2378190}},\"id\" : \"02ab79450269577e5afdca8490cb7a7996c922e4\",\"name\" : \"Manchester Cars\",\"opening_hours\" : {\"open_now\" : true}}],\"status\" : \"OK\"}";
         }
 
         string IConstructGooglePlaceRequests.GetPlaceRequest(string placeReference)
         {
-            throw new System.NotImplementedException();
+            return null;
         }
     }
 }
