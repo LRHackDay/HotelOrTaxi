@@ -1,7 +1,9 @@
 using System.Collections.Generic;
-using JourneyCalculator;
 
-public class Routes
+namespace JourneyCalculator
 {
-    public List<Legs> Legs { get; set; }
+    public class Routes
+    {
+        public List<Legs> Legs { get; set; }
+    }
 }
