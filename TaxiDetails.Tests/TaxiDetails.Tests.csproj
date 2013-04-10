@@ -55,10 +55,6 @@
       <Project>{545e84dd-a60b-47fa-a970-b3bd98fad485}</Project>
       <Name>TaxiFirmDetails</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebClientWrapper\WebResponse.csproj">
-      <Project>{DC27CAE4-0979-44FF-B297-44D10094C508}</Project>
-      <Name>WebResponse</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
