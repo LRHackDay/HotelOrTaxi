@@ -89,12 +89,14 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
+    <Compile Include="ICreateLocations.cs" />
     <Compile Include="ICreateResultViewModels.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Controllers\TaxiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LocationFactory.cs" />
     <Compile Include="Models\ResultsViewModel.cs" />
     <Compile Include="Models\TaxisViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
