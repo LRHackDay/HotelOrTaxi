@@ -1,14 +1,15 @@
-using JourneyCalculator;
-
-public interface ISpecifyConditionsOfNoTaxiRoutesFound
+namespace JourneyCalculator
 {
-    bool IsSatisfiedBy(DirectionsResponse googleMapsDirections);
-}
-
-public class NoTaxiRoutesFoundSpecification : ISpecifyConditionsOfNoTaxiRoutesFound
-{
-    public bool IsSatisfiedBy(DirectionsResponse googleMapsDirections)
+    public interface ISpecifyConditionsOfNoTaxiRoutesFound
     {
-        return googleMapsDirections.Routes.Count < 1;
+        bool IsSatisfiedBy(DirectionsResponse googleMapsDirections);
+    }
+
+    public class NoTaxiRoutesFoundSpecification : ISpecifyConditionsOfNoTaxiRoutesFound
+    {
+        public bool IsSatisfiedBy(DirectionsResponse googleMapsDirections)
+        {
+            return googleMapsDirections.Routes.Count < 1;
+        }
     }
 }

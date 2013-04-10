@@ -22,13 +22,13 @@ namespace TaxiDetails.Tests
             Assert.That(taxiFirms[0].Number, Is.EqualTo("0161 228 3355"));
         }
 
-        string IConstructGoogleTextSearchRequests.GetTextSearchRequests(Location location)
+        public string GetTextSearchRequests(Location location)
         {
             return
                 "{\"results\" : [{\"formatted_address\" : \"41 Bloom Street, Manchester, United Kingdom\",\"geometry\" : {\"location\" : {\"lat\" : 53.4770480,\"lng\" : -2.2378190}},\"id\" : \"02ab79450269577e5afdca8490cb7a7996c922e4\",\"name\" : \"Manchester Cars\",\"opening_hours\" : {\"open_now\" : true}}],\"status\" : \"OK\"}";
         }
 
-        string IConstructGooglePlaceRequests.GetPlaceRequest(string placeReference)
+        public string GetPlaceRequest(string placeReference)
         {
             return null;
         }

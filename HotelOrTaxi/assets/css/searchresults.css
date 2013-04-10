@@ -1,4 +1,8 @@
-﻿#hotel-distance { height:31px; background:url(/assets/img/areas/searchresults/map-pins.png) no-repeat -17px -161px; }
+﻿body {
+    padding-left: 0;
+    padding-right: 20px;
+}
+#hotel-distance { height:31px; background:url(/assets/img/areas/searchresults/map-pins.png) no-repeat -17px -161px; }
 #distanceHeader { margin:0 8px; padding:6px 0 5px 27px; font-size:15px; font-weight:bold; }
 #distanceHeader span { color:#9a9a9a; }
 .found-hotels { margin:10px 8px 10px; padding:5px 10px; font-size:12px; background:#FFF; border:1px solid #E3E5E4; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; }
@@ -47,18 +51,18 @@
 	.Happy { height:23px; padding:8px 0 0 38px; background:url("/assets/img/areas/searchresults/32px-faces.png") no-repeat 0 -66px;}
 	.NoReviews, .Acceptable, .Sad {display: none;}
 	
-.m-panel-results { position:relative; margin:15px 8px 10px; min-width:300px; height:185px; background:#FFF; border:3px solid #e3e5e4; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; }
+.m-panel-results { position:relative; margin:15px 8px 10px; min-width:300px; height:185px; background:#FFF; border:3px solid #FFF; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; box-shadow:0 0 5px #9a9a9a; }
 .hotel-image { display:inline-block; width:60%; height:180px; }
 .hotel-image .inner{ position:relative; float:left; width:100%; height:134px; overflow:hidden; -webkit-border-radius:7px 0 0 0; -moz-border-radius:7px 0 0 0; border-radius:7px 0 0 0; }
 .hotel-image img { width:100%; border:none; }
-.hotel-name { position:relative; float:left; padding:3px 0 0 0; width:100%; height:48px; color:#FFF; background:#1e2b3e; -webkit-border-radius:0 0 0 7px; -moz-border-radius:0 0 0 7px; border-radius:0 0 0 7px; }
+.hotel-name { position:relative; float:left; padding:3px 0 0 0; width:100%; height:48px; color:#FFF; background:#3a3a42; -webkit-border-radius:0 0 0 7px; -moz-border-radius:0 0 0 7px; border-radius:0 0 0 7px; box-shadow:0 -1px 3px #000000; }
 span.hotel-address { float:left; margin:0; padding:3px 0 0 6px; width:90%; height:12px; white-space:nowrap; font-size:11px; line-height:1em; overflow:hidden; text-overflow:ellipsis; }
 .hotel-name-title { float:left; padding:0 0 0 5px; width:70%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:12px; }
 .hotel-name-title a { color:#FFF; font-size:13px; font-weight:bold; }
 .hotel-star-rating { float:right; margin:0 5px 0 0; font-weight:bold; font-size:15px; color:#ffa60a; }
 .hotel-star-rating img { width:14px; height:14px; background-position:0 0; }
 
-.hotel-score { position:absolute; top:8px; right:0; width:40%; height:177px; text-align:center; }
+.hotel-score { position:absolute; top:0px; right:0; width:40%; height:185px; text-align:center; box-shadow:-1px 1px 3px #000000; -webkit-border-radius:0 5px 5px 0; -moz-border-radius:0 5px 5px 0; border-radius:0 5px 5px 0; }
 	.hotel-score-inner { margin:15px auto 0; padding:0 10px; width:101px; }
 	.percent-score { position:relative; padding:2px 5px; }
 		.face-Poor { width:32px; height:32px; background:url("/assets/img/areas/searchresults/32px-faces.png") no-repeat 0 0; }
@@ -67,20 +71,21 @@ span.hotel-address { float:left; margin:0; padding:3px 0 0 6px; width:90%; heigh
 		.face-NotReviewed { width:32px; height:32px; background:url("/assets/img/areas/searchresults/32px-faces.png") no-repeat 0 -98px;margin-left: auto;margin-right: auto;}
 		span.face-score { position:absolute; top:8px; right:9px; font-weight:bold; font-size:21px; }
 		
-.hotel-price { position:absolute; bottom:0; left:0; width:97%; height:50px; border-top:1px solid #ffb818; border-left:1px solid #ffb818; background: -webkit-gradient(linear, left top, left bottom, from(#ffdc34), to(#f8b216)); background: -moz-linear-gradient(top,  #ffdc34,  #f8b216); background-image:-ms-linear-gradient(top, #ffdc34 5%, #f8b216 53%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdc34', endColorstr='#f8b216');}
-	.hotel-price-inner { display:block; margin:0 auto; padding:4px 10px 0; width:100px; }
-		span.sr-total { margin:0; font-size:11px; font-weight:bold; text-shadow:1px 1px 2px #FFF; }
-		span.room-price { font-size:20px; font-weight:bold; text-shadow:1px 1px 2px #FFF; }
+.hotel-price { position:absolute; bottom:0; left:0; width:98%; background-image: linear-gradient(to bottom, #D70000 0%, #F10000 100%); background: -webkit-gradient(linear, left top, left bottom, from(#D70000), to(#F1000)); background: -moz-linear-gradient(top,  #D70000,  #F1000); background-image:-ms-linear-gradient(top, #D70000 5%, #F1000 53%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D70000', endColorstr='#F1000'); background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #9E0000), color-stop(1, #F10000)); border:3px solid #FFFFFF; border-radius: 6px 6px 6px 6px; box-shadow: 0 0 4px #000000; }
+    .hotel-price-inner { display:block; margin:0 auto; padding:0 10px 0; width:84%; }
+		span.sr-total { margin:0; font-size:12px; font-weight:bold; color:#FFF; text-shadow:1px 1px 2px #000; }
+		span.room-price { font-size:22px; font-weight:bold; color:#FFF; text-shadow:1px 1px 2px #000; }
 .hotel-distance { margin:0; line-height:1em; }
-.arrow-price { position:absolute; right:-8px; bottom:0px; width:13px; height:50px; background:url(/assets/img/areas/searchresults/SR-button-small.png) no-repeat 0 0; }
+.arrow-price { display:none; }
 
 .m-panel-no-rooms { min-height:35px; margin:0 0 10px; padding:10px 0; background:#ede2ce; border-top:1px solid #e3dacb; border-bottom:1px solid #e3dacb; }
 .m-panel-no-rooms span { display:block; margin:0 11px 0px 60px; color:#b8852c; font-weight:bold; }
 .no-rooms-faces { float:left; display:block; margin:0 0 0 15px; width:35px; height:45px; background: url(/assets/img/areas/hoteldetails/no-rooms-faces.png) -18px -63px no-repeat; }
 
-@media all and (min-width: 420px) and (max-width: 539px) {
+@media all and (min-width: 300px) and (max-width: 539px) {
  .hotel-image { height:134px; }
  .hotel-image  .inner{ height:134px; }
+ .hotel-score strong { font-size:13px; line-height:1em; }
 }
 
 @media all and (min-width: 540px) and (max-width: 766px) {    
@@ -92,16 +97,16 @@ span.hotel-address { float:left; margin:0; padding:3px 0 0 6px; width:90%; heigh
  .hotel-price { width:98%; height:50px; }
  span.hotel-address { width:100%; height:25px; font-size:12px; }
  .percent-score { position: relative; padding: 7px 5px; }
- .hotel-score { padding-top:14px; height:228px; font-size:18px; }
- .hotel-score-inner { margin:0 auto; padding:0 10px; width:201px; }
+ .hotel-score { padding-top:14px; height:235px; font-size:18px; }
+ .hotel-score-inner { margin:0 auto; padding:0 10px; width:170px; }
 	.face-Poor { width:70px; height:64px; background:url("/assets/img/areas/searchresults/64px-faces.png") no-repeat 5px 0; }
 	.face-Acceptable { width:70px; height:64px; background:url("/assets/img/areas/searchresults/64px-faces.png") no-repeat 5px -65px; }
 	.face-HighlyRated { width:70px; height:64px; background:url("/assets/img/areas/searchresults/64px-faces.png") no-repeat 5px -131px; }
 	.face-NotReviewed { width:70px; height:64px; background:url("/assets/img/areas/searchresults/64px-faces.png") no-repeat 5px -391px; }
-	span.face-score { position:absolute; top:30px; right:40px; font-weight:bold; font-size:35px; }
-.hotel-price-inner { display:block; margin:0 auto; padding:2px 10px 0; width:200px; line-height:1.1em; }	
-span.sr-total { margin:0; font-size:15px; font-weight:bold; text-shadow:1px 1px 2px #FFF; }
-span.room-price { font-size:28px; text-shadow:1px 1px 2px #FFF; }
+	span.face-score { position:absolute; top:30px; right:13px; font-weight:bold; font-size:35px; }
+.hotel-price-inner { display:block; margin:0 auto; padding:2px 10px 0; line-height:1.1em; }	
+span.sr-total { margin:0; font-size:15px; font-weight:bold;  }
+span.room-price { font-size:28px; }
 .groupHeader { font-size:15px; }
 .Sad { height:39px; padding:26px 0 0 69px; background:url("/assets/img/areas/searchresults/64px-faces.png") no-repeat 0 0; }
 .Acceptable { height:39px; padding:26px 0 0 69px; background:url("/assets/img/areas/searchresults/64px-faces.png") no-repeat 0 -65px; }
@@ -118,16 +123,16 @@ span.room-price { font-size:28px; text-shadow:1px 1px 2px #FFF; }
   .hotel-price { width:99%; height:50px; }
   span.hotel-address { width:100%; height:25px; font-size:14px; }
  .percent-score { position:relative; padding:20px 5px; }
- .hotel-score { padding-top:18px; height:315px; font-size:22px;  }
- .hotel-score-inner { margin:0 auto; padding:0 10px; width:290px; }
-	.face-Poor { width:138px; height:128px; background:url("/assets/img/areas/searchresults/128px-faces.png") no-repeat 10px -1px; }
-	.face-Acceptable { width:138px; height:128px; background:url("/assets/img/areas/searchresults/128px-faces.png") no-repeat 10px -131px; }
-	.face-HighlyRated { width:138px; height:128px; background:url("/assets/img/areas/searchresults/128px-faces.png") no-repeat 10px -261px; }
-	.face-NotReviewed { width:138px; height:128px; background:url("/assets/img/areas/searchresults/128px-faces.png") no-repeat 10px -391px; }
-	span.face-score { position:absolute; top:73px; right:18px; font-weight:bold; font-size:50px; }
+ .hotel-score { padding-top:18px; height:322px; font-size:22px;  }
+ .hotel-score-inner { margin:0 auto; padding:0 10px; width:219px; }
+	.face-Poor { width:78px; height:65px; background:url("/assets/img/areas/searchresults/64px-faces.png") no-repeat 10px 0; }
+	.face-Acceptable { width:78px; height:65px; background:url("/assets/img/areas/searchresults/64px-faces.png") no-repeat 10px -64px; }
+	.face-HighlyRated { width:78px; height:65px; background:url("/assets/img/areas/searchresults/64px-faces.png") no-repeat 10px -131px; }
+	.face-NotReviewed { width:78px; height:65px; background:url("/assets/img/areas/searchresults/64px-faces.png") no-repeat 10px -196px; }
+	span.face-score { position:absolute; top:45px; right:18px; font-weight:bold; font-size:50px; }
 .hotel-price-inner { display:block; margin:0 auto; padding:0px 10px 0; width:200px; line-height:0.95em; }		
-span.sr-total { margin:0; font-size:17px; font-weight:bold; text-shadow:1px 1px 2px #FFF; }
-span.room-price { font-size:32px; text-shadow:1px 1px 2px #FFF;}
+span.sr-total { margin:0; font-size:17px; font-weight:bold; }
+span.room-price { font-size:32px; }
 .groupHeader { font-size:20px; }
 .Sad { height:73px; padding:55px 0 0 136px; background:url("/assets/img/areas/searchresults/128px-faces.png") no-repeat 0 0; }
 .Acceptable  { height:73px; padding:55px 0 0 136px; background:url("/assets/img/areas/searchresults/128px-faces.png") no-repeat 0 -131px; }

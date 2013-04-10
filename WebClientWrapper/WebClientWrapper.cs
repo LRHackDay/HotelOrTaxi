@@ -26,6 +26,7 @@ namespace WebResponse
         }
     }
 
+    [Serializable]
     public class TaxiApiException : Exception
     {
         public TaxiApiException(string errorRequestingTaxiFare, WebException webException)

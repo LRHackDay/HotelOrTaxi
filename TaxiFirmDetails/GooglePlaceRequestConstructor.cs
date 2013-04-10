@@ -1,4 +1,5 @@
 using System;
+using Configuration;
 using WebResponse;
 
 namespace TaxiFirmDetails
@@ -19,17 +20,11 @@ namespace TaxiFirmDetails
             _configReader = configReader;
         }
 
-        public GooglePlaceRequestConstructor()
-        {
-            _configReader = new ConfigReader();
-            _webClientWrapper = new WebClientWrapper();
-        }
-
         public string GetPlaceRequest(string placeReference)
         {
             string baseUri = "https://maps.googleapis.com/maps/api/place/details/json";
             string sensor = "sensor=true";
-            string key = "key=" + _configReader.ApiKey();
+            string key = "key=" + _configReader.TaxiApiKey();
             string reference = "reference=" + placeReference;
             var placeRequest = String.Format("{0}?{1}&{2}&{3}", baseUri, reference, sensor, key);
             return _webClientWrapper.Get(placeRequest);

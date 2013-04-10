@@ -1,4 +1,4 @@
-using TaxiApi.Configuration;
+using Configuration;
 using WebResponse;
 
 namespace TaxiApi.Request
@@ -22,7 +22,7 @@ namespace TaxiApi.Request
 
         public string Perform(string request)
         {
-            string formattedRequest = string.Concat(_configReader.ApiUrl(), request);
+            string formattedRequest = string.Concat(_configReader.TaxiApiUrl(), request);
 
             return _webResponseReader.Get(formattedRequest);
         }

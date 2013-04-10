@@ -89,12 +89,15 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
+    <Compile Include="Controllers\TermsController.cs" />
+    <Compile Include="ICreateLocations.cs" />
     <Compile Include="ICreateResultViewModels.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Controllers\TaxiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LocationFactory.cs" />
     <Compile Include="Models\ResultsViewModel.cs" />
     <Compile Include="Models\TaxisViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -223,6 +226,10 @@
     <Content Include="Views\Results\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Configuration\Configuration.csproj">
+      <Project>{BCB5B7E9-DE32-4495-AEA1-0CC2061D3340}</Project>
+      <Name>Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Geography\Geography.csproj">
       <Project>{6BA51F12-00AB-4F55-8885-F2AFF731A90C}</Project>
       <Name>Geography</Name>
@@ -251,6 +258,12 @@
       <Project>{DC27CAE4-0979-44FF-B297-44D10094C508}</Project>
       <Name>WebResponse</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Terms\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

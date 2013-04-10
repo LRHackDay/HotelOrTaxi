@@ -1,7 +1,11 @@
 using System;
 
-public class NoRouteFoundException : Exception
+namespace JourneyCalculator
 {
-    public NoRouteFoundException(): base("No taxi route found for the journey specified")
-    {}
+    [Serializable]
+    public class NoRouteFoundException : Exception
+    {
+        public NoRouteFoundException(): base("No taxi route found for the journey specified")
+        {}
+    }
 }

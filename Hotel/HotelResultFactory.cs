@@ -51,6 +51,7 @@ namespace Results
         }
     }
 
+    [Serializable]
     public class NoHotelFoundException : Exception
     {
         public NoHotelFoundException(string message, Exception exception)

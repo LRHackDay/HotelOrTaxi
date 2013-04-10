@@ -1,7 +1,7 @@
 using System;
 using System.Text;
+using Configuration;
 using JourneyCalculator;
-using TaxiApi.Configuration;
 
 namespace TaxiApi.Request
 {
@@ -28,7 +28,7 @@ namespace TaxiApi.Request
         {
             var request = new StringBuilder();
 
-            request.Append(string.Format("?key={0}", _canReadConfigurations.ApiKey()));
+            request.Append(string.Format("?key={0}", _canReadConfigurations.TaxiApiKey()));
             request.Append("&return=json");
             request.Append("&type=fare");
             request.Append("&passengers=1");

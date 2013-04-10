@@ -1,17 +1,22 @@
 using System.Configuration;
 
-namespace TaxiApi.Configuration
+namespace Configuration
 {
     public class ConfigReader : ICanReadConfigurations
     {
-        public string ApiUrl()
+        public string TaxiApiUrl()
         {
             return ConfigurationSetting("YourTaxiApiUri");
         }
 
-        public string ApiKey()
+        public string TaxiApiKey()
         {
             return ConfigurationSetting("YourTaxiApiKey");
+        }
+
+        public string GooglePlacesApiKey()
+        {
+            return ConfigurationSetting("GooglePlacesApiKey");
         }
 
         private static string ConfigurationSetting(string setting)

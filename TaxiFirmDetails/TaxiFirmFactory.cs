@@ -21,12 +21,6 @@ namespace TaxiFirmDetails
             _googlePlaceRequestConstructor = googlePlaceRequestConstructor;
         }
 
-        public TaxiFirmFactory()
-        {
-            _googleTextSearchRequestConstructor = new GoogleTextSearchRequestConstructor();
-            _googlePlaceRequestConstructor = new GooglePlaceRequestConstructor();
-        }
-
         public List<TaxiFirm> Create(Location location)
         {
             string response = _googleTextSearchRequestConstructor.GetTextSearchRequests(location);

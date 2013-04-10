@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Geography;
 using HotelOrTaxi.Models;
 using TaxiFirmDetails;
@@ -17,11 +16,6 @@ namespace HotelOrTaxi
         public TaxiViewModelFactory(TaxiFirmFactory taxiFirmFactory)
         {
             _taxiFirmFactory = taxiFirmFactory;
-        }
-
-        public TaxiViewModelFactory()
-        {
-            _taxiFirmFactory = new TaxiFirmFactory();
         }
 
         public TaxisViewModel Create(Location location)
