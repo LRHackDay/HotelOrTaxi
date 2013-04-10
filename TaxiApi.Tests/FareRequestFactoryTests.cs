@@ -223,7 +223,7 @@ namespace TaxiApi.Tests
             throw new NotImplementedException();
         }
 
-        Metres ICanGetTheDistanceOfATaxiJourneyBetweenPoints.Calculate(StartingPoint origin, Destination destination)
+        public Metres Calculate(StartingPoint origin, Destination destination)
         {
             return _distance;
         }

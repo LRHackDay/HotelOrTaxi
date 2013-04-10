@@ -77,7 +77,7 @@ namespace TaxiApi.Tests
             throw new NotImplementedException();
         }
 
-        Metres ICalculateTheJourneyDistance.Create(StartingPoint @from, Destination to)
+        public Metres Create(StartingPoint @from, Destination to)
         {
             return _distance;
         }

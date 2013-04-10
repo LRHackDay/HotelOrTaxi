@@ -91,6 +91,7 @@ namespace HotelOrTaxi
         }
     }
 
+    [Serializable]
     public class NoClearWinnerExeption : Exception
     {   
         public NoClearWinnerExeption():

@@ -23,12 +23,12 @@ namespace TaxiDetails.Tests
             Assert.That(taxiFirms[0].Number, Is.EqualTo("0161 228 3355"));
         }
 
-        string IConstructGoogleTextSearchRequests.GetTextSearchRequests(Location location)
+        public string GetTextSearchRequests(Location location)
         {
             throw new System.NotImplementedException();
         }
 
-        string IConstructGooglePlaceRequests.GetPlaceRequest(string placeReference)
+        public string GetPlaceRequest(string placeReference)
         {
             throw new System.NotImplementedException();
         }

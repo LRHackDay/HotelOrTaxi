@@ -1,7 +1,5 @@
 ﻿using System.Web.Mvc;
 using Geography;
-using HotelOrTaxi.Models;
-using TaxiFirmDetails;
 
 namespace HotelOrTaxi.Controllers
 {
@@ -16,10 +14,10 @@ namespace HotelOrTaxi.Controllers
 
         public ViewResult Index(string latitude, string longitude)
         {
-            Latitude latitude1 = new Latitude(latitude);
-            Longitude longitude1 = new Longitude(longitude);
-            Location location = new Location(latitude1, longitude1);
-            TaxisViewModel taxisViewModel = _taxiViewModelFactory.Create(location);
+            var latitude1 = new Latitude(latitude);
+            var longitude1 = new Longitude(longitude);
+            var location = new Location(latitude1, longitude1);
+            var taxisViewModel = _taxiViewModelFactory.Create(location);
             return View("Index", taxisViewModel);
         }
     }

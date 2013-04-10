@@ -75,17 +75,17 @@ namespace HotelOrTaxi.Tests
             Assert.That(resultsViewModel.Winner, Is.EqualTo(_taxi));
         }
 
-        TaxiResult ICreateTheTaxiResult.Create(UrlHelper urlHelper, Journey journey)
+        public TaxiResult Create(UrlHelper urlHelper, Journey journey)
         {
             return _taxi;
         }
 
-        HotelResult ICreateTheHotelResult.Create(StartingPoint startingPoint)
+        public HotelResult Create(StartingPoint startingPoint)
         {
             return _hotel;
         }
 
-        Metres ICanGetTheDistanceOfATaxiJourneyBetweenPoints.Calculate(StartingPoint origin, Destination destination)
+        public Metres Calculate(StartingPoint origin, Destination destination)
         {
             return _distance;
         }

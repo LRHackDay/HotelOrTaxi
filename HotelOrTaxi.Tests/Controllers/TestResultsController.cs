@@ -53,7 +53,7 @@ namespace HotelOrTaxi.Tests.Controllers
             Assert.That(viewName, Is.EqualTo("Error"));
         }
 
-        ResultsViewModel ICreateResultViewModels.Create(UrlHelper urlHelper, StartingPoint startingPoint, Destination destination)
+        public ResultsViewModel Create(UrlHelper urlHelper, StartingPoint startingPoint, Destination destination)
         {
             if (_throwError)
                 throw new Exception();

@@ -44,7 +44,7 @@ namespace JourneyCalculator.Tests
             Assert.That(distance.ToString(), Is.EqualTo(_distance));
         }
 
-        bool ISpecifyConditionsOfNoTaxiRoutesFound.IsSatisfiedBy(DirectionsResponse googleMapsDirections)
+        public bool IsSatisfiedBy(DirectionsResponse googleMapsDirections)
         {
             return _noRoutesFound;
         }
@@ -55,14 +55,14 @@ namespace JourneyCalculator.Tests
         /// <param name="origin"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        string IGetTheResponseFromGoogleMapsDirectionsApi.Generate(StartingPoint origin, Destination destination)
+        public string Generate(StartingPoint origin, Destination destination)
         {
             return "{\"routes\": [ {\"legs\": [ \"distance\": {\"value\": 2137146,\"text\": \"1,328 mi\"} ] ]}";
         }
 
-        DirectionsResponse IDeserialiseGoogleMapsDirectionsResponses.DeserializeResponse(string response)
+        public DirectionsResponse DeserializeResponse(string response)
         {
-            Routes routes = new Routes();
+            var routes = new Routes();
             routes.Legs = new List<Legs>
                 {
                     new Legs
@@ -74,7 +74,7 @@ namespace JourneyCalculator.Tests
                         }
                 };
             var directionsResponse = new DirectionsResponse();
-            List<Routes> listOfRoutes = new List<Routes>();
+            var listOfRoutes = new List<Routes>();
             listOfRoutes.Add(routes);
             directionsResponse.Routes = listOfRoutes;
 
