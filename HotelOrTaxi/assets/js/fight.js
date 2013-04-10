@@ -6,7 +6,7 @@
     var searchUrl = '/results?From=' + from + '&To=' + to + '&fromlatlong=' + fromlatlong + '&tolatlong=' + tolatlong;
 
     $.get(searchUrl, function (data) {
-        $('.modal-fight').replaceWith($(data).find('.search-results'));
+        $('#fight-holder').replaceWith($(data).find('.search-results'));
         window.history.pushState({}, "Search Results", searchUrl);
     });
 });

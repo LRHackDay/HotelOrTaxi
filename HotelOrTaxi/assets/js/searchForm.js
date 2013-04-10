@@ -9,7 +9,7 @@
 
 function bindChangeClick(searchBoxHolder, fromEle) {
     $('#change-location').click(function () {
-        toggleView(searchBoxHolder, fromEle, 'From');
+        toggleView(searchBoxHolder, fromEle, 'From (postcode, street, etc.)');
         fromEle.removeAttr('disabled');
         $('#fromlatlong').val('');
     });
@@ -17,7 +17,7 @@ function bindChangeClick(searchBoxHolder, fromEle) {
 
 function bindLocateClick(searchBoxHolder, fromEle) {
     $('#find-my-loc').click(function () {
-        toggleView(searchBoxHolder, fromEle, 'Current location');
+        toggleView(searchBoxHolder, fromEle, 'Use current location');
         fromEle.attr('disabled', 'disabled');
         geoLocate();
     });
