@@ -335,8 +335,8 @@ p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; 
   p.two { width:207px; font-size:14px; }
 
   .results-box-img { margin-right:15px; }
-  .subheadline { float:left; width:40%; margin:10px 0 0 0; font-size:15px; }
-  .price { float:left; width:46%; font-size:34px; font-weight:bold; }
+  .subheadline { float:left; width:40%; margin:10px 0 0 0; font-size:13px; }
+  .price { float:left; width:45%; font-size:32px; font-weight:bold; }
   .show-me-holder { float:right; margin:10px 0 0; width:100%; }
 
   .red-button {  margin-top:0;  }
@@ -364,6 +364,13 @@ p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; 
 	.hero-unit { -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
 	 
 	.citation { display:none; }
+
+    .results-box-img { margin-right:15px; }
+    .subheadline { float:left; width:40%; margin:10px 0 0 0; font-size:15px; }
+    .price { float:left; margin-top: 15px; width:40%; font-size:36px; font-weight:bold; }
+    .show-me-holder { float:right; margin:0; width:34%; }
+    .red-button {  margin-top:0;  }
+    .red-button:hover { color:white; text-decoration:none; }
 }
 
 @media (max-width: 1199px) and (min-width: 980px){
@@ -372,6 +379,12 @@ p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; 
 
     .hero-unit { width:470px; float:left; }
     .span5 { width: 470px;  }
+
+    .subheadline { font-size:18px; }
+    .price { float:left; margin-top:15px; width:45%; font-size:40px; font-weight:bold; }
+    .show-me-holder { float:right; width:30%; }
+    .red-button {  margin-top:0;  }
+    .red-button:hover { color:white; text-decoration:none; }
 }
 
 #find-my-loc {

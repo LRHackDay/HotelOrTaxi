@@ -39,11 +39,16 @@
             </div>
         }
         <div class="results-box">
-            <img src="/assets/img/@Model.Loser.Name.ToLower()-icon.png" width="118" height="111" alt="" />
-            <span class="subheadline">@Model.Loser.SubHeadline</span>
-            <span class="price grey">&pound; @string.Format("{0:0.00}", Model.Loser.Price)</span>
-
-            <a href="@Model.Loser.Uri" class="red-button">Show me</a>
+            <div class="results-box-img">
+                <img src="/assets/img/@Model.Loser.Name.ToLower()-icon.png" width="118" height="111" alt="" />
+            </div>
+            <div class="subheadline">@Model.Loser.SubHeadline</div>
+            <div class="price grey">&pound; @string.Format("{0:0.00}", Model.Loser.Price)</div>
+            <div class="show-me-holder">
+                <div class="show-me">
+                    <a href="@Model.Loser.Uri" class="red-button">Show me</a>
+                </div>
+            </div>
         </div>
     }
     else
