@@ -58,7 +58,7 @@ span.hotel-address { float:left; margin:0; padding:3px 0 0 6px; width:90%; heigh
 .hotel-star-rating { float:right; margin:0 5px 0 0; font-weight:bold; font-size:15px; color:#ffa60a; }
 .hotel-star-rating img { width:14px; height:14px; background-position:0 0; }
 
-.hotel-score { position:absolute; top:0px; right:0; width:40%; height:185px; text-align:center; box-shadow:-1px 1px 3px #000000; }
+.hotel-score { position:absolute; top:0px; right:0; width:40%; height:185px; text-align:center; box-shadow:-1px 1px 3px #000000; -webkit-border-radius:0 5px 5px 0; -moz-border-radius:0 5px 5px 0; border-radius:0 5px 5px 0; }
 	.hotel-score-inner { margin:15px auto 0; padding:0 10px; width:101px; }
 	.percent-score { position:relative; padding:2px 5px; }
 		.face-Poor { width:32px; height:32px; background:url("/assets/img/areas/searchresults/32px-faces.png") no-repeat 0 0; }
