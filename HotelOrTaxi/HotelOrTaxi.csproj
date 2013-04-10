@@ -89,6 +89,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
+    <Compile Include="Controllers\TermsController.cs" />
     <Compile Include="ICreateLocations.cs" />
     <Compile Include="ICreateResultViewModels.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
@@ -260,6 +261,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configuration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Terms\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
