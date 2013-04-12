@@ -25,7 +25,7 @@ namespace TaxiFirmDetails
         {
             string baseUri = "https://maps.googleapis.com/maps/api/place/textsearch/json";
             string location = "location=" + geoLocation;
-            string key = "key=" + _configReader.TaxiApiKey();
+            string key = "key=" + _configReader.GooglePlacesApiKey();
             string radius = "radius=100";
             string query = "query=taxi";
             string sensor = "sensor=true";
