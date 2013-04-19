@@ -1,14 +1,17 @@
 ﻿@model HotelOrTaxi.Models.TaxisViewModel
 
-<h2>Taxis near you</h2>
+<div class="taxi-near-you-holder">
+ <h2>Taxis near you</h2>
+ <div class="arrow-down"></div>
+</div>
 <img src="/assets/img/powered-by-google-on-non-white.png"/>
 @foreach (var taxi in Model.TaxiFirms)
 {
-    <p> @taxi.Name <a href="@taxi.Number">@taxi.Number</a></p>
+    <a class="taxi-company" href="@taxi.Number">
+        <div class="taxi-comp-holder">
+            <div class="taxi-name-holder"> @taxi.Name</div> <div class="taxi-phone-no">@taxi.Number</div>
+        </div>
+    </a>
 }
 
-<div class="taxi-comp-holder">
-    <div class="taxi-name-holder"><h3>marcs taxis</h3></div>
-    <a href="/"><span class="taxi-phone-no">0151 546 4444</span></a>
-</div>
 
