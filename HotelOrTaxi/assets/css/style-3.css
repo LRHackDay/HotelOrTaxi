@@ -61,10 +61,10 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     vertical-align: middle;
 }
 
-.search-box-holder { width:100%; height:40px; background-color:#FFF; border-radius: 4px 4px 4px 4px; border:1px solid #CCCCCC; }
+.search-box-holder { position:relative; width:100%; height:40px; background-color:#FFF; border-radius: 4px 4px 4px 4px; border:1px solid #CCCCCC; }
 .s-on { background-color:#fa8e8e; }
 .s-on #from { color:#FFF; background-color:#fa8e8e; }
-#from { float:left; margin:0 0 0 2px; width:50%; border-radius:0; border:none; }
+#from { float:left; margin:0 0 0 2px; width:87%; border-radius:0; border:none; }
 
 .s-on ::-webkit-input-placeholder{ color: #ffffff;}
 .s-on ::-webkit-input-placeholder { /* WebKit browsers */ color: #ffffff;}
@@ -75,11 +75,11 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 
 #change-location { display:none; }
 .s-on-change #change-location { display:block; }
-#change-location { float:right; margin:5px 5px 0; height:30px; font-size:12px; font-weight:bold; color:#FFF; background-color:#6b0324; border-radius: 4px 4px 4px 4px; border:2px solid #FFF; }
+#change-location { position:absolute; right:0; margin:5px 5px 0; height:30px; font-size:12px; font-weight:bold; color:#FFF; background-color:#6b0324; border-radius: 4px 4px 4px 4px; border:2px solid #FFF; }
 
 #find-my-loc { display:none; }
 .s-on-find #find-my-loc { display:block; }
-#find-my-loc { float:right; margin:5px 5px 0; width:26px; height:26px; background:url(/assets/img/search-arrow.png) no-repeat 5px 6px; background-color:#6b0324; border-radius: 4px 4px 4px 4px; border:2px solid #FFF; }
+#find-my-loc { position:absolute; right:2px; margin:5px 0 0; width:26px; height:26px; background:url(/assets/img/search-arrow.png) no-repeat 5px 6px; background-color:#6b0324; border-radius: 4px 4px 4px 4px; border:2px solid #FFF; }
 
 .modal-fight {  background:#F3EDE0; width:100%; height:600px; background-image:url(/assets/img/fight-big.gif);  background-repeat:no-repeat; background-position:center;}
 
@@ -208,6 +208,14 @@ element.style {
 
 .arrow-down-bottom { width: 100%; height: 40px; }
 .arrow-down-bottom-img { margin:0 auto; width:49px; height:20px; background:url("../../../assets/img/arrow-down.png") no-repeat 0 0; }
+
+a.taxi-company { text-decoration:none; }
+.taxi-near-you-holder { position:relative; margin:20px 0; padding:6px 5px; background:#FFF; border-radius:4px 4px 4px 4px; }
+.taxi-near-you-holder h2 { font-size:28px; line-height:1em; text-align:center; color:#000; }
+.taxi-comp-holder { position:relative; margin-bottom:20px; padding:3px 10px 10px 10px; font-size:17px; font-weight:bold; color:#FFF; text-align:center; background-color:#3a3a42; border:4px solid #FFF; border-radius: 4px 4px 4px 4px; box-shadow:0 0 5px #9a9a9a; }
+.taxi-name-holder { padding:5px; width:100%; }
+.taxi-phone-no { padding:5px 0; width:100%; font-size:21px; font-weight:bold; color:#000; text-shadow:0 0 5px #FFF; border:2px solid #dadada; border-radius:100px 100px 5px 5px; background-color:rgb(255, 143, 0); box-shadow:0 0 5px #000 inset; }
+
 
 @media (min-width: 1200px){
 	.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
