@@ -62,8 +62,8 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 }
 
 .search-box-holder { position:relative; width:100%; height:40px; background-color:#FFF; border-radius: 4px 4px 4px 4px; border:1px solid #CCCCCC; }
-.s-on { background-color:#fa8e8e; }
-.s-on #from { color:#FFF; background-color:#fa8e8e; }
+.s-on { background-color: #FF5232; }
+.s-on #from { color:#FFF; background-color: #FF5232; }
 #from { float:left; margin:0 0 0 2px; width:87%; border-radius:0; border:none; }
 
 .s-on ::-webkit-input-placeholder{ color: #ffffff;}
