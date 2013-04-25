@@ -7,7 +7,7 @@
 <img src="/assets/img/powered-by-google-on-non-white.png"/>
 @foreach (var taxi in Model.TaxiFirms)
 {
-    <a class="taxi-company" href="@taxi.Number">
+    <a class="taxi-company" href="tel:@taxi.Number">
         <div class="taxi-comp-holder">
             <div class="taxi-name-holder"> @taxi.Name</div> <div class="taxi-phone-no">@taxi.Number</div>
         </div>
