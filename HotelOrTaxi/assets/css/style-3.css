@@ -354,21 +354,38 @@ p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; 
 }
 
 
-.cookie-table {
-    border:1px solid #dadada;
-    margin:0 0 50px 0;
+.cookie-box-holder { min-height:400px; }
+.cookie-box-type-outer, .cookie-box-name-outer, .cookie-box-purpose-outer, .cookie-box-info-outer { display:block; width:100%; margin:0 0 10px 0; }
+.cookie-box-type-outer { height:100%; border: 1px solid #dadada; }
+.cookie-box-name-outer { height:100%; border: 1px solid #dadada; }
+.cookie-box-purpose-outer { height:100%; border: 1px solid #dadada; }
+.cookie-box-info-outer { height:100%; border: 1px solid #dadada; }
 
+.cookie-box-type, .cookie-box-name, .cookie-box-purpose, .cookie-box-info { padding:5px 0; text-align:center; border-right: 1px solid #dadada; border-bottom: 1px solid #dadada; background-color:#ededed; }
+.cookie-box-type { width:100%; }
+.cookie-box-name { width:100%; }
+.cookie-box-purpose { width:100%; }
+.cookie-box-info { width:100%; border-right:none; }
+
+.cookie-box-type-bottom, .cookie-box-name-bottom, .cookie-box-purpose-bottom, .cookie-box-info-bottom { height:100%; padding:5px 0; text-align:center; border-right: 1px solid #dadada; background-color:#FFF; }
+.cookie-box-type-bottom { width:100%; }
+.cookie-box-name-bottom { width:100%; }
+.cookie-box-purpose-bottom { width:100%; }
+.cookie-box-info-bottom { width:100%; }
+    .cookie-box-purpose-bottom p, .cookie-box-info-bottom p { padding:0 10px; text-align:left; }
+
+@media (min-width: 768px) and (max-width: 979px) {
+	.cookie-box-purpose-bottom a, .cookie-box-info-bottom a { font-size:12px; }
 }
 
-.cookie-table-header {
-    border:1px solid #dadada;
-    
+@media (min-width: 600px) and (max-width: 767px) {
+    .cookie-box-purpose-bottom a, .cookie-box-info-bottom a { font-size:11px; }
 }
 
-.cookie-type, .cookie-name { padding:5px; width:100px; border-right: 1px solid #dadada; }
-.cookie-purpose { padding:5px; border-right: 1px solid #dadada }
-.cookie-more { padding:5px; }
+@media (min-width: 480px) and (max-width: 599px) {
+	.cookie-box-purpose-bottom a, .cookie-box-info-bottom a { font-size:10px; }
+}
 
-.cookie-type-content, .cookie-name-content { padding:5px; text-align:center; vertical-align:top; border-right: 1px solid #dadada; }
-.cookie-purpose-content { border-right: 1px solid #dadada; }
-.cookie-purpose-content, .cookie-more-content { padding:5px 10px; vertical-align:top; }
+@media (min-width: 320px) and (max-width: 479px) {
+	.cookie-box-purpose-bottom a, .cookie-box-info-bottom a { font-size:9px; }
+}
