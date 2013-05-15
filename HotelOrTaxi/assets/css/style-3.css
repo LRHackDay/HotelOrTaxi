@@ -387,5 +387,5 @@ p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; 
 }
 
 @media (min-width: 320px) and (max-width: 479px) {
-	.cookie-box-purpose-bottom a, .cookie-box-info-bottom a { font-size:9px; }
+	.cookie-box-purpose-bottom a, .cookie-box-info-bottom a { font-size:10px; }
 }
