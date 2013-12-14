@@ -1,5 +1,5 @@
 ﻿<div class="hero-unit">
-    
+
     <form class="form-horizontal" method="GET" action="fight">
         <div class="row">
             <div class="span5">
@@ -26,8 +26,8 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" id="fromlatlong" name="fromlatlong"/>
-        <input type="hidden" id="tolatlong" name="tolatlong"/>
+        <input type="hidden" id="fromlatlong" name="fromlatlong" />
+        <input type="hidden" id="tolatlong" name="tolatlong" />
     </form>
 </div>
 <div class="arrow-down-bottom">
@@ -35,17 +35,17 @@
 </div>
 
 <div id="moreinfo">
-    <div style=" height:100px;" class="steps-numbers">
-        <img style="float:left;" src="/assets/img/circle-1.png" alt="1" />
+    <div style="height: 100px;" class="steps-numbers">
+        <img style="float: left;" src="/assets/img/circle-1.png" alt="1" />
         <p class="one">Tell us where you are and where you're heading</p>
     </div>
-    <div style=" height:100px;"  class="steps-numbers">
-        <img style="float:right;" src="/assets/img/circle-2.png" alt="2" />
-        <p class="two">    We'll pit local hotel deals against your taxi fare to find the best option</p>
+    <div style="height: 100px;" class="steps-numbers">
+        <img style="float: right;" src="/assets/img/circle-2.png" alt="2" />
+        <p class="two">We'll pit local hotel deals against your taxi fare to find the best option</p>
     </div>
-    <div style=" height:100px;"  class="steps-numbers">
-        <img style="float:left;" src="/assets/img/circle-3.png" alt="3" />
-        <p class="two">  Hotel or taxi – book whichever you choose </p>
+    <div style="height: 100px;" class="steps-numbers">
+        <img style="float: left;" src="/assets/img/circle-3.png" alt="3" />
+        <p class="two">Hotel or taxi – book whichever you choose </p>
     </div>
 </div>
 
@@ -58,14 +58,16 @@
     <!-- Randomly generate pics -->
     <script type="text/javascript" src="/assets/js/location.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            var rand_no = Math.floor((13-1)*Math.random()) + 1;
+        $(document).ready(function () {
+            var rand_no = Math.floor((13 - 1) * Math.random()) + 1;
             var className = 'photo-set' + rand_no;
             $("#headerIMG").addClass(className);
         });
     </script>
-    
-<!-- Begin: www.iperceptions.com --> <script type="text/javascript"> ; (function (w, d, s, l) { var r = 100, js, fjs = d.getElementsByTagName(s)[0], id = "IPerceptionsJS", a = "async", b = "defer", go = function () { if (d.getElementById(id)) { return; } js = d.createElement(s); js.src = w.location.protocol + "//ips-invite.iperceptions.com/webValidator.aspx?sdfc=9f19d6c7-116607-bf135678-8bf9-4527-85e7-6f56d13da479&lID=1&source=91787"; js.id = id; js.type = "text/javascript"; js[a] = a; js[b] = b; fjs.parentNode.insertBefore(js, fjs); }; if (r < Math.floor(Math.random() * 100)) { d.cookie = "IPE_S_116607=0;Path=/;" } else if (!(/(^|;)\s*IPE(_S_)?116607=/.test(d.cookie))) { if (w.addEventListener) { w.addEventListener(l, go, false); } else if (w.attachEvent) { w.attachEvent("on" + l, go); } } })(window, document, "script", "load");</script><!-- End: www.iperceptions.com -->
+
+    <!-- Begin: www.iperceptions.com -->
+    <script type="text/javascript"> ; (function (w, d, s, l) { var r = 100, js, fjs = d.getElementsByTagName(s)[0], id = "IPerceptionsJS", a = "async", b = "defer", go = function () { if (d.getElementById(id)) { return; } js = d.createElement(s); js.src = w.location.protocol + "//ips-invite.iperceptions.com/webValidator.aspx?sdfc=9f19d6c7-116607-bf135678-8bf9-4527-85e7-6f56d13da479&lID=1&source=91787"; js.id = id; js.type = "text/javascript"; js[a] = a; js[b] = b; fjs.parentNode.insertBefore(js, fjs); }; if (r < Math.floor(Math.random() * 100)) { d.cookie = "IPE_S_116607=0;Path=/;" } else if (!(/(^|;)\s*IPE(_S_)?116607=/.test(d.cookie))) { if (w.addEventListener) { w.addEventListener(l, go, false); } else if (w.attachEvent) { w.attachEvent("on" + l, go); } } })(window, document, "script", "load");</script>
+    <!-- End: www.iperceptions.com -->
 
 }
 
