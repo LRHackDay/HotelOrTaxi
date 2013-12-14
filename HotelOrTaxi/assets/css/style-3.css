@@ -299,13 +299,10 @@ p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; 
   .results-box-img { margin-right:15px; }
   .subheadline { float:left; width:40%; margin:10px 0 0 0; font-size:13px; }
   .price { float:left; width:45%; font-size:32px; font-weight:bold; }
-  
   .show-me-holder { float: left; margin: 20px 0 0; width: auto; }
-
+  .show-me { width: auto; }
   .red-button {  margin-top:0;font-size: 16px;float: left;width: 100px;  }
   .red-button:hover { color:white; text-decoration:none; }
-
-    
 }
  
 @media (max-width: 979px) and (min-width: 710px){
