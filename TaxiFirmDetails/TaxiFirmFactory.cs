@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using Geography;
 using Newtonsoft.Json;
 
@@ -31,7 +33,9 @@ namespace TaxiFirmDetails
 
             foreach (var place in places.Results)
             {
-                taxiFirms.Add(TaxiFirm(place));
+                TaxiFirm taxiFirm = TaxiFirm(place);
+                if (!IsExclusionPhrase(taxiFirm.Name))
+                    taxiFirms.Add(TaxiFirm(place));
             }
 
             return taxiFirms;
@@ -49,8 +53,43 @@ namespace TaxiFirmDetails
             GooglePlaceResult googlePlaceResult = place.Result;
             string formattedPhoneNumber = googlePlaceResult.Formatted_Phone_Number;
 
-            var taxiFirm = new TaxiFirm {Name = companyName, Number = formattedPhoneNumber};
+            var taxiFirm = new TaxiFirm { Name = companyName, Number = formattedPhoneNumber };
             return taxiFirm;
+        }
+
+        private IList<string> ExclusionPhrases(bool exceptions = false)
+        {
+            IList<string> exclusionPhrases = new List<string>();
+            string exclusionPhraseAppKey = exceptions ? "GooglePlacesExclusionPhraseExceptions" : "GooglePlacesExclusionPhrases";
+            if (ConfigurationManager.AppSettings[exclusionPhraseAppKey] != null)
+            {
+                string exclusionPhrasesString = ConfigurationManager.AppSettings[exclusionPhraseAppKey];
+                try
+                {
+                    exclusionPhrases = new List<string>(exclusionPhrasesString.Split(','));
+
+                }
+                catch { }
+            }
+            return exclusionPhrases;
+        }
+
+        private bool IsExclusionPhrase(string taxiName)
+        {
+            bool ret = false;
+            foreach (var exclusionPhrase in ExclusionPhrases())
+            {
+                if (taxiName.ToLower().IndexOf(exclusionPhrase, StringComparison.Ordinal) > -1)
+                {
+                    foreach (var exclusionPhraseException in ExclusionPhrases(true))
+                    {
+                        if (taxiName.ToLower().IndexOf(exclusionPhraseException, StringComparison.Ordinal) > -1)
+                            return false;
+                    }
+                    return true;
+                }
+            }
+            return ret;
         }
     }
 }
