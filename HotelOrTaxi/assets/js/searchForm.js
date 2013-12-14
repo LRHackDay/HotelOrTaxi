@@ -4,7 +4,6 @@
     bindChangeClick(searchBoxHolder, fromEle);
     bindLocateClick(searchBoxHolder, fromEle);
     geoLocate();
-    attachValidation();
 });
 
 function bindChangeClick(searchBoxHolder, fromEle) {
