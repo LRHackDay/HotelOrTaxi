@@ -4,6 +4,8 @@
     bindChangeClick(searchBoxHolder, fromEle);
     bindLocateClick(searchBoxHolder, fromEle);
     geoLocate();
+    attachValidation();
+    manualLocate();
 });
 
 function bindChangeClick(searchBoxHolder, fromEle) {
@@ -53,5 +55,26 @@ function attachValidation() {
             e.preventDefault();
             alert('Please enter your current destination and desired location');
         }
+    });
+}
+
+function manualLocate() {
+    $('#from').blur(function () {
+        if ($('#fromlatlong').val().length == 0)
+            populateLatLong($(this).val(), $('#fromlatlong'));
+    });
+    $('#to').blur(function () {
+        if ($('#tolatlong').val().length == 0)
+            populateLatLong($(this).val(), $('#tolatlong'));
+    });
+}
+
+function populateLatLong(address, targetEl) {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            var loc = results[0].geometry.location; 
+            targetEl.val(loc.nb + ',' + loc.ob);
+        } 
     });
 }
