@@ -58,12 +58,15 @@
     <!-- Randomly generate pics -->
     <script type="text/javascript" src="/assets/js/location.js"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
-        var rand_no = Math.floor((13-1)*Math.random()) + 1;
-        var className = 'photo-set' + rand_no;
-        $("#headerIMG").addClass(className);
-    });
+        $(document).ready(function(){
+            var rand_no = Math.floor((13-1)*Math.random()) + 1;
+            var className = 'photo-set' + rand_no;
+            $("#headerIMG").addClass(className);
+        });
     </script>
+    
+<!-- Begin: www.iperceptions.com --> <script type="text/javascript"> ; (function (w, d, s, l) { var r = 100, js, fjs = d.getElementsByTagName(s)[0], id = "IPerceptionsJS", a = "async", b = "defer", go = function () { if (d.getElementById(id)) { return; } js = d.createElement(s); js.src = w.location.protocol + "//ips-invite.iperceptions.com/webValidator.aspx?sdfc=9f19d6c7-116607-bf135678-8bf9-4527-85e7-6f56d13da479&lID=1&source=91787"; js.id = id; js.type = "text/javascript"; js[a] = a; js[b] = b; fjs.parentNode.insertBefore(js, fjs); }; if (r < Math.floor(Math.random() * 100)) { d.cookie = "IPE_S_116607=0;Path=/;" } else if (!(/(^|;)\s*IPE(_S_)?116607=/.test(d.cookie))) { if (w.addEventListener) { w.addEventListener(l, go, false); } else if (w.attachEvent) { w.attachEvent("on" + l, go); } } })(window, document, "script", "load");</script><!-- End: www.iperceptions.com -->
+
 }
 
 @section MetaTags{
