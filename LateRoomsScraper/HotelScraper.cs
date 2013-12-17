@@ -8,7 +8,7 @@ namespace LateRoomsScraper
     public class HotelScraper : IScrapeWebsites
     {
         private readonly ISaveHotels _hotelStore;
-        private const string URL_FORMAT = "http://m.laterooms.com/en/p9827/MobileSearch.aspx?k=&n=1&minp=&maxp=&StarRatingFilter=&rt=2-0&Latitude={0}&Longitude={1}&MaxRadius=10&PageSize=10&toStep=&SortBy=&Ascending=False";
+        private const string URL_FORMAT = "http://m.laterooms.com/en/p9827/MobileAjax.aspx?pageSize=10&r=0.25436401390470564&search=%7b%22Latitude%22:{0},%22Longitude%22:{1},%22Radius%22:10,%22RadiusDistanceUnit%22:%22Miles%22,%22Date%22:%22{2:yyyy}{2:MM}{2:dd}%22,%22CurrencyId%22:%22GBP%22,%22HotelFilter%22:1,%22SortedAscending%22:true,%22Type%22:%22Standard%22,%22PageNumber%22:1,%22Facilities%22:0,%22StarRating%22:0,%22StarRatingBitmap%22:0,%22CustomerRatingBitmap%22:0,%22AppealBitmap%22:0,%22CustomerRatingPercentageFrom%22:0,%22MinPrice%22:0,%22MaxPrice%22:99999999,%22HasSpecialOffers%22:false,%22SpecialOffersBitmap%22:0,%22Nights%22:1,%22SortOrder%22:%22TotalPrice%22%7d";
         private string _latitude;
         private string _longitude;
         private readonly IDownloadHtml _downloadHtml;
