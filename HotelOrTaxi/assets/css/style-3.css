@@ -299,9 +299,9 @@ p.two { float:left; padding:10px 0 0 5px; width:304px; vertical-align:baseline; 
   .results-box-img { margin-right:15px; }
   .subheadline { float:left; width:40%; margin:0; font-size:13px; }
   .price { float:left; width:45%; font-size:32px; font-weight:bold;margin-top: 6px;}
-  .show-me-holder { float: left; margin: 11px 0 0; width: 180px; }
+  .show-me-holder { float: left; margin: 11px 0 0; width: auto; }
   .show-me { width: auto; }
-  .red-button {  margin-top:0;float: left;width: 180px;  }
+  .red-button {  margin-top:0;float: left;width: 100%;font-size: 20px;padding-right: 20px;  }
   .red-button:hover { color:white; text-decoration:none; }
 }
  
